@@ -1,0 +1,15 @@
+{
+  "circuit_name": "Lab3_2_V2_only",
+  "node_voltages": {
+    "N001": 1.28593e-05,
+    "N002": 1.53808e-05,
+    "N003": 1.43662,
+    "N004": 2.0
+  },
+  "source_currents": {
+    "V2": -0.000281692
+  },
+  "temp": 27.0,
+  "tnom": 27.0,
+  "strict": true
+}

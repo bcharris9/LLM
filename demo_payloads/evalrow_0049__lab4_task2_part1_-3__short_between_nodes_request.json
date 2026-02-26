@@ -1,0 +1,18 @@
+{
+  "circuit_name": "lab4_task2_part1_-3",
+  "node_voltages": {
+    "-VCC": -5.0,
+    "N001": -3.6618,
+    "N002": -3.0,
+    "VCC": 5.0,
+    "VOUT": -5.0
+  },
+  "source_currents": {
+    "V1": -0.000661798,
+    "V2": -0.0262938,
+    "V3": 0.0269631
+  },
+  "temp": 27.0,
+  "tnom": 27.0,
+  "strict": true
+}

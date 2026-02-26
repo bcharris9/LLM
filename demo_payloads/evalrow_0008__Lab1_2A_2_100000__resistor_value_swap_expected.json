@@ -1,0 +1,16 @@
+{
+  "source": {
+    "eval_predictions_file": "pipeline/out/qwen15b_alllabs_v2_eval_labid_v1_len512e2_scoreknn_k1.jsonl",
+    "eval_val_file": "pipeline/out_one_lab_all_v2_eval/merged_finetune_currents_labid_v1/val_instruct.jsonl",
+    "row_index": 8
+  },
+  "circuit_name": "Lab1_2A_2_100000",
+  "target_fault_type": "resistor_value_swap",
+  "pred_fault_type_from_saved_eval": "resistor_value_swap",
+  "class_match_in_saved_eval": true,
+  "target_output": "FaultType: resistor_value_swap\nDiagnosis: resistor values were swapped between two resistors. Fix: restore each resistor to its intended value.",
+  "notes": [
+    "Payload extracted from held-out simulated eval row (Measured: values).",
+    "This metadata is aligned to the saved hybrid eval prediction file listed above."
+  ]
+}

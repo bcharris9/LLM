@@ -1,0 +1,13 @@
+{
+  "circuit_name": "Lab1_2A_2_0",
+  "node_voltages": {
+    "N001": 5.0,
+    "N002": 1.11111
+  },
+  "source_currents": {
+    "V1": -0.000486111
+  },
+  "temp": 27.0,
+  "tnom": 27.0,
+  "strict": true
+}

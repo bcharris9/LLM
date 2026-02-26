@@ -1,0 +1,25 @@
+{
+  "source_variant_id": "Lab9_2__v0022",
+  "circuit_name": "Lab9_2",
+  "injected_fault_from_manifest": {
+    "fault_type": "param_drift",
+    "component": "C4",
+    "original_nodes": [
+      "N001",
+      "N004"
+    ],
+    "factor": 1.5,
+    "old_value": "0.1u",
+    "new_value": "8e-08"
+  },
+  "source_files": {
+    "variant_manifest": "pipeline/out_one_lab_all_v2_eval/Lab9_2/variant_manifest.jsonl",
+    "sim_manifest": "pipeline/out_one_lab_all_v2_eval/Lab9_2/sim_manifest.jsonl",
+    "variant_netlist": "pipeline/out_one_lab_all_v2_eval/Lab9_2/variants/Lab9_2__v0022.cir",
+    "sim_log": "pipeline/out_one_lab_all_v2_eval/Lab9_2/sim_results/Lab9_2__v0022.log"
+  },
+  "notes": [
+    "This payload is copied from a real simulated variant's measured max values.",
+    "Use it with POST /debug to verify the API on a known case."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "description": "Demo payloads extracted from held-out simulated eval rows. Files prefixed evalrow_* are aligned to a saved hybrid eval prediction file.",
+  "curated_exact_variant_demo": {
+    "request_file": "Lab9_2__v0022_request.json",
+    "expected_file": "Lab9_2__v0022_expected.json"
+  },
+  "saved_hybrid_eval_alignment": {
+    "prediction_file": "pipeline/out/qwen15b_alllabs_v2_eval_labid_v1_len512e2_scoreknn_k1.jsonl",
+    "eval_data_file": "pipeline/out_one_lab_all_v2_eval/merged_finetune_currents_labid_v1/val_instruct.jsonl"
+  },
+  "demos": [
+    {
+      "fault_type": "param_drift",
+      "circuit_name": "Lab1_2A_2_0",
+      "row_index": 1,
+      "request_file": "evalrow_0001__Lab1_2A_2_0__param_drift_request.json",
+      "expected_file": "evalrow_0001__Lab1_2A_2_0__param_drift_expected.json"
+    },
+    {
+      "fault_type": "resistor_value_swap",
+      "circuit_name": "Lab1_2A_2_100000",
+      "row_index": 8,
+      "request_file": "evalrow_0008__Lab1_2A_2_100000__resistor_value_swap_request.json",
+      "expected_file": "evalrow_0008__Lab1_2A_2_100000__resistor_value_swap_expected.json"
+    },
+    {
+      "fault_type": "resistor_wrong_value",
+      "circuit_name": "Lab1_1_10000",
+      "row_index": 6,
+      "request_file": "evalrow_0006__Lab1_1_10000__resistor_wrong_value_request.json",
+      "expected_file": "evalrow_0006__Lab1_1_10000__resistor_wrong_value_expected.json"
+    },
+    {
+      "fault_type": "missing_component",
+      "circuit_name": "lab4_task2_part1_4",
+      "row_index": 56,
+      "request_file": "evalrow_0056__lab4_task2_part1_4__missing_component_request.json",
+      "expected_file": "evalrow_0056__lab4_task2_part1_4__missing_component_expected.json"
+    },
+    {
+      "fault_type": "short_between_nodes",
+      "circuit_name": "lab4_task2_part1_-3",
+      "row_index": 49,
+      "request_file": "evalrow_0049__lab4_task2_part1_-3__short_between_nodes_request.json",
+      "expected_file": "evalrow_0049__lab4_task2_part1_-3__short_between_nodes_expected.json"
+    },
+    {
+      "fault_type": "swapped_nodes",
+      "circuit_name": "lab4_task2_part1_-2",
+      "row_index": 4,
+      "request_file": "evalrow_0004__lab4_task2_part1_-2__swapped_nodes_request.json",
+      "expected_file": "evalrow_0004__lab4_task2_part1_-2__swapped_nodes_expected.json"
+    },
+    {
+      "fault_type": "pin_open",
+      "circuit_name": "Lab3_2_V2_only",
+      "row_index": 9,
+      "request_file": "evalrow_0009__Lab3_2_V2_only__pin_open_request.json",
+      "expected_file": "evalrow_0009__Lab3_2_V2_only__pin_open_expected.json"
+    }
+  ]
+}

@@ -24,6 +24,8 @@ Endpoints:
 - `build_runtime_assets.py` : packages tabular model + catalog assets
 - `build_hybrid_assets.py` : packages LoRA adapter + KNN reference/index assets for hybrid API mode
 - `client_example.py` : example client hitting all endpoints
+- `student_interactive_client.py` : interactive terminal client that prompts for node values one at a time
+- `demo_payloads/` : ready-to-submit real simulated measurement payloads (for reproducible demos)
 - `requirements.txt` : Python deps for API + client
 - `run_api.ps1` : PowerShell start script
 - `assets/` : tabular assets + circuit catalog
@@ -69,9 +71,175 @@ powershell -ExecutionPolicy Bypass -File .\\circuit_debug_api\\run_api.ps1
 .\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py --demo-use-golden-values --demo-offset-node N001 --demo-offset-volts 0.5
 ```
 
+## Interactive Student Client (one measurement at a time)
+
+This client first prompts the student to choose a lab, then a circuit within that lab, then prompts for measurements one by one.
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\student_interactive_client.py
+```
+
+Flow in terminal:
+
+1. Choose lab (example: `Lab4` or `4`)
+2. Choose circuit from that lab
+3. Enter each node voltage one at a time
+4. Optionally enter source currents
+5. Submit and receive diagnosis
+
+Optional flags:
+
+- `--circuit Lab9_2` : skip circuit selection prompt
+- `--ask-source-currents` : also prompt for optional source currents
+- `--save-payload .\\student_payload.json` : save the submitted payload
+- `--show-golden` : instructor/demo mode only
+- `--no-strict` : allow missing nodes (not recommended)
+
+## Specific Circuit Demo (real simulated case)
+
+This uses a real simulated variant from `Lab9_2` (`Lab9_2__v0022`) and submits the measured node voltages/source currents to the API.
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
+  --payload-file .\\circuit_debug_api\\demo_payloads\\Lab9_2__v0022_request.json
+```
+
+Reference metadata / expected injected fault for that demo case:
+
+- `circuit_debug_api/demo_payloads/Lab9_2__v0022_expected.json`
+
+## Additional Real Demo Payloads (held-out simulated eval rows)
+
+These are extra reproducible demos extracted from held-out simulated eval rows and aligned to a saved hybrid eval run.
+
+- Index: `circuit_debug_api/demo_payloads/demo_index.json`
+- Each demo has:
+  - `*_request.json` (send to `POST /debug`)
+  - `*_expected.json` (saved target label / provenance)
+
+Included classes:
+
+- `param_drift`
+- `resistor_value_swap`
+- `resistor_wrong_value`
+- `missing_component`
+- `short_between_nodes`
+- `swapped_nodes`
+- `pin_open`
+
+Run any one demo:
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
+  --payload-file .\\circuit_debug_api\\demo_payloads\\evalrow_0001__Lab1_2A_2_0__param_drift_request.json
+```
+
+Run another demo:
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
+  --payload-file .\\circuit_debug_api\\demo_payloads\\evalrow_0049__lab4_task2_part1_-3__short_between_nodes_request.json
+```
+
+## Student Breadboard Workflow (exact endpoint flow)
+
+This is the intended real use path when a student has breadboard measurements.
+
+### 1) Start the API
+
+```powershell
+.\\.venv312\\Scripts\\python.exe -m uvicorn circuit_debug_api.server:app --host 127.0.0.1 --port 8000
+```
+
+### 2) Get the valid circuit names (pick the golden circuit the student is building)
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:8000/circuits | ConvertTo-Json -Depth 5
+```
+
+### 3) Get the exact node names required for that circuit
+
+Example for `Lab9_2`:
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:8000/circuits/Lab9_2/nodes | ConvertTo-Json -Depth 10
+```
+
+Use the returned `nodes[].node_name` list as the measurement checklist.
+
+### 4) Take measurements on the breadboard (what to enter)
+
+- Measure each listed node voltage relative to the breadboard ground node.
+- Enter values using the exact node names from the API.
+- If the circuit is time-varying, this API currently expects the same convention as training: `*_max` features (peak/max values).
+- `source_currents` are optional, but if you can measure them they usually improve accuracy.
+- Keep `temp` and `tnom` at defaults unless you intentionally changed them.
+
+### 5) Fill a payload JSON file with the student measurements
+
+Example (`student_lab9_2_payload.json`):
+
+```json
+{
+  "circuit_name": "Lab9_2",
+  "node_voltages": {
+    "N001": 0.95,
+    "N002": 0.18,
+    "N003": 5.0,
+    "N004": 1.0,
+    "N005": 0.18,
+    "N006": -5.0
+  },
+  "source_currents": {},
+  "temp": 27.0,
+  "tnom": 27.0,
+  "strict": true
+}
+```
+
+Notes:
+
+- `strict: true` will fail if any required node is missing (recommended for students).
+- If you do not know source currents, leave `source_currents` as `{}`.
+
+### 6) Submit the measurements for debugging
+
+Using the example client:
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
+  --payload-file .\\student_lab9_2_payload.json
+```
+
+Using the interactive student client (recommended for manual breadboard entry):
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\student_interactive_client.py `
+  --circuit Lab9_2 `
+  --ask-source-currents `
+  --save-payload .\\student_lab9_2_payload.json
+```
+
+Or directly with PowerShell:
+
+```powershell
+$body = Get-Content .\\student_lab9_2_payload.json -Raw
+Invoke-RestMethod -Uri http://127.0.0.1:8000/debug -Method Post -ContentType 'application/json' -Body $body | ConvertTo-Json -Depth 10
+```
+
+### 7) Read the response
+
+Main fields:
+
+- `fault_type` : predicted fault class
+- `confidence` : model confidence (not a guarantee)
+- `diagnosis` / `fix` : human-readable guidance
+- `missing_required_nodes` : nodes you forgot to provide (when `strict=false`)
+
 Notes:
 
 - Demo mode is only to show endpoint usage. Exact golden values are not a real fault case.
+- `--payload-file` mode is the recommended way to demo a specific real simulated case.
 - For best accuracy, provide all nodes from `GET /circuits/{name}/nodes`.
 - Supplying source currents (if available) improves accuracy.
 - `GET /health` reports which backend is active (`llm_knn_hybrid` or `tabular_xgboost`).

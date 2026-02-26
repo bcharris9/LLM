@@ -1,0 +1,16 @@
+{
+  "source": {
+    "eval_predictions_file": "pipeline/out/qwen15b_alllabs_v2_eval_labid_v1_len512e2_scoreknn_k1.jsonl",
+    "eval_val_file": "pipeline/out_one_lab_all_v2_eval/merged_finetune_currents_labid_v1/val_instruct.jsonl",
+    "row_index": 56
+  },
+  "circuit_name": "lab4_task2_part1_4",
+  "target_fault_type": "missing_component",
+  "pred_fault_type_from_saved_eval": "missing_component",
+  "class_match_in_saved_eval": true,
+  "target_output": "FaultType: missing_component\nDiagnosis: missing component in the circuit path. Fix: reinsert the missing component with the intended value/model.",
+  "notes": [
+    "Payload extracted from held-out simulated eval row (Measured: values).",
+    "This metadata is aligned to the saved hybrid eval prediction file listed above."
+  ]
+}
