@@ -11,17 +11,27 @@ import joblib
 import numpy as np
 from xgboost import XGBClassifier
 
-# Allow running as a script: `python .\circuit_debug_api\build_runtime_assets.py`
-REPO_ROOT = Path(__file__).resolve().parent.parent
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+SCRIPT_DIR = Path(__file__).resolve().parent
+PACKAGE_PARENT = SCRIPT_DIR.parent
+if str(PACKAGE_PARENT) not in sys.path:
+    sys.path.insert(0, str(PACKAGE_PARENT))
 
-from circuit_debug_api.runtime import (
-    PAIR_MC_PO,
-    build_circuit_catalog,
-    build_feature_dict_from_measurements,
-    family_id,
-)
+try:
+    from LLM.runtime import (
+        PAIR_MC_PO,
+        build_circuit_catalog,
+        build_feature_dict_from_measurements,
+        family_id,
+    )
+except ModuleNotFoundError as e:
+    if e.name != "LLM":
+        raise
+    from runtime import (  # type: ignore[no-redef]
+        PAIR_MC_PO,
+        build_circuit_catalog,
+        build_feature_dict_from_measurements,
+        family_id,
+    )
 
 
 DEFAULT_TRAIN_FILES = [
@@ -37,8 +47,8 @@ DEFAULT_TRAIN_FILES = [
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Build runtime assets for circuit_debug_api")
-    p.add_argument("--api-dir", type=Path, default=Path("circuit_debug_api"))
+    p = argparse.ArgumentParser(description="Build runtime assets for LLM")
+    p.add_argument("--api-dir", type=Path, default=SCRIPT_DIR)
     p.add_argument(
         "--source-bundle",
         type=Path,

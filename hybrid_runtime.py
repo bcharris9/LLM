@@ -3,18 +3,30 @@ from __future__ import annotations
 import inspect
 import json
 import math
+import os
 from pathlib import Path
 from typing import Any
 
 import joblib
 
-from circuit_debug_api import llm_knn_helpers as helpers
-from circuit_debug_api.runtime import (
-    DebugResult,
-    build_circuit_catalog,
-    measurement_key_for_node,
-    measurement_key_for_vsource_current,
-)
+try:
+    from LLM import llm_knn_helpers as helpers
+    from LLM.runtime import (
+        DebugResult,
+        build_circuit_catalog,
+        measurement_key_for_node,
+        measurement_key_for_vsource_current,
+    )
+except ModuleNotFoundError as e:
+    if e.name != "LLM":
+        raise
+    import llm_knn_helpers as helpers  # type: ignore[no-redef]
+    from runtime import (  # type: ignore[no-redef]
+        DebugResult,
+        build_circuit_catalog,
+        measurement_key_for_node,
+        measurement_key_for_vsource_current,
+    )
 
 
 def _format_measurement_value(value: object) -> str:
@@ -134,6 +146,46 @@ def _parse_diag_fix(text: str) -> tuple[str, str]:
     return "unknown fault", "inspect wiring and component values"
 
 
+def _resolve_config_path(path_value: object, *, hybrid_assets_dir: Path, api_dir: Path) -> Path:
+    """
+    Resolve paths stored in hybrid_config across platforms.
+
+    Packaged configs may contain Windows-style separators and older paths rooted at
+    `circuit_debug_api/` or `LLM/`. We normalize those and try sensible bases.
+    """
+    raw = str(path_value or "").strip()
+    if not raw:
+        return Path(raw)
+
+    # Normalize Windows separators on POSIX and vice versa.
+    normalized = raw.replace("\\", "/")
+    p = Path(normalized)
+    if p.is_absolute():
+        return p
+
+    candidates: list[Path] = []
+
+    # Directly relative to current working dir / process.
+    candidates.append(p)
+
+    # Relative to the API dir (`LLM/`) and hybrid assets dir.
+    candidates.append(api_dir / p)
+    candidates.append(hybrid_assets_dir / p)
+
+    # Backward-compatible configs sometimes embed a leading folder name.
+    parts = list(p.parts)
+    if parts and parts[0] in {"circuit_debug_api", "LLM"}:
+        stripped = Path(*parts[1:]) if len(parts) > 1 else Path(".")
+        candidates.append(api_dir / stripped)
+        candidates.append(hybrid_assets_dir / stripped)
+
+    # Return the first existing path; otherwise return best normalized guess.
+    for c in candidates:
+        if c.exists():
+            return c
+    return api_dir / p
+
+
 class CircuitDebugHybridRuntime:
     """
     LLM + KNN hybrid runtime using the same scoring/KNN functions as pipeline/test_lora_model.py.
@@ -150,6 +202,7 @@ class CircuitDebugHybridRuntime:
     ) -> None:
         self.catalog_path = Path(catalog_path)
         self.hybrid_assets_dir = Path(hybrid_assets_dir)
+        self.api_dir = self.hybrid_assets_dir.parent
         self.auto_build_catalog_from = Path(auto_build_catalog_from) if auto_build_catalog_from else None
 
         self.config_path = self.hybrid_assets_dir / "hybrid_config.json"
@@ -200,7 +253,11 @@ class CircuitDebugHybridRuntime:
         if knn_index_joblib.exists():
             self._knn_index = joblib.load(knn_index_joblib)
         else:
-            ref_path = Path(self.config["knn_ref_file"])
+            ref_path = _resolve_config_path(
+                self.config.get("knn_ref_file"),
+                hybrid_assets_dir=self.hybrid_assets_dir,
+                api_dir=self.api_dir,
+            )
             rows = mod.load_jsonl(ref_path)
             self._knn_index = mod.build_knn_index(rows)
         self._knn_index_loaded = True
@@ -212,7 +269,11 @@ class CircuitDebugHybridRuntime:
         mod = self._load_eval_module()
         self._device, self._dtype = mod.choose_device()
         model_name = str(self.config["model_name"])
-        adapter_dir = Path(self.config["adapter_dir"])
+        adapter_dir = _resolve_config_path(
+            self.config.get("adapter_dir"),
+            hybrid_assets_dir=self.hybrid_assets_dir,
+            api_dir=self.api_dir,
+        )
         if not adapter_dir.exists():
             raise FileNotFoundError(f"Hybrid adapter dir not found: {adapter_dir}")
         tokenizer = helpers.AutoTokenizer.from_pretrained(model_name, use_fast=True, trust_remote_code=True)

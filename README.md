@@ -27,48 +27,120 @@ Endpoints:
 - `student_interactive_client.py` : interactive terminal client that prompts for node values one at a time
 - `demo_payloads/` : ready-to-submit real simulated measurement payloads (for reproducible demos)
 - `requirements.txt` : Python deps for API + client
-- `run_api.ps1` : PowerShell start script
+- `make_venv.sh` : Bash script to create `.venv312` and install deps
+- `run_api.ps1` : PowerShell start script (Windows)
 - `assets/` : tabular assets + circuit catalog
 - `assets_hybrid/` : hybrid assets (LoRA adapter copy, KNN ref/index, hybrid config)
 
 ## Install Dependencies
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe -m pip install -r .\\circuit_debug_api\\requirements.txt
+.\\.venv312\\Scripts\\python.exe -m pip install -r .\\requirements.txt
 ```
 
 ## Build Runtime Assets (one-time or after model updates)
 
+Only needed if you have the original training/export artifacts (the `pipeline/...` files).
+This `LLM/` demo folder already includes prebuilt runtime assets in `assets/`, so you can skip this step.
+
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\build_runtime_assets.py
+.\\.venv312\\Scripts\\python.exe .\\build_runtime_assets.py
 ```
 
 ## Build Hybrid Assets (LLM + KNN)
 
 This copies the selected LoRA adapter into the API directory and prebuilds a KNN index from the training instruct JSONL.
+Only needed if you have the original adapter/reference files (`pipeline/...`).
+This `LLM/` demo folder already includes prebuilt hybrid assets in `assets_hybrid/`, so you can skip this step.
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\build_hybrid_assets.py
+.\\.venv312\\Scripts\\python.exe .\\build_hybrid_assets.py
 ```
 
 ## Run the API
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe -m uvicorn circuit_debug_api.server:app --host 127.0.0.1 --port 8000
+.\\.venv312\\Scripts\\python.exe -m uvicorn server:app --host 127.0.0.1 --port 8000
 ```
 
 Or:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\\circuit_debug_api\\run_api.ps1
+powershell -ExecutionPolicy Bypass -File .\\run_api.ps1
 ```
 
 `run_api.ps1` will auto-build both tabular and hybrid assets if they are missing.
 
+## Bash / Linux/macOS Quickstart
+
+If you are using Bash (macOS/Linux, or Git Bash/WSL), these commands assume you already activated the venv:
+`source .venv312/bin/activate`
+
+Create the virtual environment (recommended):
+
+```bash
+./make_venv.sh
+```
+
+Install dependencies:
+
+```bash
+python -m pip install -r ./requirements.txt
+```
+
+Build runtime assets:
+
+```bash
+python ./build_runtime_assets.py
+```
+
+Skip this step if `./assets/model_bundle.joblib` already exists (it does in this demo folder).
+
+Build hybrid assets:
+
+```bash
+python ./build_hybrid_assets.py
+```
+
+Skip this step if `./assets_hybrid/hybrid_config.json` already exists (it does in this demo folder).
+
+Run the API:
+
+```bash
+python -m uvicorn server:app --host 127.0.0.1 --port 8000
+```
+
+Example client:
+
+```bash
+python ./client_example.py --demo-use-golden-values --demo-offset-node N001 --demo-offset-volts 0.5
+```
+
+Interactive student client:
+
+```bash
+python ./student_interactive_client.py
+```
+
+Query endpoints from Bash:
+
+```bash
+curl -s http://127.0.0.1:8000/circuits | jq
+curl -s http://127.0.0.1:8000/circuits/Lab9_2/nodes | jq
+```
+
+Submit a JSON payload from Bash:
+
+```bash
+curl -s http://127.0.0.1:8000/debug \
+  -H 'Content-Type: application/json' \
+  --data @./student_lab9_2_payload.json | jq
+```
+
 ## Example Client (uses all endpoints)
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py --demo-use-golden-values --demo-offset-node N001 --demo-offset-volts 0.5
+.\\.venv312\\Scripts\\python.exe .\\client_example.py --demo-use-golden-values --demo-offset-node N001 --demo-offset-volts 0.5
 ```
 
 ## Interactive Student Client (one measurement at a time)
@@ -76,7 +148,7 @@ powershell -ExecutionPolicy Bypass -File .\\circuit_debug_api\\run_api.ps1
 This client first prompts the student to choose a lab, then a circuit within that lab, then prompts for measurements one by one.
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\student_interactive_client.py
+.\\.venv312\\Scripts\\python.exe .\\student_interactive_client.py
 ```
 
 Flow in terminal:
@@ -100,19 +172,19 @@ Optional flags:
 This uses a real simulated variant from `Lab9_2` (`Lab9_2__v0022`) and submits the measured node voltages/source currents to the API.
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
-  --payload-file .\\circuit_debug_api\\demo_payloads\\Lab9_2__v0022_request.json
+.\\.venv312\\Scripts\\python.exe .\\client_example.py `
+  --payload-file .\\demo_payloads\\Lab9_2__v0022_request.json
 ```
 
 Reference metadata / expected injected fault for that demo case:
 
-- `circuit_debug_api/demo_payloads/Lab9_2__v0022_expected.json`
+- `demo_payloads/Lab9_2__v0022_expected.json`
 
 ## Additional Real Demo Payloads (held-out simulated eval rows)
 
 These are extra reproducible demos extracted from held-out simulated eval rows and aligned to a saved hybrid eval run.
 
-- Index: `circuit_debug_api/demo_payloads/demo_index.json`
+- Index: `demo_payloads/demo_index.json`
 - Each demo has:
   - `*_request.json` (send to `POST /debug`)
   - `*_expected.json` (saved target label / provenance)
@@ -130,15 +202,15 @@ Included classes:
 Run any one demo:
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
-  --payload-file .\\circuit_debug_api\\demo_payloads\\evalrow_0001__Lab1_2A_2_0__param_drift_request.json
+.\\.venv312\\Scripts\\python.exe .\\client_example.py `
+  --payload-file .\\demo_payloads\\evalrow_0001__Lab1_2A_2_0__param_drift_request.json
 ```
 
 Run another demo:
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
-  --payload-file .\\circuit_debug_api\\demo_payloads\\evalrow_0049__lab4_task2_part1_-3__short_between_nodes_request.json
+.\\.venv312\\Scripts\\python.exe .\\client_example.py `
+  --payload-file .\\demo_payloads\\evalrow_0049__lab4_task2_part1_-3__short_between_nodes_request.json
 ```
 
 ## Student Breadboard Workflow (exact endpoint flow)
@@ -148,7 +220,7 @@ This is the intended real use path when a student has breadboard measurements.
 ### 1) Start the API
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe -m uvicorn circuit_debug_api.server:app --host 127.0.0.1 --port 8000
+.\\.venv312\\Scripts\\python.exe -m uvicorn server:app --host 127.0.0.1 --port 8000
 ```
 
 ### 2) Get the valid circuit names (pick the golden circuit the student is building)
@@ -207,14 +279,14 @@ Notes:
 Using the example client:
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\client_example.py `
+.\\.venv312\\Scripts\\python.exe .\\client_example.py `
   --payload-file .\\student_lab9_2_payload.json
 ```
 
 Using the interactive student client (recommended for manual breadboard entry):
 
 ```powershell
-.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\student_interactive_client.py `
+.\\.venv312\\Scripts\\python.exe .\\student_interactive_client.py `
   --circuit Lab9_2 `
   --ask-source-currents `
   --save-payload .\\student_lab9_2_payload.json

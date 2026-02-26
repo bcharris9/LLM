@@ -7,8 +7,14 @@ from typing import Any
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-from circuit_debug_api.hybrid_runtime import CircuitDebugHybridRuntime
-from circuit_debug_api.runtime import CircuitDebugRuntime
+try:
+    from LLM.hybrid_runtime import CircuitDebugHybridRuntime
+    from LLM.runtime import CircuitDebugRuntime
+except ModuleNotFoundError as e:
+    if e.name != "LLM":
+        raise
+    from hybrid_runtime import CircuitDebugHybridRuntime  # type: ignore[no-redef]
+    from runtime import CircuitDebugRuntime  # type: ignore[no-redef]
 
 
 API_DIR = Path(__file__).resolve().parent
