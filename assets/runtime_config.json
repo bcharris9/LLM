@@ -1,0 +1,30 @@
+{
+  "pair_classes": [
+    "missing_component",
+    "pin_open"
+  ],
+  "pair_threshold": 0.5,
+  "source_bundle": "pipeline\\out\\tabular_fault_head_union_v2_v3_v4_v5_xgb_pair_bundle.joblib",
+  "golden_root": "pipeline\\out_one_lab_all_v2_train",
+  "family_pair_models_enabled": true,
+  "class_names_sorted": [
+    "missing_component",
+    "param_drift",
+    "pin_open",
+    "resistor_value_swap",
+    "resistor_wrong_value",
+    "short_between_nodes",
+    "swapped_nodes"
+  ],
+  "family_pair_model_count": 17,
+  "train_files": [
+    "pipeline\\out_one_lab_all_v2_train\\merged_finetune_currents_labid_v1\\train_instruct.jsonl",
+    "pipeline\\out_one_lab_all_v2_train\\merged_finetune_currents_labid_v1\\val_instruct.jsonl",
+    "pipeline\\out_one_lab_all_v3_train\\merged_finetune_currents_labid_v3_targeted\\train_instruct.jsonl",
+    "pipeline\\out_one_lab_all_v3_train\\merged_finetune_currents_labid_v3_targeted\\val_instruct.jsonl",
+    "pipeline\\out_one_lab_all_v4_pairfocus_train\\merged_finetune_currents_labid_v4_pairfocus\\train_instruct.jsonl",
+    "pipeline\\out_one_lab_all_v4_pairfocus_train\\merged_finetune_currents_labid_v4_pairfocus\\val_instruct.jsonl",
+    "pipeline\\out_one_lab_all_v5_pairfocus_train\\merged_finetune_currents_labid_v5_pairfocus\\train_instruct.jsonl",
+    "pipeline\\out_one_lab_all_v5_pairfocus_train\\merged_finetune_currents_labid_v5_pairfocus\\val_instruct.jsonl"
+  ]
+}

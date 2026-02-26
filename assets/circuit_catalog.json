@@ -1,0 +1,5062 @@
+{
+  "catalog_version": 1,
+  "golden_root": "pipeline\\out_one_lab_all_v2_train",
+  "circuit_count": 102,
+  "circuits": {
+    "Lab1_1_0": {
+      "circuit_name": "Lab1_1_0",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00185185181908
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 5.0,
+        "i_v1_max": -0.00185185181908
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_0"
+      }
+    },
+    "Lab1_1_100": {
+      "circuit_name": "Lab1_1_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0900000035763
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "i_v1_max": -0.0900000035763
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_100"
+      }
+    },
+    "Lab1_1_1000": {
+      "circuit_name": "Lab1_1_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00899999961257
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "i_v1_max": -0.00899999961257
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_1000"
+      }
+    },
+    "Lab1_1_10000": {
+      "circuit_name": "Lab1_1_10000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00089999998454
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "i_v1_max": -0.00089999998454
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_10000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_10000"
+      }
+    },
+    "Lab1_1_100000": {
+      "circuit_name": "Lab1_1_100000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -9.00000013644e-05
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "i_v1_max": -9.00000013644e-05
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_100000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_1_100000"
+      }
+    },
+    "Lab1_2A_2_0": {
+      "circuit_name": "Lab1_2A_2_0",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.99999976158
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000875000027008
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 1.99999976158,
+        "i_v1_max": -0.000875000027008
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_0"
+      }
+    },
+    "Lab1_2A_2_100": {
+      "circuit_name": "Lab1_2A_2_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.0909090936184
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000942760962062
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.0909090936184,
+        "i_v1_max": -0.000942760962062
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_100"
+      }
+    },
+    "Lab1_2A_2_1000": {
+      "circuit_name": "Lab1_2A_2_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.645161271095
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000884109933395
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.645161271095,
+        "i_v1_max": -0.000884109933395
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_1000"
+      }
+    },
+    "Lab1_2A_2_10000": {
+      "circuit_name": "Lab1_2A_2_10000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.65289258957
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000777471694164
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 1.65289258957,
+        "i_v1_max": -0.000777471694164
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_10000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_10000"
+      }
+    },
+    "Lab1_2A_2_100000": {
+      "circuit_name": "Lab1_2A_2_100000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.95886385441
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000745093799196
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 1.95886385441,
+        "i_v1_max": -0.000745093799196
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_100000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_2_100000"
+      }
+    },
+    "Lab1_2A_5_0": {
+      "circuit_name": "Lab1_2A_5_0",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.384615391493
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00398860406131
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.384615391493,
+        "i_v1_max": -0.00398860406131
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_0"
+      }
+    },
+    "Lab1_2A_5_100": {
+      "circuit_name": "Lab1_2A_5_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.384615391493
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00398860406131
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.384615391493,
+        "i_v1_max": -0.00398860406131
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_100"
+      }
+    },
+    "Lab1_2A_5_1000": {
+      "circuit_name": "Lab1_2A_5_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 2.27272725105
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00311447819695
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 2.27272725105,
+        "i_v1_max": -0.00311447819695
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_1000"
+      }
+    },
+    "Lab1_2A_5_10000": {
+      "circuit_name": "Lab1_2A_5_10000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.46428585052
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00209986767732
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 4.46428585052,
+        "i_v1_max": -0.00209986767732
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_10000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_10000"
+      }
+    },
+    "Lab1_2A_5_100000": {
+      "circuit_name": "Lab1_2A_5_100000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.94071149826
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00187930022366
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 4.94071149826,
+        "i_v1_max": -0.00187930022366
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_100000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2A_5_100000"
+      }
+    },
+    "Lab1_2B_2_0": {
+      "circuit_name": "Lab1_2B_2_0",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.99999976158
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000875000027008
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 1.99999976158,
+        "i_v1_max": -0.000875000027008
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_0"
+      }
+    },
+    "Lab1_2B_2_100": {
+      "circuit_name": "Lab1_2B_2_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.106508873403
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00111168634612
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.106508873403,
+        "i_v1_max": -0.00111168634612
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_100"
+      }
+    },
+    "Lab1_2B_2_1000": {
+      "circuit_name": "Lab1_2B_2_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.719999969006
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00103499996476
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.719999969006,
+        "i_v1_max": -0.00103499996476
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_1000"
+      }
+    },
+    "Lab1_2B_2_10000": {
+      "circuit_name": "Lab1_2B_2_10000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.69811308384
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000912735878956
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 1.69811308384,
+        "i_v1_max": -0.000912735878956
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_10000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_10000"
+      }
+    },
+    "Lab1_2B_2_100000": {
+      "circuit_name": "Lab1_2B_2_100000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.7872338295
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000526595744304
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 4.7872338295,
+        "i_v1_max": -0.000526595744304
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_100000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_2_100000"
+      }
+    },
+    "Lab1_2B_5_0": {
+      "circuit_name": "Lab1_2B_5_0",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000500000023749
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 5.0,
+        "i_v1_max": -0.000500000023749
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_0"
+      }
+    },
+    "Lab1_2B_5_100": {
+      "circuit_name": "Lab1_2B_5_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.110024452209
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0011112469947
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.110024452209,
+        "i_v1_max": -0.0011112469947
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_100"
+      }
+    },
+    "Lab1_2B_5_1000": {
+      "circuit_name": "Lab1_2B_5_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.91836732626
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00101020408329
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 0.91836732626,
+        "i_v1_max": -0.00101020408329
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_1000"
+      }
+    },
+    "Lab1_2B_5_10000": {
+      "circuit_name": "Lab1_2B_5_10000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 3.46153855324
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000692307716236
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 3.46153855324,
+        "i_v1_max": -0.000692307716236
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_10000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_10000"
+      }
+    },
+    "Lab1_2B_5_100000": {
+      "circuit_name": "Lab1_2B_5_100000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 9.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.7872338295
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000526595744304
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 9.0,
+        "v_n002_max": 4.7872338295,
+        "i_v1_max": -0.000526595744304
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_100000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab1_2B_5_100000"
+      }
+    },
+    "Lab2_1_0": {
+      "circuit_name": "Lab2_1_0",
+      "nodes": [],
+      "source_currents": [],
+      "golden_measurements_max": {},
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_0"
+      }
+    },
+    "Lab2_1_100": {
+      "circuit_name": "Lab2_1_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0149999996647
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.0149999996647
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_100"
+      }
+    },
+    "Lab2_1_1000": {
+      "circuit_name": "Lab2_1_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00150000001304
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00150000001304
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_1000"
+      }
+    },
+    "Lab2_1_200": {
+      "circuit_name": "Lab2_1_200",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00749999983236
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00749999983236
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_200\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_200"
+      }
+    },
+    "Lab2_1_2000": {
+      "circuit_name": "Lab2_1_2000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000750000006519
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.000750000006519
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_2000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_2000"
+      }
+    },
+    "Lab2_1_333": {
+      "circuit_name": "Lab2_1_333",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00450450461358
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00450450461358
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_333\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_333"
+      }
+    },
+    "Lab2_1_50": {
+      "circuit_name": "Lab2_1_50",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0299999993294
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.0299999993294
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_50\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_50"
+      }
+    },
+    "Lab2_1_500": {
+      "circuit_name": "Lab2_1_500",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00300000002608
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00300000002608
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_500\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_1_500"
+      }
+    },
+    "Lab2_2A_0": {
+      "circuit_name": "Lab2_2A_0",
+      "nodes": [],
+      "source_currents": [],
+      "golden_measurements_max": {},
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_0"
+      }
+    },
+    "Lab2_2A_100": {
+      "circuit_name": "Lab2_2A_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0149999996647
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.0149999996647
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_100"
+      }
+    },
+    "Lab2_2A_1000": {
+      "circuit_name": "Lab2_2A_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00150000001304
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00150000001304
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_1000"
+      }
+    },
+    "Lab2_2A_200": {
+      "circuit_name": "Lab2_2A_200",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00749999983236
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00749999983236
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_200\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_200"
+      }
+    },
+    "Lab2_2A_2000": {
+      "circuit_name": "Lab2_2A_2000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000750000006519
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.000750000006519
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_2000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_2000"
+      }
+    },
+    "Lab2_2A_333": {
+      "circuit_name": "Lab2_2A_333",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00450450461358
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00450450461358
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_333\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_333"
+      }
+    },
+    "Lab2_2A_50": {
+      "circuit_name": "Lab2_2A_50",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0299999993294
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.0299999993294
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_50\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_50"
+      }
+    },
+    "Lab2_2A_500": {
+      "circuit_name": "Lab2_2A_500",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.5
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00300000002608
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.5,
+        "i_v1_max": -0.00300000002608
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_500\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2A_500"
+      }
+    },
+    "Lab2_2B_0": {
+      "circuit_name": "Lab2_2B_0",
+      "nodes": [],
+      "source_currents": [],
+      "golden_measurements_max": {},
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_0\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_0"
+      }
+    },
+    "Lab2_2B_100": {
+      "circuit_name": "Lab2_2B_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0299999993294
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.0,
+        "i_v1_max": -0.0299999993294
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_100"
+      }
+    },
+    "Lab2_2B_1000": {
+      "circuit_name": "Lab2_2B_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00300000002608
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.0,
+        "i_v1_max": -0.00300000002608
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_1000"
+      }
+    },
+    "Lab2_2B_200": {
+      "circuit_name": "Lab2_2B_200",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0149999996647
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.0,
+        "i_v1_max": -0.0149999996647
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_200\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_200"
+      }
+    },
+    "Lab2_2B_2000": {
+      "circuit_name": "Lab2_2B_2000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00150000001304
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.0,
+        "i_v1_max": -0.00150000001304
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_2000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_2000"
+      }
+    },
+    "Lab2_2B_333": {
+      "circuit_name": "Lab2_2B_333",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00900900922716
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.0,
+        "i_v1_max": -0.00900900922716
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_333\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_333"
+      }
+    },
+    "Lab2_2B_50": {
+      "circuit_name": "Lab2_2B_50",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0599999986589
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.0,
+        "i_v1_max": -0.0599999986589
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_50\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_50"
+      }
+    },
+    "Lab2_2B_500": {
+      "circuit_name": "Lab2_2B_500",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00600000005215
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.0,
+        "i_v1_max": -0.00600000005215
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_500\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab2_2B_500"
+      }
+    },
+    "Lab3_1": {
+      "circuit_name": "Lab3_1",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.41889882088
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 1.42617154121
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 2.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000702176708728
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00028691420448
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.41889882088,
+        "v_n002_max": 5.0,
+        "v_n003_max": 1.42617154121,
+        "v_n004_max": 2.0,
+        "i_v1_max": -0.000702176708728,
+        "i_v2_max": -0.00028691420448
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab3_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab3_1"
+      }
+    },
+    "Lab3_1_V1_only": {
+      "circuit_name": "Lab3_1_V1_only",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.886043548584
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 0.52240717411
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000806658121292
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.886043548584,
+        "v_n002_max": 5.0,
+        "v_n003_max": 0.52240717411,
+        "i_v1_max": -0.000806658121292
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab3_1_V1_only\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab3_1_V1_only"
+      }
+    },
+    "Lab3_1_V2_only": {
+      "circuit_name": "Lab3_1_V2_only",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.532855331898
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.903764426708
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 2.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.000548117794096
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.532855331898,
+        "v_n002_max": 0.903764426708,
+        "v_n003_max": 2.0,
+        "i_v2_max": -0.000548117794096
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab3_1_V2_only\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab3_1_V2_only"
+      }
+    },
+    "Lab3_2": {
+      "circuit_name": "Lab3_2",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.40845239162
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 1.40845358372
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.43661808968
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 2.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000704225036316
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.000281690969132
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.40845239162,
+        "v_n002_max": 5.0,
+        "v_n003_max": 1.40845358372,
+        "v_n004_max": 1.43661808968,
+        "v_n005_max": 2.0,
+        "i_v1_max": -0.000704225036316,
+        "i_v2_max": -0.000281690969132
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab3_2\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab3_2"
+      }
+    },
+    "Lab3_2_V1_only": {
+      "circuit_name": "Lab3_2_V1_only",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.07806313038
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 0.84808743
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 0.330387681723
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000769007252529
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 1.07806313038,
+        "v_n002_max": 5.0,
+        "v_n003_max": 0.84808743,
+        "v_n004_max": 0.330387681723,
+        "i_v1_max": -0.000769007252529
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab3_2_V1_only\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab3_2_V1_only"
+      }
+    },
+    "Lab3_2_V2_only": {
+      "circuit_name": "Lab3_2_V2_only",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.62234550266e-06
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 6.14378222963e-06
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 1.43661606312
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 2.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.000281691958662
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 3.62234550266e-06,
+        "v_n002_max": 6.14378222963e-06,
+        "v_n003_max": 1.43661606312,
+        "v_n004_max": 2.0,
+        "i_v2_max": -0.000281691958662
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab3_2_V2_only\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab3_2_V2_only"
+      }
+    },
+    "lab4_task1_part1_100": {
+      "circuit_name": "lab4_task1_part1_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.22223234177
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0422223210335
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.22223234177,
+        "i_v1_max": -0.0422223210335
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_100\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_100"
+      }
+    },
+    "lab4_task1_part1_1000": {
+      "circuit_name": "lab4_task1_part1_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.3467707634
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00434677070007
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.3467707634,
+        "i_v1_max": -0.00434677070007
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_1000"
+      }
+    },
+    "lab4_task1_part1_200": {
+      "circuit_name": "lab4_task1_part1_200",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.26505470276
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0213252734393
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.26505470276,
+        "i_v1_max": -0.0213252734393
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_200\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_200"
+      }
+    },
+    "lab4_task1_part1_300": {
+      "circuit_name": "lab4_task1_part1_300",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.28718948364
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0142906326801
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.28718948364,
+        "i_v1_max": -0.0142906326801
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_300\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_300"
+      }
+    },
+    "lab4_task1_part1_500": {
+      "circuit_name": "lab4_task1_part1_500",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.31328010559
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00862655695528
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.31328010559,
+        "i_v1_max": -0.00862655695528
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_500\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part1_500"
+      }
+    },
+    "lab4_task1_part2_1000": {
+      "circuit_name": "lab4_task1_part2_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 2.52499989983e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 2.52499989983e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_1000"
+      }
+    },
+    "lab4_task1_part2_10000": {
+      "circuit_name": "lab4_task1_part2_10000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 2.52499994531e-05
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 2.52499994531e-05,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_10000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_10000"
+      }
+    },
+    "lab4_task1_part2_100000": {
+      "circuit_name": "lab4_task1_part2_100000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 0.000252499972703
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499976483e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 0.000252499972703,
+        "i_v1_max": -2.52499976483e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_100000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_100000"
+      }
+    },
+    "lab4_task1_part2_1500": {
+      "circuit_name": "lab4_task1_part2_1500",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 3.78749996344e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 3.78749996344e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_1500\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_1500"
+      }
+    },
+    "lab4_task1_part2_2000": {
+      "circuit_name": "lab4_task1_part2_2000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 5.04999979967e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 5.04999979967e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_2000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_2000"
+      }
+    },
+    "lab4_task1_part2_3300": {
+      "circuit_name": "lab4_task1_part2_3300",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 8.33250032883e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 8.33250032883e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_3300\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part2_3300"
+      }
+    },
+    "lab4_task1_part3_1000": {
+      "circuit_name": "lab4_task1_part3_1000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100001029205
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00109935319051
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499887665e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100001029205,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00109935319051,
+        "i_v1_max": -2.52499887665e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_1000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_1000"
+      }
+    },
+    "lab4_task1_part3_10000": {
+      "circuit_name": "lab4_task1_part3_10000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100000575185
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00199343496934
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499554598e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100000575185,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00199343496934,
+        "i_v1_max": -2.52499554598e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_10000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_10000"
+      }
+    },
+    "lab4_task1_part3_100000": {
+      "circuit_name": "lab4_task1_part3_100000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00099996116478
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.0109342373908
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499865461e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00099996116478,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.0109342373908,
+        "i_v1_max": -2.52499865461e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_100000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_100000"
+      }
+    },
+    "lab4_task1_part3_1500": {
+      "circuit_name": "lab4_task1_part3_1500",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100001005922
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00114902446512
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.524871201e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100001005922,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00114902446512,
+        "i_v1_max": -2.524871201e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_1500\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_1500"
+      }
+    },
+    "lab4_task1_part3_2000": {
+      "circuit_name": "lab4_task1_part3_2000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100000970997
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00119869562332
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52498688624e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100000970997,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00119869562332,
+        "i_v1_max": -2.52498688624e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_2000\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_2000"
+      }
+    },
+    "lab4_task1_part3_3300": {
+      "circuit_name": "lab4_task1_part3_3300",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100000924431
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00132784096058
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52498733033e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100000924431,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00132784096058,
+        "i_v1_max": -2.52498733033e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_3300\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task1_part3_3300"
+      }
+    },
+    "lab4_task2_part1_-1": {
+      "circuit_name": "lab4_task2_part1_-1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.000989553751424
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 2.00317239761
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00100098957773
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00237846770324
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137753610034
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.000989553751424,
+        "v_n002_max": -1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 2.00317239761,
+        "i_v1_max": 0.00100098957773,
+        "i_v2_max": -0.00237846770324,
+        "i_v3_max": 0.00137753610034
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-1"
+      }
+    },
+    "lab4_task2_part1_-2": {
+      "circuit_name": "lab4_task2_part1_-2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -0.0384509861469
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.88459038734
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00196154904552
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00333687569946
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0013755147811
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -0.0384509861469,
+        "v_n002_max": -2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.88459038734,
+        "i_v1_max": 0.00196154904552,
+        "i_v2_max": -0.00333687569946,
+        "i_v3_max": 0.0013755147811
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-2\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-2"
+      }
+    },
+    "lab4_task2_part1_-3": {
+      "circuit_name": "lab4_task2_part1_-3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -0.704515337944
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.88367581367
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00229548453353
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00366925518028
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137531931978
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -0.704515337944,
+        "v_n002_max": -3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.88367581367,
+        "i_v1_max": 0.00229548453353,
+        "i_v2_max": -0.00366925518028,
+        "i_v3_max": 0.00137531931978
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-3\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-3"
+      }
+    },
+    "lab4_task2_part1_-4": {
+      "circuit_name": "lab4_task2_part1_-4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -1.37418472767
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.87198901176
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00262581533752
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00399813055992
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0013752032537
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -1.37418472767,
+        "v_n002_max": -4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.87198901176,
+        "i_v1_max": 0.00262581533752,
+        "i_v2_max": -0.00399813055992,
+        "i_v3_max": 0.0013752032537
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-4\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-4"
+      }
+    },
+    "lab4_task2_part1_-5": {
+      "circuit_name": "lab4_task2_part1_-5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -2.04371976852
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.86070585251
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00295628025196
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00432718452066
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137513142545
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -2.04371976852,
+        "v_n002_max": -5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.86070585251,
+        "i_v1_max": 0.00295628025196,
+        "i_v2_max": -0.00432718452066,
+        "i_v3_max": 0.00137513142545
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-5\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_-5"
+      }
+    },
+    "lab4_task2_part1_1": {
+      "circuit_name": "lab4_task2_part1_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00101044541225
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -1.9967648983
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000998989562504
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00137738732155
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00237643462606
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00101044541225,
+        "v_n002_max": 1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -1.9967648983,
+        "i_v1_max": -0.000998989562504,
+        "i_v2_max": -0.00137738732155,
+        "i_v3_max": 0.00237643462606
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_1"
+      }
+    },
+    "lab4_task2_part1_2": {
+      "circuit_name": "lab4_task2_part1_2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.0386066064239
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.88372683525
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00196139328182
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00130806060042
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00326938694343
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.0386066064239,
+        "v_n002_max": 2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.88372683525,
+        "i_v1_max": -0.00196139328182,
+        "i_v2_max": -0.00130806060042,
+        "i_v3_max": 0.00326938694343
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_2\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_2"
+      }
+    },
+    "lab4_task2_part1_3": {
+      "circuit_name": "lab4_task2_part1_3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.704381585121
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.88367819786
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00229561841115
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00126680522226
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00356099475175
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.704381585121,
+        "v_n002_max": 3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.88367819786,
+        "i_v1_max": -0.00229561841115,
+        "i_v2_max": -0.00126680522226,
+        "i_v3_max": 0.00356099475175
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_3\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_3"
+      }
+    },
+    "lab4_task2_part1_4": {
+      "circuit_name": "lab4_task2_part1_4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.37405097485
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.87199115753
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00262594898231
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00126668915618
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00388986989856
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.37405097485,
+        "v_n002_max": 4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.87199115753,
+        "i_v1_max": -0.00262594898231,
+        "i_v2_max": -0.00126668915618,
+        "i_v3_max": 0.00388986989856
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_4\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_4"
+      }
+    },
+    "lab4_task2_part1_5": {
+      "circuit_name": "lab4_task2_part1_5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 2.0435860157
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.86070799828
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00295641389675
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00126661732793
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0042189238593
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 2.0435860157,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.86070799828,
+        "i_v1_max": -0.00295641389675,
+        "i_v2_max": -0.00126661732793,
+        "i_v3_max": 0.0042189238593
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_5\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part1_5"
+      }
+    },
+    "lab4_task2_part2_1": {
+      "circuit_name": "lab4_task2_part2_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.00090050697
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.999884307384
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.00290513039
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -5.78604435475e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00237837922759
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.001377536566
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.00090050697,
+        "v_n002_max": 0.999884307384,
+        "v_n003_max": 1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.00290513039,
+        "i_v1_max": -5.78604435475e-08,
+        "i_v2_max": -0.00237837922759,
+        "i_v3_max": 0.001377536566
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_1"
+      }
+    },
+    "lab4_task2_part2_2": {
+      "circuit_name": "lab4_task2_part2_2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.30851972103
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.99696671963
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.92284536362
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -1.51663618908e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268345302902
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137644994538
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.30851972103,
+        "v_n002_max": 1.99696671963,
+        "v_n003_max": 2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.92284536362,
+        "i_v1_max": -1.51663618908e-06,
+        "i_v2_max": -0.00268345302902,
+        "i_v3_max": 0.00137644994538
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_2\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_2"
+      }
+    },
+    "lab4_task2_part2_3": {
+      "circuit_name": "lab4_task2_part2_3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.30985569954
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 2.99298787117
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.9228746891
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -3.50600771526e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268280133605
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0013764515752
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.30985569954,
+        "v_n002_max": 2.99298787117,
+        "v_n003_max": 3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.9228746891,
+        "i_v1_max": -3.50600771526e-06,
+        "i_v2_max": -0.00268280133605,
+        "i_v3_max": 0.0013764515752
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_3\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_3"
+      }
+    },
+    "lab4_task2_part2_4": {
+      "circuit_name": "lab4_task2_part2_4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.31119167805
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 3.98900914192
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.92290377617
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -5.49537935512e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268214964308
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137645332143
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.31119167805,
+        "v_n002_max": 3.98900914192,
+        "v_n003_max": 4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.92290377617,
+        "i_v1_max": -5.49537935512e-06,
+        "i_v2_max": -0.00268214964308,
+        "i_v3_max": 0.00137645332143
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_4\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_4"
+      }
+    },
+    "lab4_task2_part2_5": {
+      "circuit_name": "lab4_task2_part2_5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.31252765656
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.98503065109
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.92293286324
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -7.48475076762e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268149771728
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137645495124
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.31252765656,
+        "v_n002_max": 4.98503065109,
+        "v_n003_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.92293286324,
+        "i_v1_max": -7.48475076762e-06,
+        "i_v2_max": -0.00268149771728,
+        "i_v3_max": 0.00137645495124
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_5\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task2_part2_5"
+      }
+    },
+    "lab4_task3_1": {
+      "circuit_name": "lab4_task3_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.00004994869
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98207187653
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 4.99696000134e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.0012160326587
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000215982741793
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.0,
+        "v_n002_max": 1.00004994869,
+        "v_n003_max": 1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98207187653,
+        "i_v1_max": 4.99696000134e-08,
+        "i_v2_max": -0.0012160326587,
+        "i_v3_max": 0.000215982741793
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_1"
+      }
+    },
+    "lab4_task3_2": {
+      "circuit_name": "lab4_task3_2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 2.0000500679
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98207187653
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 4.99686017008e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.0012160326587
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000215982741793
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.0,
+        "v_n002_max": 2.0000500679,
+        "v_n003_max": 2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98207187653,
+        "i_v1_max": 4.99686017008e-08,
+        "i_v2_max": -0.0012160326587,
+        "i_v3_max": 0.000215982741793
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_2\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_2"
+      }
+    },
+    "lab4_task3_3": {
+      "circuit_name": "lab4_task3_3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.00003004074
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 3.00002503395
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98207187653
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 2.49823113307e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00131585844792
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00031582347583
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.00003004074,
+        "v_n002_max": 3.00002503395,
+        "v_n003_max": 3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98207187653,
+        "i_v1_max": 2.49823113307e-08,
+        "i_v2_max": -0.00131585844792,
+        "i_v3_max": 0.00031582347583
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_3\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_3"
+      }
+    },
+    "lab4_task3_4": {
+      "circuit_name": "lab4_task3_4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.00005984306
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98282432556
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -1.00719346058e-11
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00131595274433
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000315932760714
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.00005984306,
+        "v_n002_max": 4.0,
+        "v_n003_max": 4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98282432556,
+        "i_v1_max": -1.00719346058e-11,
+        "i_v2_max": -0.00131595274433,
+        "i_v3_max": 0.000315932760714
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_4\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_4"
+      }
+    },
+    "lab4_task3_5": {
+      "circuit_name": "lab4_task3_5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.00005984306
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98282432556
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -1.20719345978e-11
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00131595274433
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000315932789817
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.00005984306,
+        "v_n002_max": 5.0,
+        "v_n003_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98282432556,
+        "i_v1_max": -1.20719345978e-11,
+        "i_v2_max": -0.00131595274433,
+        "i_v3_max": 0.000315932789817
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_5\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\lab4_task3_5"
+      }
+    },
+    "Lab5_1": {
+      "circuit_name": "Lab5_1",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.92173409462
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 3.94177174568
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 34.0714569092
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 2.50002503395
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": 3.00945734978
+        },
+        {
+          "node_name": "N007",
+          "measurement_key": "v_n007_max",
+          "golden_value": 4.23210954666
+        },
+        {
+          "node_name": "N008",
+          "measurement_key": "v_n008_max",
+          "golden_value": 4.21730184555
+        },
+        {
+          "node_name": "N009",
+          "measurement_key": "v_n009_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "P001",
+          "measurement_key": "v_p001_max",
+          "golden_value": 4.47138500214
+        },
+        {
+          "node_name": "P002",
+          "measurement_key": "v_p002_max",
+          "golden_value": 0.552258789539
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.0476420335472
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00337660638615
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_n002_max": 0.92173409462,
+        "v_n003_max": 3.94177174568,
+        "v_n004_max": 34.0714569092,
+        "v_n005_max": 2.50002503395,
+        "v_n006_max": 3.00945734978,
+        "v_n007_max": 4.23210954666,
+        "v_n008_max": 4.21730184555,
+        "v_n009_max": -5.0,
+        "v_p001_max": 4.47138500214,
+        "v_p002_max": 0.552258789539,
+        "i_v2_max": 0.0476420335472,
+        "i_v3_max": 0.00337660638615
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab5_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab5_1"
+      }
+    },
+    "Lab6_1": {
+      "circuit_name": "Lab6_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.10000000149
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.111189864576
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 0.10100261867
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 0.111189857125
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00126249447931
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00486198021099
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.10000000149,
+        "v_n002_max": 0.111189864576,
+        "v_n003_max": 0.10100261867,
+        "v_n004_max": 0.111189857125,
+        "v_vcc_max": 5.0,
+        "i_v1_max": -0.00126249447931,
+        "i_v2_max": 0.00486198021099
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab6_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab6_1"
+      }
+    },
+    "Lab7_1": {
+      "circuit_name": "Lab7_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00814620964229
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.97826862335
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 3.96721744537
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.0322740078
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -1.00767946243
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00291706365533
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00303697469644
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00814620964229,
+        "v_n002_max": 1.97826862335,
+        "v_n003_max": 3.96721744537,
+        "v_n004_max": 1.0322740078,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -1.00767946243,
+        "i_v1_max": -0.00291706365533,
+        "i_v2_max": 0.00303697469644
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab7_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab7_1"
+      }
+    },
+    "Lab8_CD": {
+      "circuit_name": "Lab8_CD",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.999126911163
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.00084590912
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 0.998253703117
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": -5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0014085478615
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00153982895426
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000131718348712
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.999126911163,
+        "v_n002_max": 1.00084590912,
+        "v_n003_max": 5.0,
+        "v_n004_max": 1.0,
+        "v_n005_max": 0.998253703117,
+        "v_n006_max": -5.0,
+        "i_v1_max": -0.0014085478615,
+        "i_v2_max": 0.00153982895426,
+        "i_v3_max": 0.000131718348712
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab8_CD\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab8_CD"
+      }
+    },
+    "Lab8_OD": {
+      "circuit_name": "Lab8_OD",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.999705195427
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.858113706112
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 0.852817118168
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": -5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00138635211624
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00176981394179
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000381914171157
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.999705195427,
+        "v_n002_max": 0.858113706112,
+        "v_n003_max": 5.0,
+        "v_n004_max": 1.0,
+        "v_n005_max": 0.852817118168,
+        "v_n006_max": -5.0,
+        "i_v1_max": -0.00138635211624,
+        "i_v2_max": 0.00176981394179,
+        "i_v3_max": 0.000381914171157
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab8_OD\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab8_OD"
+      }
+    },
+    "Lab8_SOD": {
+      "circuit_name": "Lab8_SOD",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.999129533768
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.975458502769
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 0.972988247871
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": -5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00140853773337
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00153987342492
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00013112812303
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.999129533768,
+        "v_n002_max": 0.975458502769,
+        "v_n003_max": 5.0,
+        "v_n004_max": 1.0,
+        "v_n005_max": 0.972988247871,
+        "v_n006_max": -5.0,
+        "i_v1_max": -0.00140853773337,
+        "i_v2_max": 0.00153987342492,
+        "i_v3_max": 0.00013112812303
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab8_SOD\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab8_SOD"
+      }
+    },
+    "Lab8_SUD": {
+      "circuit_name": "Lab8_SUD",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.996832072735
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.995871424675
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 0.993147969246
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": -5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00140854774509
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00153982976917
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00013156553905
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.996832072735,
+        "v_n002_max": 0.995871424675,
+        "v_n003_max": 5.0,
+        "v_n004_max": 1.0,
+        "v_n005_max": 0.993147969246,
+        "v_n006_max": -5.0,
+        "i_v1_max": -0.00140854774509,
+        "i_v2_max": 0.00153982976917,
+        "i_v3_max": 0.00013156553905
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab8_SUD\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab8_SUD"
+      }
+    },
+    "Lab8_UD": {
+      "circuit_name": "Lab8_UD",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.812196552753
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.621152639389
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 0.620066463947
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": -5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00140872166958
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00153907574713
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000118877294881
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.812196552753,
+        "v_n002_max": 0.621152639389,
+        "v_n003_max": 5.0,
+        "v_n004_max": 1.0,
+        "v_n005_max": 0.620066463947,
+        "v_n006_max": -5.0,
+        "i_v1_max": -0.00140872166958,
+        "i_v2_max": 0.00153907574713,
+        "i_v3_max": 0.000118877294881
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab8_UD\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab8_UD"
+      }
+    },
+    "Lab9_1": {
+      "circuit_name": "Lab9_1",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.0583306737244
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.0587870515883
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 0.0627905204892
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 0.0577863939106
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": -5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00145109358709
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00145118241198
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": -5.78680570129e-08
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.0583306737244,
+        "v_n002_max": 0.0587870515883,
+        "v_n003_max": 5.0,
+        "v_n004_max": 0.0627905204892,
+        "v_n005_max": 0.0577863939106,
+        "v_n006_max": -5.0,
+        "i_v1_max": -0.00145109358709,
+        "i_v2_max": 0.00145118241198,
+        "i_v3_max": -5.78680570129e-08
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab9_1\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab9_1"
+      }
+    },
+    "Lab9_2": {
+      "circuit_name": "Lab9_2",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.959873795509
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.184791401029
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N004",
+          "measurement_key": "v_n004_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "N005",
+          "measurement_key": "v_n005_max",
+          "golden_value": 0.183737650514
+        },
+        {
+          "node_name": "N006",
+          "measurement_key": "v_n006_max",
+          "golden_value": -5.0
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00144222727977
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": 0.00146111706272
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 3.57635763066e-05
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 0.959873795509,
+        "v_n002_max": 0.184791401029,
+        "v_n003_max": 5.0,
+        "v_n004_max": 1.0,
+        "v_n005_max": 0.183737650514,
+        "v_n006_max": -5.0,
+        "i_v1_max": -0.00144222727977,
+        "i_v2_max": 0.00146111706272,
+        "i_v3_max": 3.57635763066e-05
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "pipeline\\out_one_lab_all_v2_train\\Lab9_2\\golden\\golden_measurements.json",
+        "lab_dir": "pipeline\\out_one_lab_all_v2_train\\Lab9_2"
+      }
+    }
+  }
+}

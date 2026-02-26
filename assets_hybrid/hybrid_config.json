@@ -1,0 +1,23 @@
+{
+  "backend": "llm_knn_hybrid",
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "adapter_dir": "circuit_debug_api\\assets_hybrid\\adapter",
+  "knn_ref_file": "circuit_debug_api\\assets_hybrid\\knn_ref_train_instruct.jsonl",
+  "knn_index_file": "circuit_debug_api\\assets_hybrid\\knn_index.joblib",
+  "catalog_file": "circuit_debug_api\\assets\\circuit_catalog.json",
+  "response_style": "faulttype_diag_fix",
+  "decode_mode": "score_classes_knn",
+  "knn_k": 1,
+  "knn_alpha": 1.0,
+  "knn_weighted_vote": true,
+  "knn_standardize": false,
+  "knn_eps": 1e-09,
+  "use_prerules": true,
+  "include_lab_id_in_prompt": false,
+  "measurement_stat_mode": "max_only",
+  "prefer_voltage_keys": true,
+  "voltage_only": false,
+  "max_measurements": 24,
+  "max_deltas": 24,
+  "instruction": "Classify the LTspice fault and provide a fix. Return exactly two lines: FaultType then Diagnosis/Fix. Use resistor_wrong_value when a resistor value is incorrect. Use param_drift for non-resistor parameter drift (for example source/supply drift)."
+}

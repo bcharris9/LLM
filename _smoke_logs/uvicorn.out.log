@@ -1,0 +1,4 @@
+INFO:     127.0.0.1:49541 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49543 - "GET /circuits HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49544 - "GET /circuits/Lab1_1_0/nodes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49545 - "POST /debug HTTP/1.1" 200 OK
