@@ -6,6 +6,51 @@ from typing import Any
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
+import math
+import os
+import re
+import tempfile
+import textwrap
+import hashlib
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+from dotenv import load_dotenv
+from supabase import Client, create_client
+from langchain_ollama import OllamaLLM, OllamaEmbeddings
+
+load_dotenv()
+SUPABASE_URL = "https://mvyumvpmzcrrcwcppcea.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12eXVtdnBtemNycmN3Y3BwY2VhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2Njk2MDQsImV4cCI6MjA3NzI0NTYwNH0.WfjqQowIt9lxKPdnWSGEOP_u7MKmetWgIPFOASuzeBw"
+
+supabase: Optional[Client] = None
+llm: Optional[OllamaLLM] = None
+embedder: Optional[OllamaEmbeddings] = None
+conversation_history: List[Dict[str, str]] = []
+
+CONTEXT_MATCH_THRESHOLD = float(os.getenv("LAB_MATCH_THRESHOLD", "0.58"))
+SECOND_PASS_THRESHOLD = float(os.getenv("LAB_SECOND_PASS_THRESHOLD", "0.48"))
+CONTEXT_MATCH_COUNT = int(os.getenv("LAB_MATCH_COUNT", "30"))
+CONTEXT_FINAL_K = int(os.getenv("LAB_FINAL_K", "10"))
+CONTEXT_SECTION_LIMIT = int(os.getenv("LAB_SECTION_LIMIT", "4"))
+CONTEXT_SCORE_TOLERANCE = float(os.getenv("LAB_SCORE_TOLERANCE", "0.08"))
+CONTEXT_MAX_CHARS = int(os.getenv("LAB_CONTEXT_MAX_CHARS", "1800"))
+MANUAL_VERSION = os.getenv("LAB_MANUAL_VERSION")
+BM25_K1 = float(os.getenv("LAB_BM25_K1", "1.2"))
+BM25_B = float(os.getenv("LAB_BM25_B", "0.75"))
+USE_LLM_RERANK = os.getenv("LAB_USE_LLM_RERANK", "false").lower() == "true"
+RERANK_TOP = int(os.getenv("LAB_RERANK_TOP", "15"))
+RERANK_KEEP = int(os.getenv("LAB_RERANK_KEEP", "8"))
+
+try:
+    if SUPABASE_KEY:
+        supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+        llm = OllamaLLM(model="gpt-oss:120b-cloud")
+        embedder = OllamaEmbeddings(model="mxbai-embed-large")
+    else:
+        print("WARNING: SUPABASE_KEY missing; /chat will return 503.")
+except Exception as e:  # pragma: no cover - startup diagnostics only
+    print(f"Startup Error: {e}")
 
 try:
     from LLM.hybrid_runtime import CircuitDebugHybridRuntime
@@ -16,10 +61,8 @@ except ModuleNotFoundError as e:
     from hybrid_runtime import CircuitDebugHybridRuntime  # type: ignore[no-redef]
     from runtime import CircuitDebugRuntime  # type: ignore[no-redef]
 
-
 API_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = API_DIR / "assets"
-
 
 class DebugRequest(BaseModel):
     circuit_name: str = Field(..., description="Exact circuit name from GET /circuits")
@@ -38,7 +81,6 @@ class DebugRequest(BaseModel):
     temp: float | None = Field(default=27.0, description="Temperature feature (degC).")
     tnom: float | None = Field(default=27.0, description="Nominal temperature feature (degC).")
     strict: bool = Field(default=False, description="Fail if not all listed nodes are provided.")
-
 
 class HealthResponse(BaseModel):
     ok: bool
@@ -74,6 +116,193 @@ app = FastAPI(
         "Provides circuit catalog, node schema, and debugging inference from measured node voltages/currents."
     ),
 )
+
+class ChatRequest(BaseModel):
+    question: str
+
+def _require_supabase():
+    if not supabase:
+        raise HTTPException(status_code=503, detail="Supabase client not initialized; set SUPABASE_KEY.")
+
+def _require_llm():
+    if not llm:
+        raise HTTPException(status_code=503, detail="LLM client not initialized.")
+    
+STOPWORDS = {"the", "a", "an", "of", "and", "or", "to", "for", "with", "in", "on", "at", "by", "from"}
+
+def _normalize_lab_filter(query: str) -> Optional[str]:
+    match = re.search(r"lab\s*0?(\d+)", query, re.IGNORECASE)
+    return f"Lab {match.group(1)}" if match else None
+
+def _tokenize(text: str) -> set:
+    return {t for t in re.findall(r"[a-z0-9]{2,}", text.lower()) if t not in STOPWORDS}
+
+def _tokenize_list(text: str) -> list:
+    return [t for t in re.findall(r"[a-z0-9]{2,}", text.lower()) if t not in STOPWORDS]
+
+    
+def _bm25_score(query_tokens: list, doc_tokens: list, avg_dl: float, df_counts: dict, N: int) -> float:
+    score = 0.0
+    dl = len(doc_tokens) or 1
+    for term in query_tokens:
+        f = doc_tokens.count(term)
+        if f == 0:
+            continue
+        df = df_counts.get(term, 0)
+        idf = math.log((N - df + 0.5) / (df + 0.5) + 1)
+        denom = f + BM25_K1 * (1 - BM25_B + BM25_B * dl / avg_dl)
+        score += idf * (f * (BM25_K1 + 1) / denom)
+    return score
+
+def retrieve_context(query: str) -> List[str]:
+    lab_filter = _normalize_lab_filter(query)
+    vec = embedder.embed_query(query)
+    query_tokens = _tokenize(query)
+
+    def _call_match_rpc(vector, lab_filter_local: Optional[str], manual_version: Optional[str], threshold: float, count: int):
+        payload = {
+            "query_embedding": vector,
+            "match_threshold": threshold,
+            "match_count": count,
+            "filter_lab_name": lab_filter_local,
+            "filter_manual_version": manual_version,
+        }
+        return supabase.rpc("match_lab_manuals", payload).execute()
+
+    rows: list[dict] = []
+    if lab_filter:
+        res = _call_match_rpc(vec, lab_filter, MANUAL_VERSION, CONTEXT_MATCH_THRESHOLD, CONTEXT_MATCH_COUNT)
+        rows = res.data or []
+    if len(rows) < 6:
+        res = _call_match_rpc(vec, None, MANUAL_VERSION, CONTEXT_MATCH_THRESHOLD, CONTEXT_MATCH_COUNT)
+        rows = (rows or []) + (res.data or [])
+    if not rows and SECOND_PASS_THRESHOLD < CONTEXT_MATCH_THRESHOLD:
+        res = _call_match_rpc(vec, None, MANUAL_VERSION, SECOND_PASS_THRESHOLD, CONTEXT_MATCH_COUNT)
+        rows = res.data or []
+    if not rows and MANUAL_VERSION:
+        res = _call_match_rpc(vec, lab_filter, None, CONTEXT_MATCH_THRESHOLD, CONTEXT_MATCH_COUNT)
+        rows = res.data or []
+        if not rows and SECOND_PASS_THRESHOLD < CONTEXT_MATCH_THRESHOLD:
+            res = _call_match_rpc(vec, lab_filter, None, SECOND_PASS_THRESHOLD, CONTEXT_MATCH_COUNT)
+            rows = res.data or []
+    if not rows:
+        return []
+
+    score_key = "similarity" if "similarity" in rows[0] else ("score" if "score" in rows[0] else None)
+    seen_hashes = set()
+    reranked = []
+    doc_tokens_list = []
+
+    for r in rows:
+        content = (r.get("content") or "").strip()
+        if not content:
+            continue
+        sig = hashlib.sha256(content.encode("utf-8")).hexdigest()
+        if sig in seen_hashes:
+            continue
+        seen_hashes.add(sig)
+        base_score = float(r.get(score_key, 0.0)) if score_key else 0.0
+        overlap = len(query_tokens & _tokenize(content))
+        bonus = 0.02 * overlap
+        lab_bonus = 0.05 if (lab_filter and r.get("lab_name") and lab_filter.lower() in str(r.get("lab_name", "")).lower()) else 0.0
+        section = (r.get("section_name") or "").lower()
+        heading = (r.get("heading") or "").lower()
+        text_lower = query.lower()
+        figure_bonus = 0.0
+        for tok in re.findall(r"figure\s*\d+", text_lower):
+            if tok in heading:
+                figure_bonus = 0.06
+                break
+        task_bonus = 0.05 if ("task" in text_lower and "task" in section) else 0.0
+        page_num = r.get("page_num")
+        position_bonus = 0.0
+        if isinstance(page_num, int):
+            position_bonus = max(0.0, 0.03 - 0.002 * page_num)
+        r["_combined_score"] = base_score + bonus + lab_bonus + position_bonus + figure_bonus + task_bonus
+        doc_tokens = _tokenize_list(content)
+        doc_tokens_list.append(doc_tokens)
+        reranked.append(r)
+
+    if not reranked:
+        return []
+
+    if doc_tokens_list:
+        avg_dl = sum(len(toks) for toks in doc_tokens_list) / len(doc_tokens_list)
+        df_counts = {}
+        for toks in doc_tokens_list:
+            for term in set(toks):
+                df_counts[term] = df_counts.get(term, 0) + 1
+        for r, toks in zip(reranked, doc_tokens_list):
+            bm25 = _bm25_score(list(query_tokens), toks, avg_dl, df_counts, len(doc_tokens_list))
+            r["_combined_score"] += 0.05 * bm25
+
+    reranked.sort(key=lambda x: x.get("_combined_score", 0), reverse=True)
+    best_candidate_score = reranked[0].get("_combined_score", 0)
+
+    filtered = []
+    section_counts = {}
+    for r in reranked:
+        if r.get("_combined_score", 0) < (best_candidate_score - CONTEXT_SCORE_TOLERANCE):
+            continue
+        key = (r.get("lab_name"), r.get("section_name"), r.get("page_num"))
+        section_counts.setdefault(key, 0)
+        if section_counts[key] >= CONTEXT_SECTION_LIMIT:
+            continue
+        section_counts[key] += 1
+        filtered.append(r)
+        if len(filtered) >= CONTEXT_FINAL_K:
+            break
+
+    filtered.sort(key=lambda x: (x.get("section_name", ""), x.get("page_num", 0)))
+    formatted = []
+    for r in filtered:
+        tag = f"{r.get('lab_name', 'Lab ?')} • {r.get('section_name', 'Section ?')} (p.{r.get('page_num', '?')})"
+        content = (r.get("content") or "").strip()
+        if len(content) > CONTEXT_MAX_CHARS:
+            content = content[:CONTEXT_MAX_CHARS] + "..."
+        formatted.append(f"[{tag}]\n{content}")
+
+    return formatted
+
+
+@app.post("/chat")
+def chat(request: ChatRequest):
+    _require_supabase()
+    _require_llm()
+
+    question = request.question.strip()
+    if not question:
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
+
+    context = retrieve_context(question)
+    if not context:
+        return {"answer": "I cannot find that information in the lab manual."}
+
+    history_txt = "\n".join([f"Q: {t.get('user','')}\nA: {t.get('ai','')}" for t in conversation_history[-2:]])
+    context_txt = "\n---\n".join(context)
+
+    prompt = f"""
+    You are a helpful electrical engineering lab assistant.
+    Answer only using the facts explicitly stated in the context snippets below.
+    When you use a fact, cite its tag in brackets (e.g., [Lab 1 • Procedure (p.3)]).
+    Every sentence of your answer should include a citation to a provided snippet.
+    If the answer is not in the context, reply exactly: "I cannot find that information in the lab manual." Do NOT guess.
+
+    Context (do not use outside knowledge):
+    ---
+    {context_txt}
+    ---
+
+    Recent conversation (for continuity, avoid repeating):
+    {history_txt}
+
+    Question: {question}
+    Answer:
+    """
+
+    answer = llm.invoke(prompt)
+    conversation_history.append({"user": question, "ai": str(answer)})
+    return {"answer": str(answer)}
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -135,3 +364,17 @@ def debug_circuit(req: DebugRequest) -> dict[str, Any]:
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Inference failed: {e}") from e
     return result.to_dict()
+
+# Root helper for quick manual check
+@app.get("/")
+def root():
+    return {
+        "message": "SPICE Lab Assistant API is running",
+        "routes": [
+            "/chat",
+            "/circuits",
+            "/circuits/{circuit_name}/nodesat",
+            "/debug",
+            "/health",
+        ],
+    }

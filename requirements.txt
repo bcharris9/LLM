@@ -1,5 +1,6 @@
 fastapi>=0.115
 uvicorn[standard]>=0.30
+websockets<15
 pydantic>=2.8
 numpy>=1.26
 scikit-learn>=1.5
@@ -11,3 +12,7 @@ transformers>=4.49
 peft>=0.14
 accelerate>=1.2
 huggingface_hub>=0.27
+langchain_ollama>=0.1.0
+supabase>=0.3.0
+dotenv
+
