@@ -1,23 +1,19 @@
 from __future__ import annotations
 
-from functools import lru_cache
-from pathlib import Path
-from typing import Any
-
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
+import hashlib
 import math
 import os
 import re
-import tempfile
-import textwrap
-import hashlib
+from functools import lru_cache
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Optional
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
 from dotenv import load_dotenv
-from supabase import Client, create_client
 from langchain_ollama import OllamaLLM, OllamaEmbeddings
+from supabase import Client, create_client
 
 load_dotenv()
 SUPABASE_URL = "https://mvyumvpmzcrrcwcppcea.supabase.co"
@@ -26,7 +22,7 @@ SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 supabase: Optional[Client] = None
 llm: Optional[OllamaLLM] = None
 embedder: Optional[OllamaEmbeddings] = None
-conversation_history: List[Dict[str, str]] = []
+conversation_history: list[dict[str, str]] = []
 
 CONTEXT_MATCH_THRESHOLD = float(os.getenv("LAB_MATCH_THRESHOLD", "0.58"))
 SECOND_PASS_THRESHOLD = float(os.getenv("LAB_SECOND_PASS_THRESHOLD", "0.48"))
@@ -38,9 +34,6 @@ CONTEXT_MAX_CHARS = int(os.getenv("LAB_CONTEXT_MAX_CHARS", "1800"))
 MANUAL_VERSION = os.getenv("LAB_MANUAL_VERSION")
 BM25_K1 = float(os.getenv("LAB_BM25_K1", "1.2"))
 BM25_B = float(os.getenv("LAB_BM25_B", "0.75"))
-USE_LLM_RERANK = os.getenv("LAB_USE_LLM_RERANK", "false").lower() == "true"
-RERANK_TOP = int(os.getenv("LAB_RERANK_TOP", "15"))
-RERANK_KEEP = int(os.getenv("LAB_RERANK_KEEP", "8"))
 
 try:
     if SUPABASE_KEY:
@@ -120,28 +113,40 @@ app = FastAPI(
 class ChatRequest(BaseModel):
     question: str
 
+
 def _require_supabase():
     if not supabase:
         raise HTTPException(status_code=503, detail="Supabase client not initialized; set SUPABASE_KEY.")
 
+
 def _require_llm():
     if not llm:
         raise HTTPException(status_code=503, detail="LLM client not initialized.")
-    
+
+
 STOPWORDS = {"the", "a", "an", "of", "and", "or", "to", "for", "with", "in", "on", "at", "by", "from"}
+
 
 def _normalize_lab_filter(query: str) -> Optional[str]:
     match = re.search(r"lab\s*0?(\d+)", query, re.IGNORECASE)
     return f"Lab {match.group(1)}" if match else None
 
-def _tokenize(text: str) -> set:
+
+def _tokenize(text: str) -> set[str]:
     return {t for t in re.findall(r"[a-z0-9]{2,}", text.lower()) if t not in STOPWORDS}
 
-def _tokenize_list(text: str) -> list:
+
+def _tokenize_list(text: str) -> list[str]:
     return [t for t in re.findall(r"[a-z0-9]{2,}", text.lower()) if t not in STOPWORDS]
 
-    
-def _bm25_score(query_tokens: list, doc_tokens: list, avg_dl: float, df_counts: dict, N: int) -> float:
+
+def _bm25_score(
+    query_tokens: list[str],
+    doc_tokens: list[str],
+    avg_dl: float,
+    df_counts: dict[str, int],
+    n_docs: int,
+) -> float:
     score = 0.0
     dl = len(doc_tokens) or 1
     for term in query_tokens:
@@ -149,17 +154,27 @@ def _bm25_score(query_tokens: list, doc_tokens: list, avg_dl: float, df_counts: 
         if f == 0:
             continue
         df = df_counts.get(term, 0)
-        idf = math.log((N - df + 0.5) / (df + 0.5) + 1)
+        idf = math.log((n_docs - df + 0.5) / (df + 0.5) + 1)
         denom = f + BM25_K1 * (1 - BM25_B + BM25_B * dl / avg_dl)
         score += idf * (f * (BM25_K1 + 1) / denom)
     return score
 
-def retrieve_context(query: str) -> List[str]:
+
+def retrieve_context(query: str) -> list[str]:
+    if not embedder or not supabase:
+        return []
+
     lab_filter = _normalize_lab_filter(query)
     vec = embedder.embed_query(query)
     query_tokens = _tokenize(query)
 
-    def _call_match_rpc(vector, lab_filter_local: Optional[str], manual_version: Optional[str], threshold: float, count: int):
+    def _call_match_rpc(
+        vector: list[float],
+        lab_filter_local: Optional[str],
+        manual_version: Optional[str],
+        threshold: float,
+        count: int,
+    ):
         payload = {
             "query_embedding": vector,
             "match_threshold": threshold,
@@ -233,7 +248,7 @@ def retrieve_context(query: str) -> List[str]:
             for term in set(toks):
                 df_counts[term] = df_counts.get(term, 0) + 1
         for r, toks in zip(reranked, doc_tokens_list):
-            bm25 = _bm25_score(list(query_tokens), toks, avg_dl, df_counts, len(doc_tokens_list))
+            bm25 = _bm25_score(sorted(query_tokens), toks, avg_dl, df_counts, len(doc_tokens_list))
             r["_combined_score"] += 0.05 * bm25
 
     reranked.sort(key=lambda x: x.get("_combined_score", 0), reverse=True)
@@ -373,7 +388,7 @@ def root():
         "routes": [
             "/chat",
             "/circuits",
-            "/circuits/{circuit_name}/nodesat",
+            "/circuits/{circuit_name}/nodes",
             "/debug",
             "/health",
         ],

@@ -13,6 +13,7 @@ Fallback backend (if hybrid assets are not present):
 
 Endpoints:
 
+- `POST /chat` : ask lab-manual questions and get an LLM answer grounded in retrieved context
 - `GET /circuits` : list all supported (golden) circuit names
 - `GET /circuits/{circuit_name}/nodes` : list required node names (plus optional source current names)
 - `POST /debug` : submit measured values and receive a predicted fault class + diagnosis/fix text
@@ -24,7 +25,10 @@ Endpoints:
 - `build_runtime_assets.py` : packages tabular model + catalog assets
 - `build_hybrid_assets.py` : packages LoRA adapter + KNN reference/index assets for hybrid API mode
 - `client_example.py` : example client hitting all endpoints
+- `chat_terminal_client.py` : interactive terminal chat client for `POST /chat`
 - `student_interactive_client.py` : interactive terminal client that prompts for node values one at a time
+- `test_chat_endpoint.py` : Python smoke test for `POST /chat`
+- `smoke_test_api.ps1` : PowerShell smoke test for API startup + `/debug` client flow
 - `demo_payloads/` : ready-to-submit real simulated measurement payloads (for reproducible demos)
 - `requirements.txt` : Python deps for API + client
 - `make_venv.sh` : Bash script to create `.venv312` and install deps
@@ -122,6 +126,12 @@ Interactive student client:
 python ./student_interactive_client.py
 ```
 
+Interactive chat client:
+
+```bash
+python ./chat_terminal_client.py --base-url http://127.0.0.1:8000
+```
+
 Query endpoints from Bash:
 
 ```bash
@@ -166,6 +176,55 @@ Optional flags:
 - `--save-payload .\\student_payload.json` : save the submitted payload
 - `--show-golden` : instructor/demo mode only
 - `--no-strict` : allow missing nodes (not recommended)
+
+## Interactive Chat Client (terminal Q&A)
+
+This client lets a student type a question in the terminal and prints the `POST /chat` answer.
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\chat_terminal_client.py --base-url http://127.0.0.1:8000
+```
+
+Optional one-shot question:
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\chat_terminal_client.py `
+  --base-url http://127.0.0.1:8000 `
+  --question "What does Lab 1 procedure require?"
+```
+
+Exit commands in interactive mode: `/quit`, `/exit`.
+
+## Chat Endpoint Test (server.py)
+
+Run the chat endpoint smoke test:
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\test_chat_endpoint.py --base-url http://127.0.0.1:8000
+```
+
+Strict mode (require valid-question call to return `200` with `answer`):
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\test_chat_endpoint.py `
+  --base-url http://127.0.0.1:8000 `
+  --require-answer
+```
+
+This test checks:
+
+- `POST /chat` exists and uses a JSON request body
+- valid `{"question":"..."}` request
+- empty-question behavior
+- missing required `question` field (`422`)
+
+## Full API Smoke Test (PowerShell)
+
+`smoke_test_api.ps1` starts `uvicorn`, waits for `/health`, runs `client_example.py`, and prints server log tails:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\\smoke_test_api.ps1
+```
 
 ## Specific Circuit Demo (real simulated case)
 
