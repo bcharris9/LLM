@@ -45,14 +45,9 @@ try:
 except Exception as e:  # pragma: no cover - startup diagnostics only
     print(f"Startup Error: {e}")
 
-try:
-    from LLM.hybrid_runtime import CircuitDebugHybridRuntime
-    from LLM.runtime import CircuitDebugRuntime
-except ModuleNotFoundError as e:
-    if e.name != "LLM":
-        raise
-    from hybrid_runtime import CircuitDebugHybridRuntime  # type: ignore[no-redef]
-    from runtime import CircuitDebugRuntime  # type: ignore[no-redef]
+
+from hybrid_runtime import CircuitDebugHybridRuntime  # type: ignore[no-redef]
+from runtime import CircuitDebugRuntime  # type: ignore[no-redef]
 
 API_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = API_DIR / "assets"
@@ -280,7 +275,7 @@ def retrieve_context(query: str) -> list[str]:
     return formatted
 
 
-@app.post("/chat")
+@app.post("/chat/{lab_number}")
 def chat(request: ChatRequest):
     _require_supabase()
     _require_llm()
@@ -386,7 +381,7 @@ def root():
     return {
         "message": "SPICE Lab Assistant API is running",
         "routes": [
-            "/chat",
+            "/chat/{lab_number}",
             "/circuits",
             "/circuits/{circuit_name}/nodes",
             "/debug",
