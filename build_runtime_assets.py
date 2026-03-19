@@ -24,16 +24,7 @@ from circuit_debug_api.runtime import (
 )
 
 
-DEFAULT_TRAIN_FILES = [
-    "pipeline/out_one_lab_all_v2_train/merged_finetune_currents_labid_v1/train_instruct.jsonl",
-    "pipeline/out_one_lab_all_v2_train/merged_finetune_currents_labid_v1/val_instruct.jsonl",
-    "pipeline/out_one_lab_all_v3_train/merged_finetune_currents_labid_v3_targeted/train_instruct.jsonl",
-    "pipeline/out_one_lab_all_v3_train/merged_finetune_currents_labid_v3_targeted/val_instruct.jsonl",
-    "pipeline/out_one_lab_all_v4_pairfocus_train/merged_finetune_currents_labid_v4_pairfocus/train_instruct.jsonl",
-    "pipeline/out_one_lab_all_v4_pairfocus_train/merged_finetune_currents_labid_v4_pairfocus/val_instruct.jsonl",
-    "pipeline/out_one_lab_all_v5_pairfocus_train/merged_finetune_currents_labid_v5_pairfocus/train_instruct.jsonl",
-    "pipeline/out_one_lab_all_v5_pairfocus_train/merged_finetune_currents_labid_v5_pairfocus/val_instruct.jsonl",
-]
+DEFAULT_TRAIN_FILES: list[str] = []
 
 
 def parse_args() -> argparse.Namespace:
@@ -42,9 +33,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--source-bundle",
         type=Path,
-        default=Path("pipeline/out/tabular_fault_head_union_v2_v3_v4_v5_xgb_pair_bundle.joblib"),
+        default=Path("circuit_debug_api/assets/model_bundle.joblib"),
     )
-    p.add_argument("--golden-root", type=Path, default=Path("pipeline/out_one_lab_all_v2_train"))
+    p.add_argument("--golden-root", type=Path, default=Path("circuit_debug_api/packaged_golden_root"))
     p.add_argument(
         "--train-file",
         dest="train_files",
@@ -191,12 +182,17 @@ def main() -> int:
     api_dir = args.api_dir
     assets_dir = api_dir / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
+    existing_config_path = assets_dir / "runtime_config.json"
+    existing_config: dict[str, object] = {}
+    if existing_config_path.exists():
+        existing_config = json.loads(existing_config_path.read_text(encoding="utf-8"))
 
     if not args.source_bundle.exists():
         raise FileNotFoundError(f"Missing source bundle: {args.source_bundle}")
 
     model_bundle_dest = assets_dir / "model_bundle.joblib"
-    shutil.copy2(args.source_bundle, model_bundle_dest)
+    if args.source_bundle.resolve() != model_bundle_dest.resolve():
+        shutil.copy2(args.source_bundle, model_bundle_dest)
 
     catalog = build_circuit_catalog(args.golden_root)
     catalog_path = assets_dir / "circuit_catalog.json"
@@ -213,8 +209,12 @@ def main() -> int:
     family_model_count = 0
     family_pair_models_path = assets_dir / "family_pair_models.joblib"
     train_files = [Path(p) for p in (args.train_files or DEFAULT_TRAIN_FILES)]
-    config["class_names_sorted"] = _collect_sorted_fault_classes(train_files)
-    if not args.skip_family_pair_models:
+    if train_files:
+        config["class_names_sorted"] = _collect_sorted_fault_classes(train_files)
+    else:
+        config["class_names_sorted"] = list(existing_config.get("class_names_sorted", []) or [])
+
+    if not args.skip_family_pair_models and train_files:
         missing = [str(p) for p in train_files if not p.exists()]
         if missing:
             raise FileNotFoundError(f"Missing train files for family pair models: {missing}")
@@ -223,6 +223,9 @@ def main() -> int:
             train_files=train_files,
             out_path=family_pair_models_path,
         )
+    elif not args.skip_family_pair_models and family_pair_models_path.exists():
+        loaded = joblib.load(family_pair_models_path)
+        family_model_count = len(loaded) if isinstance(loaded, dict) else 0
     else:
         joblib.dump({}, family_pair_models_path)
 

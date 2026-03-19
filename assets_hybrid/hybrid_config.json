@@ -13,11 +13,15 @@
   "knn_standardize": false,
   "knn_eps": 1e-09,
   "use_prerules": true,
-  "include_lab_id_in_prompt": false,
+  "include_lab_id_in_prompt": true,
   "measurement_stat_mode": "max_only",
   "prefer_voltage_keys": true,
   "voltage_only": false,
   "max_measurements": 24,
   "max_deltas": 24,
-  "instruction": "Classify the LTspice fault and provide a fix. Return exactly two lines: FaultType then Diagnosis/Fix. Use resistor_wrong_value when a resistor value is incorrect. Use param_drift for non-resistor parameter drift (for example source/supply drift)."
+  "instruction": "Classify the LTspice fault and provide a fix. Return exactly two lines: FaultType then Diagnosis/Fix. Use resistor_wrong_value when a resistor value is incorrect. Use param_drift for non-resistor parameter drift (for example source/supply drift).",
+  "auto_selected": true,
+  "auto_selected_report": "circuit_debug_api\\packaged_reports\\qwen15b_alllabs_rich_v2clean_ckpt900_eval_large_reswswap_2000_report.json",
+  "auto_selected_metric": "exact_match.pct",
+  "auto_selected_metric_value": 99.1
 }

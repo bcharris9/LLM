@@ -260,8 +260,14 @@ def parse_measurement_features(input_text: str) -> dict[str, float]:
     for line in text.splitlines():
         stripped = line.strip()
         low_line = stripped.lower()
-        if line.startswith("Lab:"):
-            lab = line.split(":", 1)[1].strip().lower()
+        m = re.match(r"^\s*([^:]+?)\s*[:=]\s*(.*)$", stripped)
+        if not m:
+            continue
+        raw_label = m.group(1).strip()
+        raw_value = m.group(2).strip()
+        label = raw_label.lower()
+        if label == "lab":
+            lab = raw_value.lower()
             if lab:
                 # Preserve sign information (e.g. ..._-4 vs ..._4) to avoid collisions.
                 lab = lab.replace("-", "__neg__")
@@ -269,30 +275,25 @@ def parse_measurement_features(input_text: str) -> dict[str, float]:
                 if safe_lab:
                     out[f"lab__{safe_lab}"] = 1.0
             continue
-        if low_line.startswith("simsuccess:"):
-            val = line.split(":", 1)[1].strip().lower()
+        if label == "simsuccess":
+            val = raw_value.lower()
             if val in {"true", "1", "yes"}:
                 out["sim_success"] = 1.0
             elif val in {"false", "0", "no"}:
                 out["sim_success"] = 0.0
             continue
-        if not (
-            line.startswith("Measured:")
-            or line.startswith("DeltasVsGolden:")
-            or line.startswith("GoldenMeasurements:")
-        ):
+        if label not in {"measured", "deltasvsgolden", "goldenmeasurements"}:
             continue
-        prefix, payload = line.split(":", 1)
-        prefix_low = prefix.strip().lower()
+        prefix, payload = label, raw_value
         payload = payload.strip()
         if payload.lower() == "none":
-            if prefix_low == "measured":
+            if prefix == "measured":
                 out["measured_none"] = 1.0
                 out["measured_count"] = 0.0
-            elif prefix_low == "deltasvsgolden":
+            elif prefix == "deltasvsgolden":
                 out["deltas_none"] = 1.0
                 out["deltas_count"] = 0.0
-            elif prefix_low == "goldenmeasurements":
+            elif prefix == "goldenmeasurements":
                 out["golden_count"] = 0.0
             continue
         numeric_count = 0
@@ -308,13 +309,13 @@ def parse_measurement_features(input_text: str) -> dict[str, float]:
                 numeric_count += 1
             except Exception:
                 continue
-        if prefix_low == "measured":
+        if prefix == "measured":
             out["measured_none"] = 0.0
             out["measured_count"] = float(numeric_count)
-        elif prefix_low == "deltasvsgolden":
+        elif prefix == "deltasvsgolden":
             out["deltas_none"] = 0.0
             out["deltas_count"] = float(numeric_count)
-        elif prefix_low == "goldenmeasurements":
+        elif prefix == "goldenmeasurements":
             out["golden_count"] = float(numeric_count)
     return out
 
@@ -324,9 +325,13 @@ def parse_lab_id(input_text: str) -> str | None:
     if not text:
         return None
     for line in text.splitlines():
-        if not line.startswith("Lab:"):
+        line_l = line.strip().lower()
+        if not line_l.startswith("lab:") and not line_l.startswith("lab ="):
             continue
-        lab = line.split(":", 1)[1].strip().lower()
+        m = re.match(r"^\s*lab\s*[:=]\s*(.*)\s*$", line, flags=re.IGNORECASE)
+        if not m:
+            continue
+        lab = m.group(1).strip().lower()
         if not lab:
             return None
         # Preserve sign information (e.g. ..._-4 vs ..._4) to avoid collisions.
@@ -354,6 +359,7 @@ def build_knn_index(rows: list[dict[str, Any]]) -> dict[str, Any]:
         labs.append(parse_lab_id(input_text))
         key_set.update(f.keys())
     keys = sorted(key_set)
+    key_to_col = {k: i for i, k in enumerate(keys)}
     vectors: list[list[float]] = []
     for f in feats:
         vectors.append([f.get(k, 0.0) for k in keys])
@@ -394,6 +400,7 @@ def build_knn_index(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
     return {
         "keys": keys,
+        "key_to_col": key_to_col,
         "vectors": vectors,
         "zvectors": zvectors,
         "classes": classes,
@@ -415,6 +422,7 @@ def knn_class_probs(
     keys: list[str] = index.get("keys", [])
     vectors: list[list[float]] = index.get("vectors", [])
     zvectors: list[list[float]] = index.get("zvectors", [])
+    key_to_col: dict[str, int] = index.get("key_to_col", {})
     classes: list[str] = index.get("classes", [])
     means: list[float] = index.get("means", [])
     stds: list[float] = index.get("stds", [])
@@ -425,12 +433,31 @@ def knn_class_probs(
 
     f = parse_measurement_features(input_text)
     q_lab = parse_lab_id(input_text)
-    q = [f.get(key, 0.0) for key in keys]
-    if standardize and means and stds and len(means) == len(q):
-        q = [(q[i] - means[i]) / stds[i] for i in range(len(q))]
-        ref_vectors = zvectors if zvectors else vectors
+    if not key_to_col and keys:
+        key_to_col = {k: i for i, k in enumerate(keys)}
+
+    # Use sparse distances: only compare against dimensions present in query.
+    q_present_keys = [k for k in f.keys() if k in key_to_col]
+    use_sparse = bool(q_present_keys)
+    if use_sparse:
+        q_cols = [key_to_col[k] for k in q_present_keys]
+        if standardize and means and stds and len(means) == len(keys):
+            q_vals = [
+                (f[k] - means[j]) / stds[j] if stds[j] != 0 else f[k]
+                for k, j in zip(q_present_keys, q_cols)
+            ]
+            ref_vectors = zvectors if zvectors else vectors
+        else:
+            q_vals = [f[k] for k in q_present_keys]
+            ref_vectors = vectors
     else:
-        ref_vectors = vectors
+        # Fallback to legacy dense representation when no overlapping keys were found.
+        q_vals = [f.get(key, 0.0) for key in keys]
+        if standardize and means and stds and len(means) == len(q_vals):
+            q_vals = [(q_vals[i] - means[i]) / stds[i] for i in range(len(q_vals))]
+            ref_vectors = zvectors if zvectors else vectors
+        else:
+            ref_vectors = vectors
 
     candidate_indices: list[int] | None = None
     if q_lab and lab_to_indices:
@@ -446,9 +473,14 @@ def knn_class_probs(
     for idx in candidate_indices:
         ref = ref_vectors[idx]
         s = 0.0
-        for i, rv in enumerate(ref):
-            d = q[i] - rv
-            s += d * d
+        if use_sparse:
+            for qi, ci in enumerate(q_cols):
+                d = q_vals[qi] - ref[ci]
+                s += d * d
+        else:
+            for i, rv in enumerate(ref):
+                d = q_vals[i] - rv
+                s += d * d
         all_d.append((s, idx))
     all_d.sort(key=lambda x: x[0])
     top = all_d[:kk]

@@ -1,5 +1,9 @@
 $ErrorActionPreference = "Stop"
 
+param(
+  [switch]$RefreshModel
+)
+
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location (Resolve-Path (Join-Path $Root ".."))
 
@@ -14,8 +18,12 @@ if (-not (Test-Path ".\\circuit_debug_api\\assets\\model_bundle.joblib")) {
 }
 
 # Build hybrid assets (LoRA adapter + KNN reference/index) if missing.
-if (-not (Test-Path ".\\circuit_debug_api\\assets_hybrid\\hybrid_config.json")) {
-  Write-Host "Hybrid assets not found. Building hybrid assets..."
+if ($RefreshModel -or -not (Test-Path ".\\circuit_debug_api\\assets_hybrid\\hybrid_config.json")) {
+  if ($RefreshModel) {
+    Write-Host "Rebuilding hybrid assets (auto-select best current model)..."
+  } else {
+    Write-Host "Hybrid assets not found. Building hybrid assets..."
+  }
   & $Py .\\circuit_debug_api\\build_hybrid_assets.py
 }
 

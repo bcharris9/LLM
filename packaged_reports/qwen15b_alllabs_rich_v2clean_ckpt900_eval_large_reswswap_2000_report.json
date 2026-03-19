@@ -1,0 +1,72 @@
+{
+  "samples": 2000,
+  "response_style": "faulttype_diag_fix",
+  "exact_match": {
+    "count": 1982,
+    "pct": 99.1
+  },
+  "format_ok": {
+    "count": 2000,
+    "pct": 100.0
+  },
+  "class_match": {
+    "count": 1982,
+    "pct": 99.1
+  },
+  "prerule_hits": 0,
+  "pred_class_counts": {
+    "resistor_value_swap": 1047,
+    "pin_open": 177,
+    "resistor_wrong_value": 171,
+    "param_drift": 175,
+    "missing_component": 160,
+    "short_between_nodes": 101,
+    "swapped_nodes": 169
+  },
+  "target_class_counts": {
+    "resistor_value_swap": 1057,
+    "pin_open": 173,
+    "resistor_wrong_value": 161,
+    "param_drift": 176,
+    "missing_component": 160,
+    "short_between_nodes": 104,
+    "swapped_nodes": 169
+  },
+  "class_recall_by_target": {
+    "missing_component": {
+      "matched": 160,
+      "total": 160,
+      "pct": 100.0
+    },
+    "param_drift": {
+      "matched": 174,
+      "total": 176,
+      "pct": 98.86363636363636
+    },
+    "pin_open": {
+      "matched": 171,
+      "total": 173,
+      "pct": 98.84393063583815
+    },
+    "resistor_value_swap": {
+      "matched": 1047,
+      "total": 1057,
+      "pct": 99.05392620624409
+    },
+    "resistor_wrong_value": {
+      "matched": 161,
+      "total": 161,
+      "pct": 100.0
+    },
+    "short_between_nodes": {
+      "matched": 100,
+      "total": 104,
+      "pct": 96.15384615384616
+    },
+    "swapped_nodes": {
+      "matched": 169,
+      "total": 169,
+      "pct": 100.0
+    }
+  }
+}

@@ -359,7 +359,7 @@ class CircuitDebugRuntime:
         measurement_overrides: dict[str, float] | None = None,
         temp: float | None = None,
         tnom: float | None = None,
-        strict: bool = False,
+        strict: bool = True,
     ) -> DebugResult:
         if circuit_name not in self.catalog:
             raise KeyError(f"Unknown circuit: {circuit_name}")

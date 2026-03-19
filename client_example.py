@@ -23,6 +23,12 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument("--demo-offset-node", default=None, help="Optional node to perturb in demo mode (e.g. N001).")
     p.add_argument("--demo-offset-volts", type=float, default=0.5)
+    p.add_argument(
+        "--strict",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Submit with strict validation (recommended). Use --no-strict for partial input testing.",
+    )
     return p.parse_args()
 
 
@@ -66,7 +72,7 @@ def main() -> int:
             "circuit_name": circuit_name,
             "node_voltages": {},
             "source_currents": {},
-            "strict": False,
+            "strict": bool(args.strict),
         }
 
         if args.demo_use_golden_values:
@@ -79,9 +85,15 @@ def main() -> int:
             if args.demo_offset_node and args.demo_offset_node in payload["node_voltages"]:
                 payload["node_voltages"][args.demo_offset_node] += float(args.demo_offset_volts)
         else:
-            payload["node_voltages"] = {item["node_name"]: 0.0 for item in nodes_doc.get("nodes", [])[:3]}
+            for item in nodes_doc.get("nodes", []):
+                if item.get("golden_value") is not None:
+                    payload["node_voltages"][item["node_name"]] = float(item["golden_value"])
+                else:
+                    payload["node_voltages"][item["node_name"]] = 0.0
+            if args.demo_offset_node and args.demo_offset_node in payload["node_voltages"]:
+                payload["node_voltages"][args.demo_offset_node] += float(args.demo_offset_volts)
     else:
-        payload.setdefault("strict", False)
+        payload.setdefault("strict", bool(args.strict))
 
     print("\nPOST /debug payload")
     print(pretty(payload))

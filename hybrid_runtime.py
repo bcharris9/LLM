@@ -3,6 +3,7 @@ from __future__ import annotations
 import inspect
 import json
 import math
+import os
 from pathlib import Path
 from typing import Any
 
@@ -211,7 +212,7 @@ class CircuitDebugHybridRuntime:
             return
         mod = self._load_eval_module()
         self._device, self._dtype = mod.choose_device()
-        model_name = str(self.config["model_name"])
+        model_name = str(os.environ.get("CIRCUIT_DEBUG_BASE_MODEL", self.config["model_name"]))
         adapter_dir = Path(self.config["adapter_dir"])
         if not adapter_dir.exists():
             raise FileNotFoundError(f"Hybrid adapter dir not found: {adapter_dir}")
@@ -363,7 +364,7 @@ class CircuitDebugHybridRuntime:
         measurement_overrides: dict[str, float] | None = None,
         temp: float | None = None,
         tnom: float | None = None,
-        strict: bool = False,
+        strict: bool = True,
     ) -> DebugResult:
         if circuit_name not in self.catalog:
             raise KeyError(f"Unknown circuit: {circuit_name}")

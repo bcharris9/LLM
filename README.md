@@ -2,6 +2,15 @@
 
 FastAPI wrapper for your LTSpice-trained circuit fault system.
 
+This folder is now packaged so it can run on its own after you upload just `circuit_debug_api/`.
+The only major dependency that is not vendored into Git is the Qwen base model itself. By default
+the API will download/load `Qwen/Qwen2.5-1.5B-Instruct` from Hugging Face. If you want to use a
+local snapshot instead, set:
+
+```powershell
+$env:CIRCUIT_DEBUG_BASE_MODEL = "C:\\path\\to\\Qwen2.5-1.5B-Instruct"
+```
+
 Default backend:
 
 - **LLM + KNN hybrid** (Qwen LoRA adapter + KNN class priors)
@@ -30,6 +39,8 @@ Endpoints:
 - `run_api.ps1` : PowerShell start script
 - `assets/` : tabular assets + circuit catalog
 - `assets_hybrid/` : hybrid assets (LoRA adapter copy, KNN ref/index, hybrid config)
+- `packaged_golden_root/` : local copy of the golden measurement files used by the packaged catalog
+- `packaged_reports/` : local copy of the selected best-model eval report used for auto-pick metadata
 
 ## Install Dependencies
 
@@ -39,6 +50,9 @@ Endpoints:
 
 ## Build Runtime Assets (one-time or after model updates)
 
+The default rebuild path is now self-contained and uses the packaged files already inside
+`circuit_debug_api/`.
+
 ```powershell
 .\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\build_runtime_assets.py
 ```
@@ -47,8 +61,19 @@ Endpoints:
 
 This copies the selected LoRA adapter into the API directory and prebuilds a KNN index from the training instruct JSONL.
 
+The builder now defaults to the packaged adapter, packaged KNN reference file, and packaged report
+inside `circuit_debug_api/`. It does not need the rest of the repo for a normal rebuild.
+
 ```powershell
 .\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\build_hybrid_assets.py
+```
+
+Force a specific adapter (disable auto-pick):
+
+```powershell
+.\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\build_hybrid_assets.py `
+  --auto-pick-best False `
+  --adapter-dir .\\circuit_debug_api\\assets_hybrid\\adapter
 ```
 
 ## Run the API
@@ -57,13 +82,13 @@ This copies the selected LoRA adapter into the API directory and prebuilds a KNN
 .\\.venv312\\Scripts\\python.exe -m uvicorn circuit_debug_api.server:app --host 127.0.0.1 --port 8000
 ```
 
-Or:
+Or (for a fresh best-model selection from the latest reports):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\\circuit_debug_api\\run_api.ps1
+powershell -ExecutionPolicy Bypass -File .\\circuit_debug_api\\run_api.ps1 -RefreshModel
 ```
 
-`run_api.ps1` will auto-build both tabular and hybrid assets if they are missing.
+`run_api.ps1` will auto-build both tabular and hybrid assets if they are missing and uses auto-pick for the best hybrid model.
 
 ## Example Client (uses all endpoints)
 
@@ -243,6 +268,19 @@ Notes:
 - For best accuracy, provide all nodes from `GET /circuits/{name}/nodes`.
 - Supplying source currents (if available) improves accuracy.
 - `GET /health` reports which backend is active (`llm_knn_hybrid` or `tabular_xgboost`).
+- `GET /model` returns the exact selected adapter paths and eval report metrics used to pick the model.
+
+To force a fresh best-model selection and reload after new training/eval artifacts are produced:
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:8000/admin/refresh-model -Method Post | ConvertTo-Json -Depth 12
+```
+
+Or restart with refresh enabled:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\\circuit_debug_api\\run_api.ps1 -RefreshModel
+```
 
 ## POST /debug Request Shape
 
@@ -256,6 +294,6 @@ Notes:
   "source_currents": {
     "V1": -0.00185
   },
-  "strict": false
+  "strict": true
 }
 ```
