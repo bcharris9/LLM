@@ -1,10 +1,10 @@
 {
   "backend": "llm_knn_hybrid",
   "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
-  "adapter_dir": "LLM\\assets_hybrid\\adapter",
-  "knn_ref_file": "LLM\\assets_hybrid\\knn_ref_train_instruct.jsonl",
-  "knn_index_file": "LLM\\assets_hybrid\\knn_index.joblib",
-  "catalog_file": "LLM\\assets\\circuit_catalog.json",
+  "adapter_dir": "assets_hybrid/adapter",
+  "knn_ref_file": "assets_hybrid/knn_ref_train_instruct.jsonl",
+  "knn_index_file": "assets_hybrid/knn_index.joblib",
+  "catalog_file": "assets/circuit_catalog.json",
   "response_style": "faulttype_diag_fix",
   "decode_mode": "score_classes_knn",
   "knn_k": 1,
@@ -21,7 +21,7 @@
   "max_deltas": 24,
   "instruction": "Classify the LTspice fault and provide a fix. Return exactly two lines: FaultType then Diagnosis/Fix. Use resistor_wrong_value when a resistor value is incorrect. Use param_drift for non-resistor parameter drift (for example source/supply drift).",
   "auto_selected": true,
-  "auto_selected_report": "circuit_debug_api\\packaged_reports\\qwen15b_alllabs_rich_v2clean_ckpt900_eval_large_reswswap_2000_report.json",
+  "auto_selected_report": "packaged_reports\\qwen15b_alllabs_rich_v2clean_ckpt900_eval_large_reswswap_2000_report.json",
   "auto_selected_metric": "exact_match.pct",
   "auto_selected_metric_value": 99.1
 }

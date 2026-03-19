@@ -65,7 +65,6 @@ The default rebuild path is now self-contained and uses the packaged files alrea
 ## Build Hybrid Assets (LLM + KNN)
 
 This copies the selected LoRA adapter into the API directory and prebuilds a KNN index from the training instruct JSONL.
-Only needed if you have the original adapter/reference files (`pipeline/...`).
 This `LLM/` demo folder already includes prebuilt hybrid assets in `assets_hybrid/`, so you can skip this step.
 
 The builder now defaults to the packaged adapter, packaged KNN reference file, and packaged report
@@ -80,7 +79,7 @@ Force a specific adapter (disable auto-pick):
 ```powershell
 .\\.venv312\\Scripts\\python.exe .\\circuit_debug_api\\build_hybrid_assets.py `
   --auto-pick-best False `
-  --adapter-dir .\\circuit_debug_api\\assets_hybrid\\adapter
+  --adapter-dir .\\assets_hybrid\\adapter
 ```
 
 ## Run the API

@@ -1,19 +1,38 @@
 from __future__ import annotations
 
-import os
-import subprocess
+import hashlib
 import json
+import math
+import os
+import re
+import subprocess
+import sys
 from functools import lru_cache
 from pathlib import Path
-import sys
-from typing import Any
+from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-from dotenv import load_dotenv
-from langchain_ollama import OllamaLLM, OllamaEmbeddings
-from supabase import Client, create_client
+try:
+    from dotenv import load_dotenv
+except ModuleNotFoundError:
+    def load_dotenv(*args, **kwargs):  # type: ignore[no-redef]
+        return False
+
+try:
+    from langchain_ollama import OllamaLLM, OllamaEmbeddings
+except ModuleNotFoundError:
+    OllamaLLM = None  # type: ignore[assignment]
+    OllamaEmbeddings = None  # type: ignore[assignment]
+
+try:
+    from supabase import Client, create_client
+except ModuleNotFoundError:
+    Client = Any  # type: ignore[misc,assignment]
+
+    def create_client(*args, **kwargs):  # type: ignore[no-redef]
+        raise RuntimeError("supabase package not installed")
 
 load_dotenv()
 SUPABASE_URL = "https://mvyumvpmzcrrcwcppcea.supabase.co"
@@ -36,12 +55,12 @@ BM25_K1 = float(os.getenv("LAB_BM25_K1", "1.2"))
 BM25_B = float(os.getenv("LAB_BM25_B", "0.75"))
 
 try:
-    if SUPABASE_KEY:
+    if SUPABASE_KEY and OllamaLLM is not None and OllamaEmbeddings is not None:
         supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
         llm = OllamaLLM(model="gpt-oss:120b-cloud")
         embedder = OllamaEmbeddings(model="mxbai-embed-large")
     else:
-        print("WARNING: SUPABASE_KEY missing; /chat will return 503.")
+        print("WARNING: chat dependencies not fully available; /chat will return 503.")
 except Exception as e:  # pragma: no cover - startup diagnostics only
     print(f"Startup Error: {e}")
 

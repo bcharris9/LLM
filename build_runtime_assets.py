@@ -37,15 +37,25 @@ except ModuleNotFoundError as e:
 DEFAULT_TRAIN_FILES: list[str] = []
 
 
+def _portable_path(path: Path, *, base: Path | None = None) -> str:
+    p = Path(path)
+    if base is not None:
+        try:
+            p = p.relative_to(base)
+        except ValueError:
+            pass
+    return p.as_posix().replace("/", "\\")
+
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Build runtime assets for LLM")
     p.add_argument("--api-dir", type=Path, default=SCRIPT_DIR)
     p.add_argument(
         "--source-bundle",
         type=Path,
-        default=Path("circuit_debug_api/assets/model_bundle.joblib"),
+        default=SCRIPT_DIR / "assets" / "model_bundle.joblib",
     )
-    p.add_argument("--golden-root", type=Path, default=Path("circuit_debug_api/packaged_golden_root"))
+    p.add_argument("--golden-root", type=Path, default=SCRIPT_DIR / "packaged_golden_root")
     p.add_argument(
         "--train-file",
         dest="train_files",
@@ -189,7 +199,9 @@ def _collect_sorted_fault_classes(train_files: list[Path]) -> list[str]:
 
 def main() -> int:
     args = parse_args()
-    api_dir = args.api_dir
+    api_dir = args.api_dir.resolve()
+    source_bundle = args.source_bundle.resolve()
+    golden_root = args.golden_root.resolve()
     assets_dir = api_dir / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
     existing_config_path = assets_dir / "runtime_config.json"
@@ -197,22 +209,22 @@ def main() -> int:
     if existing_config_path.exists():
         existing_config = json.loads(existing_config_path.read_text(encoding="utf-8"))
 
-    if not args.source_bundle.exists():
-        raise FileNotFoundError(f"Missing source bundle: {args.source_bundle}")
+    if not source_bundle.exists():
+        raise FileNotFoundError(f"Missing source bundle: {source_bundle}")
 
     model_bundle_dest = assets_dir / "model_bundle.joblib"
-    if args.source_bundle.resolve() != model_bundle_dest.resolve():
-        shutil.copy2(args.source_bundle, model_bundle_dest)
+    if source_bundle != model_bundle_dest.resolve():
+        shutil.copy2(source_bundle, model_bundle_dest)
 
-    catalog = build_circuit_catalog(args.golden_root)
+    catalog = build_circuit_catalog(golden_root)
     catalog_path = assets_dir / "circuit_catalog.json"
     catalog_path.write_text(json.dumps(catalog, indent=2), encoding="utf-8")
 
     config = {
         "pair_classes": list(PAIR_MC_PO),
         "pair_threshold": float(joblib.load(model_bundle_dest).get("report", {}).get("pair_threshold", 0.5)),
-        "source_bundle": str(args.source_bundle).replace("/", "\\"),
-        "golden_root": str(args.golden_root).replace("/", "\\"),
+        "source_bundle": _portable_path(model_bundle_dest, base=api_dir),
+        "golden_root": _portable_path(golden_root, base=api_dir),
         "family_pair_models_enabled": not args.skip_family_pair_models,
     }
 
@@ -240,7 +252,7 @@ def main() -> int:
         joblib.dump({}, family_pair_models_path)
 
     config["family_pair_model_count"] = family_model_count
-    config["train_files"] = [str(p).replace("/", "\\") for p in train_files]
+    config["train_files"] = [_portable_path(p, base=api_dir) for p in train_files]
     (assets_dir / "runtime_config.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
 
     print(f"Wrote: {model_bundle_dest}")

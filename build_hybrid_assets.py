@@ -23,10 +23,10 @@ except ModuleNotFoundError as e:
 
 
 DEFAULT_MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
-DEFAULT_ADAPTER_DIR = Path("circuit_debug_api/assets_hybrid/adapter")
-DEFAULT_KNN_REF = Path("circuit_debug_api/assets_hybrid/knn_ref_train_instruct.jsonl")
-DEFAULT_CATALOG = Path("circuit_debug_api/assets/circuit_catalog.json")
-DEFAULT_REPO_OUTPUT_ROOT = REPO_ROOT / "circuit_debug_api/packaged_reports"
+DEFAULT_ADAPTER_DIR = SCRIPT_DIR / "assets_hybrid" / "adapter"
+DEFAULT_KNN_REF = SCRIPT_DIR / "assets_hybrid" / "knn_ref_train_instruct.jsonl"
+DEFAULT_CATALOG = SCRIPT_DIR / "assets" / "circuit_catalog.json"
+DEFAULT_REPO_OUTPUT_ROOT = SCRIPT_DIR / "packaged_reports"
 DEFAULT_REPORT_GLOB = str(DEFAULT_REPO_OUTPUT_ROOT / "qwen15b*_report.json")
 
 
@@ -204,7 +204,7 @@ def _portable_path_str(path: Path | None) -> str | None:
     if path is None:
         return None
     try:
-        return str(path.resolve().relative_to(REPO_ROOT.resolve())).replace("/", "\\")
+        return str(path.resolve().relative_to(SCRIPT_DIR.resolve())).replace("/", "\\")
     except ValueError:
         return str(path).replace("/", "\\")
 
@@ -226,7 +226,7 @@ def parse_args() -> argparse.Namespace:
         "--candidate-roots",
         nargs="+",
         type=Path,
-        default=[Path("circuit_debug_api/assets_hybrid")],
+        default=[SCRIPT_DIR / "assets_hybrid"],
         help="Roots that contain qwen15b* adapter candidates and eval reports.",
     )
     p.add_argument(

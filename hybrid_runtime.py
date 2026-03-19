@@ -269,7 +269,11 @@ class CircuitDebugHybridRuntime:
         mod = self._load_eval_module()
         self._device, self._dtype = mod.choose_device()
         model_name = str(os.environ.get("CIRCUIT_DEBUG_BASE_MODEL", self.config["model_name"]))
-        adapter_dir = Path(self.config["adapter_dir"])
+        adapter_dir = _resolve_config_path(
+            self.config.get("adapter_dir"),
+            hybrid_assets_dir=self.hybrid_assets_dir,
+            api_dir=self.api_dir,
+        )
         if not adapter_dir.exists():
             raise FileNotFoundError(f"Hybrid adapter dir not found: {adapter_dir}")
         tokenizer = helpers.AutoTokenizer.from_pretrained(model_name, use_fast=True, trust_remote_code=True)
