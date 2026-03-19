@@ -1,3 +1,5 @@
+"""FastAPI app that serves circuit debugging and lab-manual chat endpoints."""
+
 from __future__ import annotations
 
 import inspect
@@ -33,6 +35,7 @@ HYBRID_ASSETS_DIR = API_DIR / "assets_hybrid"
 
 
 def _default_chat_model_name() -> str:
+    """Return the default local chat model name used for Jetson deployments."""
     return "espressor/meta-llama.Llama-3.2-3B-Instruct_W4A16"
 
 supabase: Optional[Client] = None
@@ -78,6 +81,8 @@ except Exception as e:  # pragma: no cover - startup diagnostics only
 
 
 class DebugRequest(BaseModel):
+    """Request body for the circuit debug endpoint."""
+
     circuit_name: str = Field(..., description="Exact circuit name from GET /circuits")
     node_voltages: dict[str, float] = Field(
         default_factory=dict,
@@ -97,6 +102,8 @@ class DebugRequest(BaseModel):
 
 
 class HealthResponse(BaseModel):
+    """Response model for the lightweight service health endpoint."""
+
     ok: bool
     backend: str
     circuits: int
@@ -109,6 +116,7 @@ class HealthResponse(BaseModel):
 
 @lru_cache(maxsize=1)
 def get_runtime() -> Any:
+    """Lazily construct the configured debug runtime implementation."""
     try:
         from hybrid_runtime import CircuitDebugHybridRuntime  # type: ignore[import-not-found]
         from runtime import CircuitDebugRuntime  # type: ignore[import-not-found]
@@ -144,16 +152,20 @@ app = FastAPI(
 
 
 class ChatRequest(BaseModel):
+    """Request body for both chat routes."""
+
     question: str
     lab_number: int | None = None
 
 
 def _require_supabase() -> None:
+    """Fail fast when retrieval dependencies are not available."""
     if not supabase:
         raise HTTPException(status_code=503, detail="Supabase client not initialized; set SUPABASE_KEY.")
 
 
 def _choose_chat_device() -> tuple[str, torch.dtype]:
+    """Choose the device and dtype for the in-process Transformers fallback."""
     if torch.cuda.is_available():
         if torch.cuda.is_bf16_supported():
             return "cuda", torch.bfloat16
@@ -162,6 +174,7 @@ def _choose_chat_device() -> tuple[str, torch.dtype]:
 
 
 def _ensure_chat_llm() -> tuple[Any, Any, str]:
+    """Lazy-load the in-process chat model for the Transformers backend."""
     global chat_llm, chat_tokenizer, chat_device
 
     if chat_llm is not None and chat_tokenizer is not None and chat_device is not None:
@@ -194,6 +207,7 @@ def _ensure_chat_llm() -> tuple[Any, Any, str]:
 
 
 def _require_llm() -> None:
+    """Validate that whichever chat backend is selected is ready to serve requests."""
     if CHAT_BACKEND == "openai_compat":
         if not CHAT_BASE_URL:
             raise HTTPException(
@@ -210,6 +224,7 @@ def _require_llm() -> None:
 
 
 def _raise_http_embedding_model_error(error: Exception, model_name: str, role: str) -> None:
+    """Translate local embedding-model failures into helpful HTTP errors."""
     message = str(error)
     if "not found" in message.lower() and model_name in message:
         raise HTTPException(
@@ -220,6 +235,7 @@ def _raise_http_embedding_model_error(error: Exception, model_name: str, role: s
 
 
 def _raise_http_chat_model_error(error: Exception, model_name: str, role: str) -> None:
+    """Translate chat-model failures into a 503 response for the API caller."""
     raise HTTPException(
         status_code=503,
         detail=f'Chat backend "{CHAT_BACKEND}" could not load or invoke model "{model_name}": {error}',
@@ -227,6 +243,7 @@ def _raise_http_chat_model_error(error: Exception, model_name: str, role: str) -
 
 
 def _invoke_transformers_chat_llm(prompt: str) -> str:
+    """Generate a response with the in-process Hugging Face fallback backend."""
     model, tokenizer, device = _ensure_chat_llm()
     prompt = prompt.strip()
     if hasattr(tokenizer, "apply_chat_template"):
@@ -258,6 +275,7 @@ def _invoke_transformers_chat_llm(prompt: str) -> str:
 
 
 def _invoke_openai_compatible_chat(prompt: str) -> str:
+    """Call a local OpenAI-compatible chat server such as vLLM on Jetson."""
     if not CHAT_BASE_URL:
         raise HTTPException(
             status_code=503,
@@ -333,6 +351,7 @@ def _invoke_openai_compatible_chat(prompt: str) -> str:
 
 
 def _invoke_chat_llm(prompt: str) -> str:
+    """Dispatch chat generation to the selected backend."""
     if CHAT_BACKEND == "openai_compat":
         return _invoke_openai_compatible_chat(prompt)
     return _invoke_transformers_chat_llm(prompt)
@@ -500,6 +519,8 @@ INTENT_DEFINITIONS: dict[str, dict[str, Any]] = {
 
 @dataclass(frozen=True)
 class QueryProfile:
+    """Parsed query features used to steer manual retrieval and reranking."""
+
     intent_names: tuple[str, ...]
     section_aliases: tuple[str, ...]
     reference_terms: tuple[str, ...]
@@ -508,10 +529,12 @@ class QueryProfile:
 
 
 def _format_lab_name(lab_number: int | str) -> str:
+    """Normalize a numeric lab identifier into the stored manual name format."""
     return f"Lab {int(str(lab_number))}"
 
 
 def _extract_lab_number(text: str) -> int | None:
+    """Extract an explicit lab number mention from freeform user text."""
     match = LAB_NUMBER_PATTERN.search(text)
     if not match:
         return None
@@ -523,6 +546,7 @@ def _extract_lab_number(text: str) -> int | None:
 
 
 def _tokenize_list(text: str) -> list[str]:
+    """Tokenize text for keyword scoring while dropping lightweight stopwords."""
     tokens: list[str] = []
     for match in TOKEN_PATTERN.finditer(text.lower()):
         token = match.group(0).lower()
@@ -533,10 +557,12 @@ def _tokenize_list(text: str) -> list[str]:
 
 
 def _tokenize(text: str) -> set[str]:
+    """Return a unique token set for overlap calculations."""
     return set(_tokenize_list(text))
 
 
 def _extract_reference_terms(text: str) -> set[str]:
+    """Extract explicit manual references such as tasks, figures, and tables."""
     normalized = re.sub(r"\s+", " ", text.lower())
     refs: set[str] = set()
     for pattern in REFERENCE_PATTERNS:
@@ -546,11 +572,13 @@ def _extract_reference_terms(text: str) -> set[str]:
 
 
 def _extract_section_terms(text: str) -> set[str]:
+    """Extract broad section keywords that hint at the user's intent."""
     normalized = text.lower()
     return {term for term in SECTION_QUERY_TERMS if term in normalized}
 
 
 def _normalize_section_label(label: str | None) -> str:
+    """Collapse section and heading labels into stable retrieval-friendly names."""
     if not label:
         return "General"
     cleaned = re.sub(r"\s+", " ", label).strip(" :-")
@@ -572,12 +600,14 @@ def _normalize_section_label(label: str | None) -> str:
 
 
 def _is_reference_heavy_section(section_label: str, heading_label: str) -> bool:
+    """Identify sections that mainly serve as figure/table reference material."""
     section_lower = section_label.lower()
     heading_lower = heading_label.lower()
     return section_lower.startswith(("figure ", "table ")) or heading_lower.startswith(("figure ", "table "))
 
 
 def _build_query_profile(query: str) -> QueryProfile:
+    """Parse one user query into intent, section, task, and reference signals."""
     normalized = query.lower()
     intent_names: list[str] = []
     section_aliases: set[str] = set(_extract_section_terms(query))
@@ -601,6 +631,7 @@ def _build_query_profile(query: str) -> QueryProfile:
 
 
 def _build_row_search_text(row: dict[str, Any]) -> str:
+    """Assemble the text fields used for lexical and reference matching."""
     normalized_section = _normalize_section_label(str(row.get("section_name") or ""))
     normalized_heading = _normalize_section_label(str(row.get("heading") or ""))
     parts = [
@@ -614,6 +645,7 @@ def _build_row_search_text(row: dict[str, Any]) -> str:
 
 
 def _row_identity(row: dict[str, Any]) -> str:
+    """Return a stable identifier for a manual chunk row."""
     if row.get("id"):
         return str(row["id"])
     content = str(row.get("content") or "")
@@ -628,6 +660,7 @@ def _bm25_score(
     df_counts: Counter[str],
     n_docs: int,
 ) -> float:
+    """Compute a BM25-style lexical score for one manual chunk."""
     if not query_tokens or not n_docs:
         return 0.0
 
@@ -645,10 +678,12 @@ def _bm25_score(
 
 
 def _load_lab_rows(lab_name: str) -> list[dict[str, Any]]:
+    """Load all manual chunks for one lab, preferring the configured manual version."""
     if not supabase:
         return []
 
     def _select_rows(manual_version: Optional[str]) -> list[dict[str, Any]]:
+        """Fetch manual chunks for one lab and optional manual-version filter."""
         query = (
             supabase.table("lab_sections")
             .select("id, lab_name, manual_version, section_name, heading, content, page_num, chunk_order, token_count")
@@ -667,6 +702,7 @@ def _load_lab_rows(lab_name: str) -> list[dict[str, Any]]:
 
 
 def _vector_search_scores(query: str, lab_name: str, profile: QueryProfile) -> dict[str, float]:
+    """Fetch semantic-search scores for one lab's manual chunks."""
     if not embedder or not supabase:
         return {}
 
@@ -682,6 +718,7 @@ def _vector_search_scores(query: str, lab_name: str, profile: QueryProfile) -> d
         _raise_http_embedding_model_error(e, EMBED_MODEL, "embedding")
 
     def _call_match_rpc(manual_version: Optional[str], threshold: float):
+        """Call the vector-match RPC with the current embedding and filters."""
         payload = {
             "query_embedding": vector,
             "match_threshold": threshold,
@@ -720,6 +757,7 @@ def _score_lab_rows(
     vector_scores: dict[str, float],
     profile: QueryProfile,
 ) -> list[dict[str, Any]]:
+    """Fuse semantic, lexical, and structural heuristics into a ranked chunk list."""
     query_tokens = _tokenize_list(query)
     query_token_set = set(query_tokens)
     query_references = set(profile.reference_terms)
@@ -811,6 +849,8 @@ def _score_lab_rows(
         mismatch_penalty = 0.0
 
         reference_bonus = 0.0
+        # Exact figure/task/table mentions deserve a large bump because they usually indicate
+        # the user is asking for one specific part of the manual rather than a broad topic.
         for reference in query_references:
             if reference in heading_lower or reference in section_lower:
                 reference_bonus += 0.2
@@ -830,6 +870,8 @@ def _score_lab_rows(
         reference_bonus = min(reference_bonus, 0.28)
 
         section_bonus = 0.0
+        # Section aliases let broad questions such as "what are the objectives" land on the
+        # start of the right section even when the body text uses slightly different wording.
         for term in query_sections:
             if term in heading_lower or term in section_lower:
                 section_bonus += 0.11
@@ -920,6 +962,7 @@ def _score_lab_rows(
         if isinstance(anchor.get("chunk_order"), int)
     ]
     if anchor_positions:
+        # Small neighbor bonus helps pull in adjacent chunks when the best answer spans a section.
         for row in ranked_rows:
             row_order = row.get("chunk_order")
             row_section = str(row.get("section_name") or "").lower()
@@ -943,6 +986,7 @@ def _score_lab_rows(
 
 
 def _select_context_rows(ranked_rows: list[dict[str, Any]], profile: QueryProfile) -> list[dict[str, Any]]:
+    """Pick a compact, diverse set of top chunks to feed into the chat model."""
     if not ranked_rows:
         return []
     if ranked_rows[0].get("_combined_score", 0.0) < CONTEXT_MIN_SCORE:
@@ -997,6 +1041,7 @@ def _select_context_rows(ranked_rows: list[dict[str, Any]], profile: QueryProfil
 
 
 def _format_context_row(row: dict[str, Any]) -> str:
+    """Render one selected manual chunk into the prompt context format."""
     section = str(row.get("_display_section_name") or row.get("section_name") or "Section ?")
     heading = str(row.get("_display_heading") or row.get("heading") or "").strip()
     page_num = row.get("page_num")
@@ -1014,6 +1059,7 @@ def _format_context_row(row: dict[str, Any]) -> str:
 
 
 def _strip_answer_metadata(answer: str) -> str:
+    """Remove retrieval tags and excess whitespace from a model answer."""
     cleaned = re.sub(r"\[(?:Lab|Appendix)[^\]]+\]", "", answer)
     cleaned = re.sub(r"[ \t]+\n", "\n", cleaned)
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
@@ -1025,6 +1071,7 @@ def _reference_context_rows(
     lab_rows: list[dict[str, Any]],
     reference_terms: tuple[str, ...],
 ) -> list[dict[str, Any]]:
+    """Short-circuit retrieval when the query explicitly names figures, tables, or tasks."""
     if not reference_terms:
         return []
 
@@ -1084,10 +1131,12 @@ def _reference_context_rows(
 
 
 def retrieve_context(query: str, lab_number: int) -> list[str]:
+    """Return only the formatted context snippets for one lab."""
     return _retrieve_context_for_lab(query, lab_number)[1]
 
 
 def _retrieve_context_for_lab(query: str, lab_number: int) -> tuple[float, list[str]]:
+    """Retrieve and rank context snippets for one candidate lab."""
     if not embedder or not supabase:
         return 0.0, []
 
@@ -1116,6 +1165,7 @@ def _retrieve_context_for_lab(query: str, lab_number: int) -> tuple[float, list[
 
 
 def _resolve_chat_lab(question: str, requested_lab_number: int | None) -> tuple[str | None, list[str]]:
+    """Resolve the best lab to answer from, using explicit or inferred lab hints first."""
     inferred_lab_number = _extract_lab_number(question)
 
     if requested_lab_number is not None:
@@ -1143,6 +1193,7 @@ def _resolve_chat_lab(question: str, requested_lab_number: int | None) -> tuple[
 
 
 def _chat_response(request: ChatRequest, path_lab_number: int | None = None) -> dict[str, str]:
+    """Handle a chat request by retrieving context, prompting the local chat model, and caching short history."""
     _require_supabase()
 
     question = request.question.strip()
@@ -1160,6 +1211,8 @@ def _chat_response(request: ChatRequest, path_lab_number: int | None = None) -> 
     _require_llm()
     assert lab_name is not None
     lab_history = conversation_history.setdefault(lab_name, [])
+    # Keep only short recent history per lab so follow-up questions have continuity without
+    # letting prompt size grow unbounded.
     history_txt = "\n".join(
         [f"Q: {turn.get('user', '')}\nA: {turn.get('ai', '')}" for turn in lab_history[-2:]]
     )
@@ -1199,17 +1252,20 @@ def _chat_response(request: ChatRequest, path_lab_number: int | None = None) -> 
 
 @app.post("/chat")
 def chat(request: ChatRequest):
+    """Generic chat route that infers or auto-selects the relevant lab."""
     return _chat_response(request)
 
 
 @app.post("/chat/{lab_number}")
 def chat_for_lab(lab_number: int, request: ChatRequest):
+    """Lab-specific chat route that skips lab inference."""
     return _chat_response(request, path_lab_number=lab_number)
 
 
 
 @app.get("/circuits")
 def list_circuits() -> dict[str, Any]:
+    """List the packaged circuits available to the debug runtime."""
     rt = get_runtime()
     names = rt.list_circuits()
     return {"count": len(names), "circuits": names}
@@ -1217,6 +1273,7 @@ def list_circuits() -> dict[str, Any]:
 
 @app.get("/circuits/{circuit_name}/nodes")
 def get_circuit_nodes(circuit_name: str) -> dict[str, Any]:
+    """Return the expected node and optional source-current inputs for one circuit."""
     rt = get_runtime()
     if not rt.has_circuit(circuit_name):
         raise HTTPException(status_code=404, detail=f"Unknown circuit: {circuit_name}")
@@ -1236,6 +1293,7 @@ def get_circuit_nodes(circuit_name: str) -> dict[str, Any]:
 
 @app.post("/debug")
 def debug_circuit(req: DebugRequest) -> dict[str, Any]:
+    """Run circuit fault inference for the provided measurement payload."""
     rt = get_runtime()
     if not rt.has_circuit(req.circuit_name):
         raise HTTPException(status_code=404, detail=f"Unknown circuit: {req.circuit_name}")
@@ -1258,6 +1316,7 @@ def debug_circuit(req: DebugRequest) -> dict[str, Any]:
 
 @app.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
+    """Expose a lightweight readiness and configuration summary."""
     rt = get_runtime()
     backend = "llm_knn_hybrid" if rt.__class__.__name__.endswith("HybridRuntime") else "tabular_xgboost"
     return HealthResponse(
@@ -1274,6 +1333,7 @@ def health() -> HealthResponse:
 # Root helper for quick manual check
 @app.get("/")
 def root():
+    """Return a minimal human-readable summary of the running API."""
     return {
         "message": "SPICE Lab Assistant API is running",
         "chat_backend": CHAT_BACKEND,

@@ -1,3 +1,5 @@
+"""Shared helpers for the hybrid debug runtime's LLM and KNN scoring logic."""
+
 from __future__ import annotations
 
 import inspect
@@ -11,7 +13,9 @@ import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+
 def choose_device() -> tuple[str, torch.dtype]:
+    """Pick a reasonable inference device and dtype for the current machine."""
     if torch.cuda.is_available():
         if torch.cuda.is_bf16_supported():
             return "cuda", torch.bfloat16
@@ -20,6 +24,7 @@ def choose_device() -> tuple[str, torch.dtype]:
 
 
 def load_jsonl(path: Path) -> list[dict[str, Any]]:
+    """Load a JSONL file into a list of dictionaries."""
     rows: list[dict[str, Any]] = []
     with path.open("r", encoding="utf-8") as f:
         for line in f:
@@ -31,6 +36,7 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def build_prompt(instruction: str, input_text: str, response_style: str) -> str:
+    """Render the prompt format expected by the fine-tuned debug model."""
     instruction = (instruction or "").strip()
     input_text = (input_text or "").strip()
     if response_style == "faulttype_diag_fix":
@@ -65,17 +71,20 @@ def build_prompt(instruction: str, input_text: str, response_style: str) -> str:
 
 
 def normalize_text(text: str) -> str:
+    """Lowercase and whitespace-normalize freeform text."""
     text = (text or "").strip().lower()
     text = re.sub(r"\s+", " ", text)
     return text
 
 
 def has_diag_and_fix(text: str) -> bool:
+    """Check whether a model output already contains both required fields."""
     low = (text or "").lower()
     return ("diagnosis:" in low) and ("fix:" in low)
 
 
 def normalize_fault_type_label(raw: str) -> str:
+    """Map label aliases onto the canonical runtime fault-type names."""
     key = (raw or "").strip().lower()
     alias = {
         "param_drift": "param_drift",
@@ -103,6 +112,7 @@ def normalize_fault_type_label(raw: str) -> str:
 
 
 def force_diag_fix_format(text: str, response_style: str) -> str:
+    """Coerce arbitrary model output into the stable diagnosis/fix response format."""
     raw = (text or "").strip()
     if not raw:
         if response_style == "faulttype_diag_fix":
@@ -155,6 +165,7 @@ def force_diag_fix_format(text: str, response_style: str) -> str:
 
 
 def classify_fault_text(text: str) -> str:
+    """Infer the canonical fault label from generated text."""
     m = re.search(r"faulttype:\s*([a-z_ \-]+)", (text or ""), flags=re.IGNORECASE)
     if m:
         label = normalize_fault_type_label(m.group(1))
@@ -191,6 +202,7 @@ FAULT_TYPE_ORDER = [
 
 
 def canonical_completion_for_fault(fault_type: str) -> str:
+    """Return the canonical diagnosis/fix wording for a known fault class."""
     templates = {
         "param_drift": (
             "Diagnosis: parameter drift in one or more components. "
@@ -228,6 +240,7 @@ def canonical_completion_for_fault(fault_type: str) -> str:
 
 
 def prerule_fault_type(input_text: str) -> str | None:
+    """Apply simple deterministic rules before invoking the LLM scorer."""
     text = (input_text or "").strip()
     if not text:
         return None
@@ -253,6 +266,7 @@ def prerule_fault_type(input_text: str) -> str | None:
 
 
 def parse_measurement_features(input_text: str) -> dict[str, float]:
+    """Parse numeric feature fields back out of an instruct-style input block."""
     text = (input_text or "").strip()
     if not text:
         return {}
@@ -321,6 +335,7 @@ def parse_measurement_features(input_text: str) -> dict[str, float]:
 
 
 def parse_lab_id(input_text: str) -> str | None:
+    """Extract a normalized lab identifier from an instruct-style input block."""
     text = (input_text or "").strip()
     if not text:
         return None
@@ -342,6 +357,7 @@ def parse_lab_id(input_text: str) -> str | None:
 
 
 def build_knn_index(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Build a simple dense KNN index from labeled instruct examples."""
     feats: list[dict[str, float]] = []
     classes: list[str] = []
     labs: list[str | None] = []
@@ -419,6 +435,7 @@ def knn_class_probs(
     standardize: bool,
     eps: float,
 ) -> dict[str, float]:
+    """Estimate class probabilities from nearest neighbors in feature space."""
     keys: list[str] = index.get("keys", [])
     vectors: list[list[float]] = index.get("vectors", [])
     zvectors: list[list[float]] = index.get("zvectors", [])
@@ -509,6 +526,7 @@ def knn_class_probs(
 
 
 def knn_penalties(probs: dict[str, float], alpha: float) -> dict[str, float]:
+    """Convert KNN class probabilities into additive negative-log penalties."""
     out: dict[str, float] = {}
     a = max(0.0, float(alpha))
     for c in FAULT_TYPE_ORDER:
@@ -518,6 +536,7 @@ def knn_penalties(probs: dict[str, float], alpha: float) -> dict[str, float]:
 
 
 def build_class_candidates(response_style: str) -> list[tuple[str, str]]:
+    """Construct the full candidate completions used for class scoring."""
     items: list[tuple[str, str]] = []
     for fault_type in FAULT_TYPE_ORDER:
         body = canonical_completion_for_fault(fault_type)
@@ -530,6 +549,7 @@ def build_class_candidates(response_style: str) -> list[tuple[str, str]]:
 
 
 def build_faulttype_only_candidates(response_style: str) -> list[tuple[str, str]]:
+    """Construct short candidates that contain only the class label."""
     items: list[tuple[str, str]] = []
     for fault_type in FAULT_TYPE_ORDER:
         if response_style == "faulttype_diag_fix":
@@ -549,6 +569,7 @@ def score_output_candidate(
     candidate_text: str,
     needs_token_type_ids: bool,
 ) -> float:
+    """Score one candidate completion by evaluating its language-model loss."""
     suffix = tokenizer.eos_token or ""
     candidate = (candidate_text or "").strip() + suffix
     cand_tok = tokenizer(candidate, add_special_tokens=False)
@@ -582,6 +603,7 @@ def predict_by_class_scoring(
     response_style: str,
     class_penalties: dict[str, float] | None = None,
 ) -> str:
+    """Choose the best full completion by scoring every class-specific candidate."""
     prompt_tok = tokenizer(prompt, add_special_tokens=False)
     prompt_ids = prompt_tok.get("input_ids", [])
     prompt_tti = prompt_tok.get("token_type_ids")
@@ -615,6 +637,7 @@ def predict_by_faulttype_scoring(
     prompt: str,
     response_style: str,
 ) -> str:
+    """Score only fault-type prefixes, then expand the winner to canonical text."""
     prompt_tok = tokenizer(prompt, add_special_tokens=False)
     prompt_ids = prompt_tok.get("input_ids", [])
     prompt_tti = prompt_tok.get("token_type_ids")
@@ -652,6 +675,7 @@ def predict_by_knn_only(
     standardize: bool,
     eps: float,
 ) -> str:
+    """Return the highest-probability class from KNN without invoking the LLM."""
     probs = knn_class_probs(
         index=knn_index,
         input_text=input_text,
@@ -673,6 +697,7 @@ def load_model(
     device: str,
     dtype: torch.dtype,
 ):
+    """Load either a base model alone or a base model plus LoRA adapter."""
     model_kwargs: dict[str, Any] = {"trust_remote_code": True}
     sig = inspect.signature(AutoModelForCausalLM.from_pretrained)
     if "dtype" in sig.parameters:
@@ -685,4 +710,3 @@ def load_model(
     model.eval()
     model.to(device)
     return model
-

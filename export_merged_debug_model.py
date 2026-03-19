@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Merge the debug LoRA adapter into a standalone base-model export."""
+
 from __future__ import annotations
 
 import argparse
@@ -19,6 +21,7 @@ except ModuleNotFoundError as e:
 
 
 def _resolve_dtype(dtype_name: str, *, auto_dtype: torch.dtype) -> torch.dtype:
+    """Map the CLI dtype choice onto the torch dtype used for loading."""
     mapping = {
         "float32": torch.float32,
         "float16": torch.float16,
@@ -30,6 +33,7 @@ def _resolve_dtype(dtype_name: str, *, auto_dtype: torch.dtype) -> torch.dtype:
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse CLI arguments for merged-model export."""
     parser = argparse.ArgumentParser(
         description="Merge the debug LoRA adapter into the base model and export a standalone model directory."
     )
@@ -69,6 +73,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    """Load the base model plus adapter, merge them, and write a standalone model directory."""
     args = parse_args()
     api_dir = Path(__file__).resolve().parent
     hybrid_assets_dir = api_dir / "assets_hybrid"

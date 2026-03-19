@@ -1,3 +1,5 @@
+"""Small terminal client for the FastAPI chat endpoints."""
+
 from __future__ import annotations
 
 import argparse
@@ -7,6 +9,7 @@ import requests
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse CLI arguments for one-shot or interactive chat use."""
     p = argparse.ArgumentParser(
         description="Interactive terminal client for POST /chat or POST /chat/{lab_number}."
     )
@@ -27,6 +30,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def _pretty(obj: object) -> str:
+    """Render arbitrary response payloads for terminal display."""
     try:
         return json.dumps(obj, indent=2)
     except Exception:
@@ -34,6 +38,7 @@ def _pretty(obj: object) -> str:
 
 
 def _prompt_lab_number() -> int | None:
+    """Prompt once for an optional lab number in interactive mode."""
     while True:
         try:
             raw = input("Lab number (press Enter to auto-detect): ").strip()
@@ -53,6 +58,7 @@ def _prompt_lab_number() -> int | None:
 
 
 def _ask(base_url: str, question: str, timeout: int, lab_number: int | None = None) -> tuple[bool, str]:
+    """Send one chat request and normalize success/error output for the CLI."""
     path = f"/chat/{lab_number}" if lab_number is not None else "/chat"
     r = requests.post(
         f"{base_url.rstrip('/')}{path}",
@@ -73,6 +79,7 @@ def _ask(base_url: str, question: str, timeout: int, lab_number: int | None = No
 
 
 def main() -> int:
+    """Run the terminal client until the user exits or an error occurs."""
     args = parse_args()
     base = args.base_url.rstrip("/")
     lab_number = args.lab_number

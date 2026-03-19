@@ -1,3 +1,5 @@
+"""Build the hybrid LLM+KNN assets consumed by the debug runtime."""
+
 from __future__ import annotations
 
 import argparse
@@ -31,6 +33,7 @@ DEFAULT_REPORT_GLOB = str(DEFAULT_REPO_OUTPUT_ROOT / "qwen15b*_report.json")
 
 
 def _metric_from_report(report_payload: dict, metric: str):
+    """Read a dotted metric path from a nested evaluation report payload."""
     value = report_payload
     for part in metric.split("."):
         if not isinstance(value, dict) or part not in value:
@@ -42,12 +45,14 @@ def _metric_from_report(report_payload: dict, metric: str):
 
 
 def _read_report_metric(path: Path, metric: str) -> float | None:
+    """Load one metric value from a JSON report file."""
     with path.open("r", encoding="utf-8") as f:
         payload = json.load(f)
     return _metric_from_report(payload, metric)
 
 
 def _find_report_paths(report_glob: str) -> list[Path]:
+    """Resolve either a concrete report path or a glob into matching report files."""
     p = Path(report_glob)
     if any(ch in report_glob for ch in ("*", "?", "[")):
         if p.is_absolute():
@@ -59,11 +64,13 @@ def _find_report_paths(report_glob: str) -> list[Path]:
 
 
 def _numeric_step_from_path(path: Path) -> int | None:
+    """Extract the numeric training step from a checkpoint directory name."""
     m = re.search(r"checkpoint-(\d+)$", path.as_posix())
     return int(m.group(1)) if m else None
 
 
 def _resolve_adapter_payload(adapter_root: Path) -> Path | None:
+    """Resolve an adapter root to the directory that actually contains LoRA payload files."""
     if not adapter_root.is_dir():
         return None
     direct = adapter_root / "adapter_config.json"
@@ -83,6 +90,7 @@ def _resolve_adapter_payload(adapter_root: Path) -> Path | None:
 
 
 def _iter_adapter_candidates(roots: list[Path]):
+    """Yield candidate adapter directories discovered under the provided roots."""
     for root in roots:
         if not root.exists():
             continue
@@ -101,6 +109,7 @@ def _iter_adapter_candidates(roots: list[Path]):
 
 
 def _name_similarity(target: str, candidate: str) -> tuple[int, int]:
+    """Score how similar two artifact names are for fuzzy report-to-adapter matching."""
     t = set(target.split("_"))
     c = set(candidate.split("_"))
     overlap = len(t.intersection(c))
@@ -114,6 +123,7 @@ def _select_best_report_adapter(
     candidate_roots: list[Path],
     metric: str,
 ) -> tuple[Path, Path, float] | None:
+    """Pick the best adapter by ranking discovered evaluation reports."""
     report_paths = _find_report_paths(report_glob)
     if not report_paths:
         return None
@@ -176,6 +186,7 @@ def _select_best_report_adapter(
 
 
 def _copy_adapter(src: Path, dst: Path) -> None:
+    """Copy an adapter directory into the packaged hybrid-assets location."""
     if src.resolve() == dst.resolve():
         return
     if dst.exists():
@@ -184,12 +195,14 @@ def _copy_adapter(src: Path, dst: Path) -> None:
 
 
 def _copy_file(src: Path, dst: Path) -> None:
+    """Copy a single file unless source and destination are the same."""
     if src.resolve() == dst.resolve():
         return
     shutil.copy2(src, dst)
 
 
 def _read_instruction_from_jsonl(path: Path) -> str:
+    """Read the instruction field from the first non-empty JSONL row."""
     with path.open("r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
@@ -201,6 +214,7 @@ def _read_instruction_from_jsonl(path: Path) -> str:
 
 
 def _portable_path_str(path: Path | None) -> str | None:
+    """Serialize a path into a stable string for config metadata."""
     if path is None:
         return None
     try:
@@ -210,6 +224,7 @@ def _portable_path_str(path: Path | None) -> str | None:
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse CLI arguments for hybrid asset generation."""
     p = argparse.ArgumentParser(description="Build LLM+KNN hybrid runtime assets for LLM")
     p.add_argument("--api-dir", type=Path, default=SCRIPT_DIR)
     p.add_argument("--model-name", type=str, default=DEFAULT_MODEL_NAME)
@@ -259,6 +274,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def _portable_path(path: Path, *, base: Path | None = None) -> str:
+    """Store paths in repo-relative POSIX form when possible."""
     p = Path(path)
     if base is not None:
         try:
@@ -269,6 +285,7 @@ def _portable_path(path: Path, *, base: Path | None = None) -> str:
 
 
 def main() -> int:
+    """Package the adapter, KNN reference data, index, and runtime config."""
     args = parse_args()
     api_dir = args.api_dir
     hybrid_dir = api_dir / "assets_hybrid"

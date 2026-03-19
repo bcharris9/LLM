@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Start the full Jetson backend stack: local chat server first, then FastAPI.
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${ROOT}"
 
@@ -33,6 +34,7 @@ chat_pid=""
 api_pid=""
 
 cleanup() {
+  # Shut down background services in reverse startup order.
   local exit_code=$?
   if [[ -n "${api_pid}" ]] && kill -0 "${api_pid}" 2>/dev/null; then
     kill "${api_pid}" 2>/dev/null || true
@@ -47,6 +49,7 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 ensure_docker_ready() {
+  # This runner depends on Docker because the local chat server is containerized.
   if ! sudo docker info >/dev/null 2>&1; then
     echo "Docker is not ready. Start the Docker daemon on the Jetson and retry." >&2
     return 1
@@ -54,6 +57,7 @@ ensure_docker_ready() {
 }
 
 ensure_chat_image() {
+  # Pull the image lazily so warm starts stay fast.
   if ! sudo docker image inspect "${VLLM_IMAGE}" >/dev/null 2>&1; then
     echo "Pulling chat server image: ${VLLM_IMAGE}"
     sudo docker pull "${VLLM_IMAGE}"
@@ -61,6 +65,7 @@ ensure_chat_image() {
 }
 
 wait_for_http() {
+  # Treat any HTTP response as readiness; downstream routes may legitimately return 4xx.
   local url="$1"
   local label="$2"
   local attempts="${3:-120}"

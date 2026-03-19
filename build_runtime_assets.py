@@ -1,3 +1,5 @@
+"""Build the tabular runtime assets consumed by the FastAPI service."""
+
 from __future__ import annotations
 
 import argparse
@@ -38,6 +40,7 @@ DEFAULT_TRAIN_FILES: list[str] = []
 
 
 def _portable_path(path: Path, *, base: Path | None = None) -> str:
+    """Store paths in a portable repo-relative form when possible."""
     p = Path(path)
     if base is not None:
         try:
@@ -48,6 +51,7 @@ def _portable_path(path: Path, *, base: Path | None = None) -> str:
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse CLI arguments for runtime asset generation."""
     p = argparse.ArgumentParser(description="Build runtime assets for LLM")
     p.add_argument("--api-dir", type=Path, default=SCRIPT_DIR)
     p.add_argument(
@@ -67,6 +71,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def _parse_instruct_row(row: dict) -> tuple[str, str, dict[str, float], dict[str, float]]:
+    """Extract circuit name, label, measured values, and golden values from one JSONL row."""
     import re
 
     text = row["input"]
@@ -79,6 +84,7 @@ def _parse_instruct_row(row: dict) -> tuple[str, str, dict[str, float], dict[str
     fault_type = fault_m.group(1).strip()
 
     def parse_line_map(header: str) -> dict[str, float]:
+        """Parse one semicolon-separated key/value line from an instruct example."""
         m = re.search(rf"^{header}:\s*(.+)$", text, re.M)
         out_map: dict[str, float] = {}
         if not m:
@@ -115,6 +121,7 @@ def _train_family_pair_models(
     train_files: list[Path],
     out_path: Path,
 ) -> int:
+    """Train per-family binary models for the missing-component vs pin-open split."""
     bundle = joblib.load(bundle_path)
     vectorizer = bundle["vectorizer"]
     report = dict(bundle.get("report") or {})
@@ -186,6 +193,7 @@ def _train_family_pair_models(
 
 
 def _collect_sorted_fault_classes(train_files: list[Path]) -> list[str]:
+    """Collect the distinct fault labels present in the instruct training files."""
     labels: set[str] = set()
     for path in train_files:
         for line in path.read_text(encoding="utf-8").splitlines():
@@ -198,6 +206,7 @@ def _collect_sorted_fault_classes(train_files: list[Path]) -> list[str]:
 
 
 def main() -> int:
+    """Copy or build all assets needed by the tabular debug runtime."""
     args = parse_args()
     api_dir = args.api_dir.resolve()
     source_bundle = args.source_bundle.resolve()

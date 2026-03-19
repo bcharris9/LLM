@@ -1,3 +1,5 @@
+"""Example client that exercises the catalog and debug endpoints."""
+
 from __future__ import annotations
 
 import argparse
@@ -8,6 +10,7 @@ import requests
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse CLI options for the demo debug client."""
     p = argparse.ArgumentParser(description="Example client for the Circuit Debug API")
     p.add_argument("--base-url", default="http://127.0.0.1:8000")
     p.add_argument("--circuit", default=None, help="Optional exact circuit name. If omitted, uses the first circuit.")
@@ -33,10 +36,12 @@ def parse_args() -> argparse.Namespace:
 
 
 def pretty(obj: Any) -> str:
+    """Pretty-print JSON payloads for terminal output."""
     return json.dumps(obj, indent=2)
 
 
 def main() -> int:
+    """Fetch a circuit, build a demo payload, and submit it to `/debug`."""
     args = parse_args()
     base = args.base_url.rstrip("/")
 

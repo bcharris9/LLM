@@ -1,3 +1,5 @@
+"""Tabular runtime and feature engineering for circuit fault classification."""
+
 from __future__ import annotations
 
 import json
@@ -49,6 +51,7 @@ FAULT_TEMPLATES: dict[str, dict[str, str]] = {
 
 
 def safe_measure_name(token: str) -> str:
+    """Normalize a raw measurement token into the key format used by training data."""
     # Match pipeline/generate_variants.py safe_measure_name()
     cleaned = re.sub(r"[^A-Za-z0-9_.$]", "_", token)
     if not cleaned:
@@ -59,23 +62,28 @@ def safe_measure_name(token: str) -> str:
 
 
 def measurement_key_for_node(node_name: str) -> str:
+    """Return the canonical measurement key for a node-voltage reading."""
     return f"v_{safe_measure_name(node_name)}_max".lower()
 
 
 def measurement_key_for_vsource_current(source_name: str) -> str:
+    """Return the canonical measurement key for a voltage-source current reading."""
     return f"i_{safe_measure_name(source_name)}_max".lower()
 
 
 def family_id(circuit_name: str) -> str:
+    """Collapse a circuit variant name down to its family identifier."""
     parts = circuit_name.split("_")
     return "_".join(parts[:-1]) if len(parts) > 1 else circuit_name
 
 
 def prefix_id(circuit_name: str) -> str:
+    """Return the top-level lab prefix from a circuit name."""
     return circuit_name.split("_")[0] if "_" in circuit_name else circuit_name
 
 
 def _strip_metric_key(key: str, prefix: str) -> str:
+    """Strip the metric prefix/suffix used in stored measurement keys."""
     low = key.lower()
     if not low.startswith(prefix) or not low.endswith("_max"):
         return key
@@ -83,6 +91,7 @@ def _strip_metric_key(key: str, prefix: str) -> str:
 
 
 def best_effort_display_from_voltage_key(key: str) -> str:
+    """Map a stored voltage measurement key back to a user-facing node label."""
     token = _strip_metric_key(key, "v_")
     if token.startswith("_"):
         token = "-" + token[1:]
@@ -90,6 +99,7 @@ def best_effort_display_from_voltage_key(key: str) -> str:
 
 
 def best_effort_display_from_current_key(key: str) -> str:
+    """Map a stored current measurement key back to a user-facing source label."""
     token = _strip_metric_key(key, "i_")
     if token.startswith("_"):
         token = "-" + token[1:]
@@ -97,6 +107,7 @@ def best_effort_display_from_current_key(key: str) -> str:
 
 
 def _numeric(value: Any) -> float | None:
+    """Return a finite float when the input can be treated as numeric."""
     if isinstance(value, bool):
         return 1.0 if value else 0.0
     if isinstance(value, (int, float)):
@@ -107,6 +118,7 @@ def _numeric(value: Any) -> float | None:
 
 
 def _agg_feature_block(out: dict[str, Any], prefix: str, values: list[float]) -> None:
+    """Append aggregate statistics for one measurement group into the feature dict."""
     if not values:
         out[prefix + "count"] = 0.0
         return
@@ -223,6 +235,8 @@ def build_feature_dict_from_measurements(
 
 @dataclass
 class DebugResult:
+    """Normalized debug response returned by both runtime implementations."""
+
     circuit_name: str
     fault_type: str
     confidence: float
@@ -236,6 +250,7 @@ class DebugResult:
     top_candidates: list[dict[str, float]]
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize the result to the API response shape."""
         return {
             "circuit_name": self.circuit_name,
             "fault_type": self.fault_type,
@@ -256,6 +271,8 @@ class DebugResult:
 
 
 class CircuitDebugRuntime:
+    """Load the tabular model bundle and run circuit fault inference."""
+
     def __init__(
         self,
         model_bundle_path: str | Path,
@@ -264,6 +281,7 @@ class CircuitDebugRuntime:
         family_pair_models_path: str | Path | None = None,
         config_path: str | Path | None = None,
     ) -> None:
+        """Load model artifacts, catalog metadata, and optional pairwise family models."""
         self.model_bundle_path = Path(model_bundle_path)
         self.circuit_catalog_path = Path(circuit_catalog_path)
         self.family_pair_models_path = Path(family_pair_models_path) if family_pair_models_path else None
@@ -301,12 +319,15 @@ class CircuitDebugRuntime:
             self.class_names = [str(x) for x in raw_classes]
 
     def list_circuits(self) -> list[str]:
+        """Return the available circuit names in sorted order."""
         return sorted(self.catalog.keys())
 
     def has_circuit(self, circuit_name: str) -> bool:
+        """Check whether a circuit exists in the packaged catalog."""
         return circuit_name in self.catalog
 
     def circuit_spec(self, circuit_name: str) -> dict[str, Any]:
+        """Return a copy of the stored spec for one circuit."""
         return dict(self.catalog[circuit_name])
 
     def _normalize_measurements_from_request(
@@ -317,6 +338,7 @@ class CircuitDebugRuntime:
         temp: float | None,
         tnom: float | None,
     ) -> tuple[dict[str, float], list[str], list[str]]:
+        """Convert API request payloads into the feature-keyed measurement mapping."""
         measured: dict[str, float] = {}
         used_v_keys: list[str] = []
         used_i_keys: list[str] = []
@@ -361,6 +383,7 @@ class CircuitDebugRuntime:
         tnom: float | None = None,
         strict: bool = True,
     ) -> DebugResult:
+        """Score one circuit against the tabular model stack and return the best diagnosis."""
         if circuit_name not in self.catalog:
             raise KeyError(f"Unknown circuit: {circuit_name}")
 
@@ -398,6 +421,7 @@ class CircuitDebugRuntime:
         final_conf = float(proba[base_idx])
 
         if base_pred in PAIR_MC_PO:
+            # Resolve the ambiguous missing-component vs pin-open split with the dedicated binary model.
             pair_prob = float(np.asarray(self.pair_model.predict_proba(X))[0, 1])  # P(pin_open)
             fam = family_id(circuit_name)
             fam_model = self.family_pair_models.get(fam)
@@ -428,6 +452,7 @@ class CircuitDebugRuntime:
 
 
 def build_circuit_catalog(golden_root: str | Path) -> dict[str, Any]:
+    """Build the circuit catalog by scanning packaged golden measurement files."""
     root = Path(golden_root)
     circuits: dict[str, Any] = {}
 

@@ -18,6 +18,7 @@ from typing import Any
 
 
 def post_json(url: str, payload: dict[str, Any], timeout: int = 10) -> tuple[int, Any]:
+    """POST a JSON payload and return either decoded JSON or the raw response body."""
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         url=url,
@@ -38,6 +39,7 @@ def post_json(url: str, payload: dict[str, Any], timeout: int = 10) -> tuple[int
 
 
 def get_json(url: str, timeout: int = 10) -> tuple[int, Any]:
+    """GET a JSON endpoint and return the decoded response when possible."""
     req = urllib.request.Request(url=url, method="GET")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -52,6 +54,7 @@ def get_json(url: str, timeout: int = 10) -> tuple[int, Any]:
 
 
 def main() -> int:
+    """Run a small contract test against the live `/chat` endpoint."""
     parser = argparse.ArgumentParser(description="Test /chat endpoint behavior on server.py")
     parser.add_argument("--base-url", default="http://127.0.0.1:8000", help="Base URL where server.py is running.")
     parser.add_argument(

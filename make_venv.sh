@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Create or reuse a project-local virtual environment and install Python dependencies.
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
 
 VENV_DIR="${1:-.venv312}"
 
 pick_python() {
+  # Prefer Python 3.12 when available, then fall back gracefully.
   if command -v python3.12 >/dev/null 2>&1; then
     echo "python3.12"
     return 0

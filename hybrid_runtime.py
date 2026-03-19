@@ -1,3 +1,5 @@
+"""Hybrid debug runtime that combines prompt scoring with a lightweight KNN prior."""
+
 from __future__ import annotations
 
 import inspect
@@ -30,6 +32,7 @@ except ModuleNotFoundError as e:
 
 
 def _format_measurement_value(value: object) -> str:
+    """Format one measurement value for inclusion in the model prompt."""
     if isinstance(value, bool):
         return str(value)
     if isinstance(value, int):
@@ -40,6 +43,7 @@ def _format_measurement_value(value: object) -> str:
 
 
 def _metric_suffix_priority(key: str, stat_mode: str) -> tuple[int, bool]:
+    """Rank measurement suffixes and decide whether a key is allowed in the prompt."""
     low = key.lower()
     if low.endswith("_max"):
         suffix_rank = 0
@@ -59,6 +63,7 @@ def _metric_suffix_priority(key: str, stat_mode: str) -> tuple[int, bool]:
 
 
 def _measurement_group_priority(key: str, prefer_voltage_keys: bool) -> int:
+    """Prefer voltage or current features depending on the configured prompt strategy."""
     low = key.lower()
     if low.startswith("v_"):
         return 0 if prefer_voltage_keys else 1
@@ -78,6 +83,7 @@ def _ordered_measurement_keys(
     stat_mode: str,
     prefer_voltage_keys: bool,
 ) -> list[str]:
+    """Choose the subset of measurement keys that should appear in the prompt."""
     ranked: list[tuple[tuple[int, int, str], str]] = []
     for key in measurements.keys():
         low = str(key).lower()
@@ -100,6 +106,7 @@ def _compact_measurements(
     stat_mode: str,
     prefer_voltage_keys: bool,
 ) -> str:
+    """Serialize measured values into the compact semicolon-separated prompt format."""
     if not measurements:
         return "none"
     keys = _ordered_measurement_keys(
@@ -118,6 +125,7 @@ def _compact_deltas(
     stat_mode: str,
     prefer_voltage_keys: bool,
 ) -> str:
+    """Serialize deltas versus golden values into the prompt format used by training."""
     if not measurements or not golden:
         return "none"
     keys = _ordered_measurement_keys(
@@ -133,6 +141,7 @@ def _compact_deltas(
 
 
 def _parse_diag_fix(text: str) -> tuple[str, str]:
+    """Extract diagnosis and fix strings from a normalized model response."""
     raw = (text or "").strip()
     if not raw:
         return "unknown fault", "inspect wiring and component values"
@@ -200,6 +209,7 @@ class CircuitDebugHybridRuntime:
         hybrid_assets_dir: str | Path,
         auto_build_catalog_from: str | Path | None = None,
     ) -> None:
+        """Load hybrid config, packaged catalog data, and lazy model handles."""
         self.catalog_path = Path(catalog_path)
         self.hybrid_assets_dir = Path(hybrid_assets_dir)
         self.api_dir = self.hybrid_assets_dir.parent
@@ -232,20 +242,25 @@ class CircuitDebugHybridRuntime:
         self.pair_threshold = 0.0
 
     def list_circuits(self) -> list[str]:
+        """Return the available circuit names in sorted order."""
         return sorted(self.catalog.keys())
 
     def has_circuit(self, circuit_name: str) -> bool:
+        """Check whether a circuit exists in the packaged catalog."""
         return circuit_name in self.catalog
 
     def circuit_spec(self, circuit_name: str) -> dict[str, Any]:
+        """Return a copy of the stored spec for one circuit."""
         return dict(self.catalog[circuit_name])
 
     def _load_eval_module(self):
+        """Lazy-load the shared helper module used for prompt and KNN scoring."""
         if self._eval_mod is None:
             self._eval_mod = helpers
         return self._eval_mod
 
     def _ensure_knn_index(self) -> dict[str, Any]:
+        """Load or build the cached KNN index used as a prior during class scoring."""
         if self._knn_index_loaded and self._knn_index is not None:
             return self._knn_index
         mod = self._load_eval_module()
@@ -264,12 +279,14 @@ class CircuitDebugHybridRuntime:
         return self._knn_index or {}
 
     def _ensure_model(self) -> None:
+        """Load the tokenizer and either the merged model or base+adapter pair."""
         if self._model is not None and self._tokenizer is not None:
             return
         mod = self._load_eval_module()
         self._device, self._dtype = mod.choose_device()
         merged_model_dir_raw = os.environ.get("CIRCUIT_DEBUG_MERGED_MODEL_DIR", "").strip()
         if merged_model_dir_raw:
+            # A merged export avoids loading PEFT layers at runtime on constrained devices.
             model_path = _resolve_config_path(
                 merged_model_dir_raw,
                 hybrid_assets_dir=self.hybrid_assets_dir,
@@ -313,6 +330,7 @@ class CircuitDebugHybridRuntime:
         tnom: float | None,
         spec: dict[str, Any],
     ) -> tuple[dict[str, Any], list[str], list[str]]:
+        """Translate API request values into the measurement mapping expected by the prompt."""
         measured: dict[str, Any] = {}
         used_v_keys: list[str] = []
         used_i_keys: list[str] = []
@@ -346,6 +364,7 @@ class CircuitDebugHybridRuntime:
         measured: dict[str, Any],
         golden: dict[str, Any],
     ) -> str:
+        """Build the instruct-style input block used for hybrid model inference."""
         cfg = self.config
         voltage_only = bool(cfg.get("voltage_only", False))
         stat_mode = str(cfg.get("measurement_stat_mode", "max_only"))
@@ -382,6 +401,7 @@ class CircuitDebugHybridRuntime:
         return "\n".join(lines)
 
     def _score_class_candidates_with_knn(self, prompt: str, input_text: str) -> tuple[str, float, list[dict[str, float]]]:
+        """Score every class candidate with LM loss plus a KNN-derived penalty."""
         mod = self._load_eval_module()
         self._ensure_model()
         knn_index = self._ensure_knn_index()
@@ -447,6 +467,7 @@ class CircuitDebugHybridRuntime:
         tnom: float | None = None,
         strict: bool = True,
     ) -> DebugResult:
+        """Run the hybrid inference path and return a normalized debug result."""
         if circuit_name not in self.catalog:
             raise KeyError(f"Unknown circuit: {circuit_name}")
         spec = self.catalog[circuit_name]
@@ -487,6 +508,7 @@ class CircuitDebugHybridRuntime:
             pre_class = None
 
         if pre_class:
+            # The prerule path is reserved for signatures that are effectively deterministic.
             body = mod.canonical_completion_for_fault(pre_class)
             pred_text = f"FaultType: {pre_class}\n{body}" if response_style == "faulttype_diag_fix" else body
             confidence = 1.0

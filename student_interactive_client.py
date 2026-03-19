@@ -1,3 +1,5 @@
+"""Interactive student-oriented client for guided debug submissions."""
+
 from __future__ import annotations
 
 import argparse
@@ -9,6 +11,7 @@ import requests
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse CLI flags for the interactive student workflow."""
     p = argparse.ArgumentParser(
         description=(
             "Interactive student client for Circuit Debug API. "
@@ -43,10 +46,12 @@ def parse_args() -> argparse.Namespace:
 
 
 def pretty(obj: Any) -> str:
+    """Pretty-print JSON payloads for terminal output."""
     return json.dumps(obj, indent=2)
 
 
 def fetch_json(url: str, timeout: int = 30) -> dict[str, Any]:
+    """Fetch a JSON object and validate that the response shape is a mapping."""
     r = requests.get(url, timeout=timeout)
     r.raise_for_status()
     data = r.json()
@@ -56,6 +61,7 @@ def fetch_json(url: str, timeout: int = 30) -> dict[str, Any]:
 
 
 def choose_circuit(base: str, preselected: str | None) -> tuple[str, list[str]]:
+    """Let the user choose a circuit, grouped by lab, unless one is preselected."""
     circuits_doc = fetch_json(f"{base}/circuits")
     circuits = circuits_doc.get("circuits", [])
     if not isinstance(circuits, list) or not circuits:
@@ -67,12 +73,14 @@ def choose_circuit(base: str, preselected: str | None) -> tuple[str, list[str]]:
         return preselected, circuits
 
     def lab_key(name: str) -> str:
+        """Group circuit names by their leading lab prefix for selection menus."""
         m = re.match(r"(?i)^(lab\d+)", name.strip())
         if m:
             return f"Lab{m.group(1)[3:]}"
         return "Other"
 
     def lab_sort_key(lab: str) -> tuple[int, str]:
+        """Sort numbered labs first in numeric order, then any other buckets."""
         m = re.match(r"^Lab(\d+)$", lab)
         if m:
             return (0, f"{int(m.group(1)):04d}")
@@ -139,6 +147,7 @@ def choose_circuit(base: str, preselected: str | None) -> tuple[str, list[str]]:
 
 
 def _parse_float_input(raw: str) -> float:
+    """Parse a single numeric terminal input."""
     return float(raw.strip())
 
 
@@ -150,6 +159,7 @@ def prompt_measurements(
     show_golden: bool,
     allow_skip: bool,
 ) -> dict[str, float]:
+    """Prompt for a sequence of node voltages or source currents."""
     values: dict[str, float] = {}
     if not items:
         return values
@@ -194,6 +204,7 @@ def prompt_measurements(
 
 
 def print_node_checklist(nodes_doc: dict[str, Any]) -> None:
+    """Display the circuit's required node and optional source-current checklist."""
     circuit_name = nodes_doc.get("circuit_name", "<unknown>")
     print(f"\nSelected circuit: {circuit_name}")
     print(f"Required nodes: {nodes_doc.get('node_count', 0)}")
@@ -213,6 +224,7 @@ def print_node_checklist(nodes_doc: dict[str, Any]) -> None:
 
 
 def main() -> int:
+    """Drive the end-to-end interactive student submission flow."""
     args = parse_args()
     base = args.base_url.rstrip("/")
 
