@@ -1,78 +1,88 @@
 from __future__ import annotations
 
-import hashlib
+import inspect
 import json
+import hashlib
 import math
 import os
 import re
-import subprocess
-import sys
+from collections import Counter, defaultdict
+from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
+from threading import Lock
 from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-try:
-    from dotenv import load_dotenv
-except ModuleNotFoundError:
-    def load_dotenv(*args, **kwargs):  # type: ignore[no-redef]
-        return False
-
-try:
-    from langchain_ollama import OllamaLLM, OllamaEmbeddings
-except ModuleNotFoundError:
-    OllamaLLM = None  # type: ignore[assignment]
-    OllamaEmbeddings = None  # type: ignore[assignment]
-
-try:
-    from supabase import Client, create_client
-except ModuleNotFoundError:
-    Client = Any  # type: ignore[misc,assignment]
-
-    def create_client(*args, **kwargs):  # type: ignore[no-redef]
-        raise RuntimeError("supabase package not installed")
+from dotenv import load_dotenv
+from langchain_ollama import OllamaEmbeddings
+from supabase import Client, create_client
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 load_dotenv()
 SUPABASE_URL = "https://mvyumvpmzcrrcwcppcea.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12eXVtdnBtemNycmN3Y3BwY2VhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2Njk2MDQsImV4cCI6MjA3NzI0NTYwNH0.WfjqQowIt9lxKPdnWSGEOP_u7MKmetWgIPFOASuzeBw"
 
-supabase: Optional[Client] = None
-llm: Optional[OllamaLLM] = None
-embedder: Optional[OllamaEmbeddings] = None
-conversation_history: list[dict[str, str]] = []
+API_DIR = Path(__file__).resolve().parent
+ASSETS_DIR = API_DIR / "assets"
+HYBRID_ASSETS_DIR = API_DIR / "assets_hybrid"
 
-CONTEXT_MATCH_THRESHOLD = float(os.getenv("LAB_MATCH_THRESHOLD", "0.58"))
-SECOND_PASS_THRESHOLD = float(os.getenv("LAB_SECOND_PASS_THRESHOLD", "0.48"))
-CONTEXT_MATCH_COUNT = int(os.getenv("LAB_MATCH_COUNT", "30"))
-CONTEXT_FINAL_K = int(os.getenv("LAB_FINAL_K", "10"))
-CONTEXT_SECTION_LIMIT = int(os.getenv("LAB_SECTION_LIMIT", "4"))
-CONTEXT_SCORE_TOLERANCE = float(os.getenv("LAB_SCORE_TOLERANCE", "0.08"))
+
+def _default_chat_model_name() -> str:
+    configured_base_model = os.getenv("CIRCUIT_DEBUG_BASE_MODEL")
+    if configured_base_model:
+        return configured_base_model
+
+    hybrid_cfg = HYBRID_ASSETS_DIR / "hybrid_config.json"
+    if hybrid_cfg.exists():
+        try:
+            cfg = json.loads(hybrid_cfg.read_text(encoding="utf-8"))
+        except Exception:
+            cfg = {}
+        model_name = cfg.get("model_name")
+        if model_name:
+            return str(model_name)
+    return "Qwen/Qwen2.5-1.5B-Instruct"
+
+supabase: Optional[Client] = None
+embedder: Optional[OllamaEmbeddings] = None
+chat_llm: Any | None = None
+chat_tokenizer: Any | None = None
+chat_device: str | None = None
+chat_model_lock = Lock()
+conversation_history: dict[str, list[dict[str, str]]] = {}
+
+CONTEXT_MATCH_THRESHOLD = float(os.getenv("LAB_MATCH_THRESHOLD", "0.45"))
+SECOND_PASS_THRESHOLD = float(os.getenv("LAB_SECOND_PASS_THRESHOLD", "0.32"))
+CONTEXT_MATCH_COUNT = int(os.getenv("LAB_MATCH_COUNT", "40"))
+CONTEXT_FINAL_K = int(os.getenv("LAB_FINAL_K", "8"))
+CONTEXT_SECTION_LIMIT = int(os.getenv("LAB_SECTION_LIMIT", "3"))
+CONTEXT_SCORE_TOLERANCE = float(os.getenv("LAB_SCORE_TOLERANCE", "0.12"))
+CONTEXT_MIN_SCORE = float(os.getenv("LAB_MIN_CONTEXT_SCORE", "0.18"))
 CONTEXT_MAX_CHARS = int(os.getenv("LAB_CONTEXT_MAX_CHARS", "1800"))
-MANUAL_VERSION = os.getenv("LAB_MANUAL_VERSION")
+CONTEXT_ANCHOR_COUNT = int(os.getenv("LAB_ANCHOR_COUNT", "3"))
+CONTEXT_NEIGHBOR_WINDOW = int(os.getenv("LAB_NEIGHBOR_WINDOW", "1"))
+CONTEXT_NEIGHBOR_BONUS = float(os.getenv("LAB_NEIGHBOR_BONUS", "0.06"))
+MANUAL_VERSION = os.getenv("LAB_MANUAL_VERSION", "v2")
+EMBED_MODEL = os.getenv("LAB_EMBED_MODEL", "mxbai-embed-large")
+CHAT_LLM_MODEL = os.getenv("LAB_CHAT_MODEL", _default_chat_model_name())
+CHAT_MAX_NEW_TOKENS = int(os.getenv("LAB_CHAT_MAX_NEW_TOKENS", "256"))
 BM25_K1 = float(os.getenv("LAB_BM25_K1", "1.2"))
 BM25_B = float(os.getenv("LAB_BM25_B", "0.75"))
+MAX_CHAT_LAB_NUMBER = int(os.getenv("LAB_MAX_NUMBER", "9"))
 
 try:
-    if SUPABASE_KEY and OllamaLLM is not None and OllamaEmbeddings is not None:
+    if SUPABASE_KEY:
         supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-        llm = OllamaLLM(model="gpt-oss:120b-cloud")
-        embedder = OllamaEmbeddings(model="mxbai-embed-large")
+        embedder = OllamaEmbeddings(model=EMBED_MODEL)
     else:
-        print("WARNING: chat dependencies not fully available; /chat will return 503.")
+        print("WARNING: SUPABASE_KEY missing; /chat retrieval will return 503.")
 except Exception as e:  # pragma: no cover - startup diagnostics only
     print(f"Startup Error: {e}")
 
-
-from hybrid_runtime import CircuitDebugHybridRuntime  # type: ignore[no-redef]
-from runtime import CircuitDebugRuntime  # type: ignore[no-redef]
-
-API_DIR = Path(__file__).resolve().parent
-ASSETS_DIR = API_DIR / "assets"
-HYBRID_DIR = API_DIR / "assets_hybrid"
-HYBRID_CONFIG_PATH = HYBRID_DIR / "hybrid_config.json"
-PACKAGED_GOLDEN_ROOT = API_DIR / "packaged_golden_root"
 
 class DebugRequest(BaseModel):
     circuit_name: str = Field(..., description="Exact circuit name from GET /circuits")
@@ -90,7 +100,8 @@ class DebugRequest(BaseModel):
     )
     temp: float | None = Field(default=27.0, description="Temperature feature (degC).")
     tnom: float | None = Field(default=27.0, description="Nominal temperature feature (degC).")
-    strict: bool = Field(default=True, description="Fail if not all listed nodes are provided.")
+    strict: bool = Field(default=False, description="Fail if not all listed nodes are provided.")
+
 
 class HealthResponse(BaseModel):
     ok: bool
@@ -98,92 +109,25 @@ class HealthResponse(BaseModel):
     circuits: int
     family_pair_models: int
     pair_threshold: float
-    selected_model_report: str | None = None
-    selected_model_metric: str | None = None
-    selected_model_metric_value: float | None = None
-
-
-class ModelInfoResponse(BaseModel):
-    ok: bool
-    backend: str
-    adapter_dir: str | None = None
-    knn_ref_file: str | None = None
-    knn_index_file: str | None = None
-    model_name: str
-    selected_model_report: str | None = None
-    selected_model_metric: str | None = None
-    selected_model_metric_value: float | None = None
-
-
-def _load_hybrid_config() -> dict[str, Any] | None:
-    if not HYBRID_CONFIG_PATH.exists():
-        return None
-    return json.loads(HYBRID_CONFIG_PATH.read_text(encoding="utf-8"))
-
-
-def _refresh_hybrid_assets() -> None:
-    builder = API_DIR / "build_hybrid_assets.py"
-    if not builder.exists():
-        raise FileNotFoundError(f"Missing builder: {builder}")
-
-    cfg = _load_hybrid_config() or {}
-    bool_flags = {
-        "include-lab-id-in-prompt": cfg.get("include_lab_id_in_prompt", False),
-        "prefer-voltage-keys": cfg.get("prefer_voltage_keys", True),
-        "voltage-only": cfg.get("voltage_only", False),
-        "knn-weighted-vote": cfg.get("knn_weighted_vote", True),
-        "knn-standardize": cfg.get("knn_standardize", False),
-        "use-prerules": cfg.get("use_prerules", True),
-    }
-
-    cmd = [sys.executable, str(builder)]
-    if "measurement_stat_mode" in cfg:
-        cmd += ["--measurement-stat-mode", str(cfg["measurement_stat_mode"])]
-    if "response_style" in cfg:
-        cmd += ["--response-style", str(cfg["response_style"])]
-    if "knn_k" in cfg:
-        cmd += ["--knn-k", str(int(cfg["knn_k"]))]
-    if "knn_alpha" in cfg:
-        cmd += ["--knn-alpha", str(float(cfg["knn_alpha"]))]
-    if "knn_eps" in cfg:
-        cmd += ["--knn-eps", str(float(cfg["knn_eps"]))]
-    if "knn_weighted_vote" in cfg:
-        cmd += ["--knn-weighted-vote" if bool_flags["knn-weighted-vote"] else "--no-knn-weighted-vote"]
-    if "knn_standardize" in cfg:
-        cmd += ["--knn-standardize" if bool_flags["knn-standardize"] else "--no-knn-standardize"]
-    if "use_prerules" in cfg:
-        cmd += ["--use-prerules" if bool_flags["use-prerules"] else "--no-use-prerules"]
-    if "include_lab_id_in_prompt" in cfg:
-        cmd += [
-            "--include-lab-id-in-prompt"
-            if bool_flags["include-lab-id-in-prompt"]
-            else "--no-include-lab-id-in-prompt"
-        ]
-    if "prefer_voltage_keys" in cfg:
-        cmd += [
-            "--prefer-voltage-keys"
-            if bool_flags["prefer-voltage-keys"]
-            else "--no-prefer-voltage-keys"
-        ]
-    if "voltage_only" in cfg:
-        cmd += ["--voltage-only" if bool_flags["voltage-only"] else "--no-voltage-only"]
-    if "max_measurements" in cfg:
-        cmd += ["--max-measurements", str(int(cfg["max_measurements"]))]
-    if "max_deltas" in cfg:
-        cmd += ["--max-deltas", str(int(cfg["max_deltas"]))]
-
-    subprocess.run(cmd, check=True, cwd=str(API_DIR.parent), capture_output=True, text=True)
 
 
 @lru_cache(maxsize=1)
 def get_runtime() -> Any:
-    hybrid_dir = HYBRID_DIR
-    hybrid_cfg = HYBRID_CONFIG_PATH
+    try:
+        from hybrid_runtime import CircuitDebugHybridRuntime  # type: ignore[import-not-found]
+        from runtime import CircuitDebugRuntime  # type: ignore[import-not-found]
+    except ImportError as e:
+        raise RuntimeError(
+            "Circuit debug runtime modules are not available in this workspace."
+        ) from e
+
+    hybrid_dir = API_DIR / "assets_hybrid"
+    hybrid_cfg = hybrid_dir / "hybrid_config.json"
     if hybrid_cfg.exists():
         return CircuitDebugHybridRuntime(
             catalog_path=ASSETS_DIR / "circuit_catalog.json",
             hybrid_assets_dir=hybrid_dir,
-            auto_build_catalog_from=PACKAGED_GOLDEN_ROOT if PACKAGED_GOLDEN_ROOT.exists() else None,
+            auto_build_catalog_from=Path("pipeline/out_one_lab_all_v2_train"),
         )
     return CircuitDebugRuntime(
         model_bundle_path=ASSETS_DIR / "model_bundle.joblib",
@@ -202,197 +146,946 @@ app = FastAPI(
     ),
 )
 
+
 class ChatRequest(BaseModel):
     question: str
+    lab_number: int | None = None
 
 
-def _require_supabase():
+def _require_supabase() -> None:
     if not supabase:
         raise HTTPException(status_code=503, detail="Supabase client not initialized; set SUPABASE_KEY.")
 
 
-def _require_llm():
-    if not llm:
-        raise HTTPException(status_code=503, detail="LLM client not initialized.")
+def _choose_chat_device() -> tuple[str, torch.dtype]:
+    if torch.cuda.is_available():
+        if torch.cuda.is_bf16_supported():
+            return "cuda", torch.bfloat16
+        return "cuda", torch.float16
+    return "cpu", torch.float32
 
 
-STOPWORDS = {"the", "a", "an", "of", "and", "or", "to", "for", "with", "in", "on", "at", "by", "from"}
+def _ensure_chat_llm() -> tuple[Any, Any, str]:
+    global chat_llm, chat_tokenizer, chat_device
+
+    if chat_llm is not None and chat_tokenizer is not None and chat_device is not None:
+        return chat_llm, chat_tokenizer, chat_device
+
+    with chat_model_lock:
+        if chat_llm is not None and chat_tokenizer is not None and chat_device is not None:
+            return chat_llm, chat_tokenizer, chat_device
+
+        device, dtype = _choose_chat_device()
+        model_kwargs: dict[str, Any] = {"trust_remote_code": True}
+        sig = inspect.signature(AutoModelForCausalLM.from_pretrained)
+        if "dtype" in sig.parameters:
+            model_kwargs["dtype"] = dtype
+        else:
+            model_kwargs["torch_dtype"] = dtype
+
+        tokenizer = AutoTokenizer.from_pretrained(CHAT_LLM_MODEL, use_fast=True, trust_remote_code=True)
+        if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token or tokenizer.unk_token
+
+        model = AutoModelForCausalLM.from_pretrained(CHAT_LLM_MODEL, **model_kwargs)
+        model.eval()
+        model.to(device)
+
+        chat_llm = model
+        chat_tokenizer = tokenizer
+        chat_device = device
+        return chat_llm, chat_tokenizer, chat_device
 
 
-def _normalize_lab_filter(query: str) -> Optional[str]:
-    match = re.search(r"lab\s*0?(\d+)", query, re.IGNORECASE)
-    return f"Lab {match.group(1)}" if match else None
+def _require_llm() -> None:
+    try:
+        _ensure_chat_llm()
+    except HTTPException:
+        raise
+    except Exception as e:
+        _raise_http_chat_model_error(e, CHAT_LLM_MODEL, "chat")
 
 
-def _tokenize(text: str) -> set[str]:
-    return {t for t in re.findall(r"[a-z0-9]{2,}", text.lower()) if t not in STOPWORDS}
+def _raise_http_embedding_model_error(error: Exception, model_name: str, role: str) -> None:
+    message = str(error)
+    if "not found" in message.lower() and model_name in message:
+        raise HTTPException(
+            status_code=503,
+            detail=f'Ollama {role} model "{model_name}" is not installed. Run: ollama pull {model_name}',
+        ) from error
+    raise error
+
+
+def _raise_http_chat_model_error(error: Exception, model_name: str, role: str) -> None:
+    raise HTTPException(
+        status_code=503,
+        detail=f'Hugging Face {role} model "{model_name}" could not be loaded or invoked: {error}',
+    ) from error
+
+
+def _invoke_chat_llm(prompt: str) -> str:
+    model, tokenizer, device = _ensure_chat_llm()
+    prompt = prompt.strip()
+    if hasattr(tokenizer, "apply_chat_template"):
+        rendered_prompt = tokenizer.apply_chat_template(
+            [{"role": "user", "content": prompt}],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+    else:
+        rendered_prompt = prompt
+
+    encoded = tokenizer(rendered_prompt, return_tensors="pt")
+    inputs = {key: value.to(device) for key, value in encoded.items()}
+    prompt_tokens = inputs["input_ids"].shape[1]
+
+    with torch.inference_mode():
+        output_ids = model.generate(
+            **inputs,
+            max_new_tokens=CHAT_MAX_NEW_TOKENS,
+            do_sample=False,
+            pad_token_id=tokenizer.pad_token_id,
+            eos_token_id=tokenizer.eos_token_id,
+        )
+
+    generated_ids = output_ids[0][prompt_tokens:]
+    if generated_ids.numel() == 0:
+        return ""
+    return tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
+
+
+STOPWORDS = {
+    "the",
+    "a",
+    "an",
+    "of",
+    "and",
+    "or",
+    "to",
+    "for",
+    "with",
+    "in",
+    "on",
+    "at",
+    "by",
+    "from",
+    "is",
+    "are",
+    "was",
+    "were",
+    "be",
+    "been",
+    "being",
+    "what",
+    "which",
+    "when",
+    "where",
+    "who",
+    "why",
+    "how",
+    "does",
+    "do",
+    "did",
+    "can",
+    "could",
+    "should",
+    "would",
+    "lab",
+    "manual",
+}
+TOKEN_PATTERN = re.compile(r"[a-z][a-z0-9]{1,}|\d+[a-z]?", re.IGNORECASE)
+LAB_NUMBER_PATTERN = re.compile(r"\blab\s*[-_#:]*\s*(\d{1,2})\b", re.IGNORECASE)
+REFERENCE_PATTERNS = [
+    re.compile(r"\btask\s*#?\s*\d+[a-z]?\b", re.IGNORECASE),
+    re.compile(r"\bfigure\.?\s*\d+(?:\s*\.\s*\d+)*(?:[a-z](?![a-z]))?(?=[^0-9]|$)", re.IGNORECASE),
+    re.compile(r"\btable\.?\s*\d+(?:\s*\.\s*\d+)*(?:[a-z](?![a-z]))?(?=[^0-9]|$)", re.IGNORECASE),
+    re.compile(r"\bappendix\s*[a-z0-9]+\b", re.IGNORECASE),
+    re.compile(r"\beq(?:uation)?\.?\s*\(?\d+(?:\s*\.\s*\d+)*\)?(?:[a-z](?![a-z]))?(?=[^0-9]|$)", re.IGNORECASE),
+]
+SECTION_QUERY_TERMS = {
+    "goal",
+    "objective",
+    "theory",
+    "introduction",
+    "background",
+    "pre-lab",
+    "prelab",
+    "procedure",
+    "task",
+    "table",
+    "result",
+    "analysis",
+    "discussion",
+    "question",
+    "report",
+    "deliverable",
+    "checkoff",
+    "conclusion",
+    "appendix",
+    "equipment",
+    "materials",
+}
+
+SECTION_NORMALIZATIONS = [
+    (r"\bgoals?\b|\bobjectives?\b|\baim\b|\bpurpose\b", "Goals"),
+    (r"\bpre[- ]?lab\b", "Pre-Lab"),
+    (r"\btheory\b.*\bintroduction\b|\bintroduction\b.*\btheory\b", "Theory and Introduction"),
+    (r"\btheory\b", "Theory"),
+    (r"\bintroduction\b", "Introduction"),
+    (r"\bbackground\b", "Background"),
+    (r"\bparts used\b|\bmaterials?\b|\bequipment\b|\bparts needed\b|\bparts list\b", "Materials / Parts"),
+    (r"\bprocedure\b", "Procedure"),
+    (r"\btables?\b.*\bresults?\b|\bdata tables?\b|\bresults?\b", "Results"),
+    (r"\banalysis\b", "Analysis"),
+    (r"\bdiscussion\b", "Discussion"),
+    (r"\bquestions?\b", "Questions"),
+    (r"\breport\b", "Report"),
+    (r"\bdeliverables?\b", "Deliverables"),
+    (r"\bcheck[- ]?off\b", "Checkoff"),
+    (r"\bconclusion\b", "Conclusion"),
+]
+
+INTENT_DEFINITIONS: dict[str, dict[str, Any]] = {
+    "objective": {
+        "triggers": ("objective", "goal", "goals", "purpose", "aim"),
+        "aliases": ("goals", "goal", "objective", "objectives", "theory and introduction", "introduction"),
+        "prefer_early_pages": True,
+    },
+    "materials": {
+        "triggers": ("materials", "material", "equipment", "parts", "components", "supplies"),
+        "aliases": ("materials / parts", "materials", "equipment", "parts used", "parts list", "parts"),
+        "prefer_early_pages": True,
+    },
+    "prelab": {
+        "triggers": ("pre-lab", "prelab", "pre lab"),
+        "aliases": ("pre-lab", "prelab"),
+        "prefer_early_pages": True,
+    },
+    "theory": {
+        "triggers": ("theory", "background", "introduction"),
+        "aliases": ("theory and introduction", "theory", "background", "introduction"),
+        "prefer_early_pages": True,
+    },
+    "procedure": {
+        "triggers": ("procedure", "steps", "instructions"),
+        "aliases": ("procedure",),
+        "prefer_early_pages": False,
+    },
+    "results": {
+        "triggers": ("results", "result", "data table", "data tables"),
+        "aliases": ("results", "table"),
+        "prefer_early_pages": False,
+    },
+    "analysis": {
+        "triggers": ("analysis", "analyze", "calculation", "calculations"),
+        "aliases": ("analysis", "results"),
+        "prefer_early_pages": False,
+    },
+    "questions": {
+        "triggers": ("questions", "question"),
+        "aliases": ("questions",),
+        "prefer_early_pages": False,
+    },
+    "report": {
+        "triggers": ("report",),
+        "aliases": ("report",),
+        "prefer_early_pages": False,
+    },
+    "discussion": {
+        "triggers": ("discussion", "discuss", "comment", "comments"),
+        "aliases": ("discussion",),
+        "prefer_early_pages": False,
+    },
+    "deliverable": {
+        "triggers": ("deliverable", "deliverables"),
+        "aliases": ("deliverables",),
+        "prefer_early_pages": False,
+    },
+    "checkoff": {
+        "triggers": ("checkoff", "check-off", "check off"),
+        "aliases": ("checkoff",),
+        "prefer_early_pages": False,
+    },
+    "conclusion": {
+        "triggers": ("conclusion",),
+        "aliases": ("conclusion",),
+        "prefer_early_pages": False,
+    },
+}
+
+
+@dataclass(frozen=True)
+class QueryProfile:
+    intent_names: tuple[str, ...]
+    section_aliases: tuple[str, ...]
+    reference_terms: tuple[str, ...]
+    task_numbers: tuple[str, ...]
+    broad_section_query: bool
+
+
+def _format_lab_name(lab_number: int | str) -> str:
+    return f"Lab {int(str(lab_number))}"
+
+
+def _extract_lab_number(text: str) -> int | None:
+    match = LAB_NUMBER_PATTERN.search(text)
+    if not match:
+        return None
+    try:
+        lab_number = int(match.group(1))
+    except (TypeError, ValueError):
+        return None
+    return lab_number if lab_number > 0 else None
 
 
 def _tokenize_list(text: str) -> list[str]:
-    return [t for t in re.findall(r"[a-z0-9]{2,}", text.lower()) if t not in STOPWORDS]
+    tokens: list[str] = []
+    for match in TOKEN_PATTERN.finditer(text.lower()):
+        token = match.group(0).lower()
+        if token in STOPWORDS:
+            continue
+        tokens.append(token)
+    return tokens
+
+
+def _tokenize(text: str) -> set[str]:
+    return set(_tokenize_list(text))
+
+
+def _extract_reference_terms(text: str) -> set[str]:
+    normalized = re.sub(r"\s+", " ", text.lower())
+    refs: set[str] = set()
+    for pattern in REFERENCE_PATTERNS:
+        for match in pattern.finditer(normalized):
+            refs.add(re.sub(r"\s+", " ", match.group(0)).strip())
+    return refs
+
+
+def _extract_section_terms(text: str) -> set[str]:
+    normalized = text.lower()
+    return {term for term in SECTION_QUERY_TERMS if term in normalized}
+
+
+def _normalize_section_label(label: str | None) -> str:
+    if not label:
+        return "General"
+    cleaned = re.sub(r"\s+", " ", label).strip(" :-")
+    normalized = cleaned.lower()
+
+    task_match = re.search(r"task\s*#?\s*(\d+)[\s:-]*([^\n\.]+)?", cleaned, re.IGNORECASE)
+    if task_match:
+        title = (task_match.group(2) or "").strip(" :-#")
+        return f"Task {task_match.group(1)}" + (f": {title}" if title else "")
+
+    for pattern, canonical in SECTION_NORMALIZATIONS:
+        if re.search(pattern, normalized):
+            return canonical
+
+    if normalized.startswith(("figure ", "table ", "appendix ")):
+        return cleaned
+
+    return cleaned or "General"
+
+
+def _is_reference_heavy_section(section_label: str, heading_label: str) -> bool:
+    section_lower = section_label.lower()
+    heading_lower = heading_label.lower()
+    return section_lower.startswith(("figure ", "table ")) or heading_lower.startswith(("figure ", "table "))
+
+
+def _build_query_profile(query: str) -> QueryProfile:
+    normalized = query.lower()
+    intent_names: list[str] = []
+    section_aliases: set[str] = set(_extract_section_terms(query))
+
+    for intent_name, config in INTENT_DEFINITIONS.items():
+        if any(trigger in normalized for trigger in config["triggers"]):
+            intent_names.append(intent_name)
+            section_aliases.update(config["aliases"])
+
+    task_numbers = sorted(set(re.findall(r"\btask\s*#?\s*(\d+)\b", normalized)))
+    reference_terms = sorted(_extract_reference_terms(query))
+    broad_section_query = bool(intent_names) and not task_numbers and not reference_terms
+
+    return QueryProfile(
+        intent_names=tuple(intent_names),
+        section_aliases=tuple(sorted(section_aliases)),
+        reference_terms=tuple(reference_terms),
+        task_numbers=tuple(task_numbers),
+        broad_section_query=broad_section_query,
+    )
+
+
+def _build_row_search_text(row: dict[str, Any]) -> str:
+    normalized_section = _normalize_section_label(str(row.get("section_name") or ""))
+    normalized_heading = _normalize_section_label(str(row.get("heading") or ""))
+    parts = [
+        normalized_section,
+        normalized_heading,
+        str(row.get("section_name") or ""),
+        str(row.get("heading") or ""),
+        str(row.get("content") or ""),
+    ]
+    return "\n".join(part for part in parts if part).strip()
+
+
+def _row_identity(row: dict[str, Any]) -> str:
+    if row.get("id"):
+        return str(row["id"])
+    content = str(row.get("content") or "")
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()
 
 
 def _bm25_score(
     query_tokens: list[str],
-    doc_tokens: list[str],
+    doc_token_counts: Counter[str],
+    doc_length: int,
     avg_dl: float,
-    df_counts: dict[str, int],
+    df_counts: Counter[str],
     n_docs: int,
 ) -> float:
+    if not query_tokens or not n_docs:
+        return 0.0
+
     score = 0.0
-    dl = len(doc_tokens) or 1
+    safe_avg_dl = avg_dl or 1.0
     for term in query_tokens:
-        f = doc_tokens.count(term)
-        if f == 0:
+        frequency = doc_token_counts.get(term, 0)
+        if frequency == 0:
             continue
         df = df_counts.get(term, 0)
         idf = math.log((n_docs - df + 0.5) / (df + 0.5) + 1)
-        denom = f + BM25_K1 * (1 - BM25_B + BM25_B * dl / avg_dl)
-        score += idf * (f * (BM25_K1 + 1) / denom)
+        denom = frequency + BM25_K1 * (1 - BM25_B + BM25_B * doc_length / safe_avg_dl)
+        score += idf * (frequency * (BM25_K1 + 1) / denom)
     return score
 
 
-def retrieve_context(query: str) -> list[str]:
-    if not embedder or not supabase:
+def _load_lab_rows(lab_name: str) -> list[dict[str, Any]]:
+    if not supabase:
         return []
 
-    lab_filter = _normalize_lab_filter(query)
-    vec = embedder.embed_query(query)
-    query_tokens = _tokenize(query)
+    def _select_rows(manual_version: Optional[str]) -> list[dict[str, Any]]:
+        query = (
+            supabase.table("lab_sections")
+            .select("id, lab_name, manual_version, section_name, heading, content, page_num, chunk_order, token_count")
+            .filter("lab_name", "ilike", f"%{lab_name}%")
+            .order("chunk_order")
+        )
+        if manual_version:
+            query = query.eq("manual_version", manual_version)
+        response = query.execute()
+        return response.data or []
 
-    def _call_match_rpc(
-        vector: list[float],
-        lab_filter_local: Optional[str],
-        manual_version: Optional[str],
-        threshold: float,
-        count: int,
-    ):
+    rows = _select_rows(MANUAL_VERSION)
+    if not rows and MANUAL_VERSION:
+        rows = _select_rows(None)
+    return [dict(row) for row in rows]
+
+
+def _vector_search_scores(query: str, lab_name: str, profile: QueryProfile) -> dict[str, float]:
+    if not embedder or not supabase:
+        return {}
+
+    search_parts = [f"Question about the {lab_name} manual.", f"Question: {query}"]
+    if profile.section_aliases:
+        search_parts.append("Relevant section types: " + ", ".join(profile.section_aliases))
+    if profile.task_numbers:
+        search_parts.append("Referenced tasks: " + ", ".join(profile.task_numbers))
+    search_query = "\n".join(search_parts)
+    try:
+        vector = embedder.embed_query(search_query)
+    except Exception as e:
+        _raise_http_embedding_model_error(e, EMBED_MODEL, "embedding")
+
+    def _call_match_rpc(manual_version: Optional[str], threshold: float):
         payload = {
             "query_embedding": vector,
             "match_threshold": threshold,
-            "match_count": count,
-            "filter_lab_name": lab_filter_local,
+            "match_count": CONTEXT_MATCH_COUNT,
+            "filter_lab_name": lab_name,
             "filter_manual_version": manual_version,
         }
         return supabase.rpc("match_lab_manuals", payload).execute()
 
-    rows: list[dict] = []
-    if lab_filter:
-        res = _call_match_rpc(vec, lab_filter, MANUAL_VERSION, CONTEXT_MATCH_THRESHOLD, CONTEXT_MATCH_COUNT)
-        rows = res.data or []
-    if len(rows) < 6:
-        res = _call_match_rpc(vec, None, MANUAL_VERSION, CONTEXT_MATCH_THRESHOLD, CONTEXT_MATCH_COUNT)
-        rows = (rows or []) + (res.data or [])
-    if not rows and SECOND_PASS_THRESHOLD < CONTEXT_MATCH_THRESHOLD:
-        res = _call_match_rpc(vec, None, MANUAL_VERSION, SECOND_PASS_THRESHOLD, CONTEXT_MATCH_COUNT)
-        rows = res.data or []
-    if not rows and MANUAL_VERSION:
-        res = _call_match_rpc(vec, lab_filter, None, CONTEXT_MATCH_THRESHOLD, CONTEXT_MATCH_COUNT)
-        rows = res.data or []
-        if not rows and SECOND_PASS_THRESHOLD < CONTEXT_MATCH_THRESHOLD:
-            res = _call_match_rpc(vec, lab_filter, None, SECOND_PASS_THRESHOLD, CONTEXT_MATCH_COUNT)
-            rows = res.data or []
-    if not rows:
+    scores: dict[str, float] = {}
+    manual_versions = [MANUAL_VERSION] if MANUAL_VERSION else [None]
+    if MANUAL_VERSION:
+        manual_versions.append(None)
+
+    thresholds = [CONTEXT_MATCH_THRESHOLD]
+    if SECOND_PASS_THRESHOLD < CONTEXT_MATCH_THRESHOLD:
+        thresholds.append(SECOND_PASS_THRESHOLD)
+
+    for manual_version in manual_versions:
+        for threshold in thresholds:
+            response = _call_match_rpc(manual_version, threshold)
+            for row in response.data or []:
+                identity = _row_identity(row)
+                score = float(row.get("similarity", row.get("score", 0.0)) or 0.0)
+                if score > scores.get(identity, 0.0):
+                    scores[identity] = score
+            if len(scores) >= max(CONTEXT_FINAL_K * 2, 6):
+                return scores
+
+    return scores
+
+
+def _score_lab_rows(
+    query: str,
+    lab_rows: list[dict[str, Any]],
+    vector_scores: dict[str, float],
+    profile: QueryProfile,
+) -> list[dict[str, Any]]:
+    query_tokens = _tokenize_list(query)
+    query_token_set = set(query_tokens)
+    query_references = set(profile.reference_terms)
+    query_sections = set(profile.section_aliases)
+
+    prepared_rows: list[dict[str, Any]] = []
+    df_counts: Counter[str] = Counter()
+    total_doc_length = 0
+    section_first_orders: dict[str, int] = {}
+
+    for row in lab_rows:
+        row_copy = dict(row)
+        section_display = _normalize_section_label(str(row_copy.get("section_name") or ""))
+        heading_raw = str(row_copy.get("heading") or "").strip()
+        heading_display = heading_raw or section_display
+        if _normalize_section_label(heading_display) == section_display:
+            heading_display = section_display
+
+        search_text = _build_row_search_text(row_copy)
+        doc_tokens = _tokenize_list(search_text)
+        token_counts = Counter(doc_tokens)
+        doc_length = len(doc_tokens) or 1
+        section_key = section_display.lower()
+        chunk_order = row_copy.get("chunk_order")
+        if isinstance(chunk_order, int):
+            existing = section_first_orders.get(section_key)
+            if existing is None or chunk_order < existing:
+                section_first_orders[section_key] = chunk_order
+
+        prepared_rows.append(
+            {
+                "row": row_copy,
+                "search_text": search_text,
+                "token_counts": token_counts,
+                "doc_length": doc_length,
+                "section_display": section_display,
+                "heading_display": heading_display,
+                "section_key": section_key,
+            }
+        )
+        total_doc_length += doc_length
+        df_counts.update(token_counts.keys())
+
+    if not prepared_rows:
         return []
 
-    score_key = "similarity" if "similarity" in rows[0] else ("score" if "score" in rows[0] else None)
-    seen_hashes = set()
-    reranked = []
-    doc_tokens_list = []
+    avg_dl = total_doc_length / len(prepared_rows)
+    query_terms = sorted(query_token_set)
+    max_bm25 = 0.0
+    exact_reference_available = bool(query_references) and any(
+        any(reference in item["search_text"].lower() for reference in query_references)
+        for item in prepared_rows
+    )
 
-    for r in rows:
-        content = (r.get("content") or "").strip()
-        if not content:
-            continue
-        sig = hashlib.sha256(content.encode("utf-8")).hexdigest()
-        if sig in seen_hashes:
-            continue
-        seen_hashes.add(sig)
-        base_score = float(r.get(score_key, 0.0)) if score_key else 0.0
-        overlap = len(query_tokens & _tokenize(content))
-        bonus = 0.02 * overlap
-        lab_bonus = 0.05 if (lab_filter and r.get("lab_name") and lab_filter.lower() in str(r.get("lab_name", "")).lower()) else 0.0
-        section = (r.get("section_name") or "").lower()
-        heading = (r.get("heading") or "").lower()
-        text_lower = query.lower()
-        figure_bonus = 0.0
-        for tok in re.findall(r"figure\s*\d+", text_lower):
-            if tok in heading:
-                figure_bonus = 0.06
-                break
-        task_bonus = 0.05 if ("task" in text_lower and "task" in section) else 0.0
-        page_num = r.get("page_num")
-        position_bonus = 0.0
-        if isinstance(page_num, int):
-            position_bonus = max(0.0, 0.03 - 0.002 * page_num)
-        r["_combined_score"] = base_score + bonus + lab_bonus + position_bonus + figure_bonus + task_bonus
-        doc_tokens = _tokenize_list(content)
-        doc_tokens_list.append(doc_tokens)
-        reranked.append(r)
+    for item in prepared_rows:
+        bm25 = _bm25_score(
+            query_tokens=query_terms,
+            doc_token_counts=item["token_counts"],
+            doc_length=item["doc_length"],
+            avg_dl=avg_dl,
+            df_counts=df_counts,
+            n_docs=len(prepared_rows),
+        )
+        item["bm25"] = bm25
+        if bm25 > max_bm25:
+            max_bm25 = bm25
 
-    if not reranked:
+    ranked_rows: list[dict[str, Any]] = []
+    for item in prepared_rows:
+        row = item["row"]
+        search_text_lower = item["search_text"].lower()
+        section_display = item["section_display"]
+        heading_display = item["heading_display"]
+        section_lower = section_display.lower()
+        heading_lower = heading_display.lower()
+        doc_terms = set(item["token_counts"].keys())
+        chunk_order = row.get("chunk_order")
+        page_num = row.get("page_num")
+        section_key = item["section_key"]
+        is_section_start = isinstance(chunk_order, int) and section_first_orders.get(section_key) == chunk_order
+        is_reference_section = _is_reference_heavy_section(section_display, heading_display)
+        has_exact_reference = any(reference in search_text_lower for reference in query_references)
+
+        overlap = len(query_token_set & doc_terms)
+        coverage = overlap / max(len(query_token_set), 1)
+        bm25_score = item["bm25"] / max_bm25 if max_bm25 else 0.0
+        vector_score = vector_scores.get(_row_identity(row), 0.0)
+        intent_bonus = 0.0
+        mismatch_penalty = 0.0
+
+        reference_bonus = 0.0
+        for reference in query_references:
+            if reference in heading_lower or reference in section_lower:
+                reference_bonus += 0.2
+            else:
+                ref_pos = search_text_lower.find(reference)
+                if 0 <= ref_pos < 120:
+                    reference_bonus += 0.12
+                elif 0 <= ref_pos < 320:
+                    reference_bonus += 0.07
+                elif ref_pos >= 0:
+                    reference_bonus += 0.03
+        if exact_reference_available:
+            if has_exact_reference:
+                reference_bonus += 0.1
+            elif query_references:
+                mismatch_penalty += 0.18
+        reference_bonus = min(reference_bonus, 0.28)
+
+        section_bonus = 0.0
+        for term in query_sections:
+            if term in heading_lower or term in section_lower:
+                section_bonus += 0.11
+            elif term in search_text_lower[:500]:
+                section_bonus += 0.03
+        section_bonus = min(section_bonus, 0.34)
+
+        heading_bonus = 0.0
+        if heading_lower:
+            heading_bonus += 0.02 * len(query_token_set & _tokenize(heading_lower))
+        if section_lower:
+            heading_bonus += 0.015 * len(query_token_set & _tokenize(section_lower))
+        heading_bonus = min(heading_bonus, 0.12)
+
+        for intent_name in profile.intent_names:
+            config = INTENT_DEFINITIONS[intent_name]
+            aliases = config["aliases"]
+            matched_intent = any(alias in section_lower or alias in heading_lower for alias in aliases)
+            if matched_intent:
+                intent_bonus += 0.12
+                if is_section_start:
+                    intent_bonus += 0.08
+                if config.get("prefer_early_pages") and isinstance(page_num, int):
+                    intent_bonus += max(0.0, 0.06 - 0.012 * max(page_num - 1, 0))
+            elif any(alias in search_text_lower[:300] for alias in aliases):
+                intent_bonus += 0.04
+
+        if profile.broad_section_query and is_section_start:
+            intent_bonus += 0.06
+
+        if profile.broad_section_query and not query_references:
+            if is_reference_section and not section_bonus:
+                mismatch_penalty += 0.14
+            if section_lower.startswith("task ") and "procedure" not in profile.intent_names:
+                mismatch_penalty += 0.08
+            if section_lower == "results" and any(
+                intent in profile.intent_names for intent in ("objective", "materials", "prelab")
+            ):
+                mismatch_penalty += 0.06
+
+        task_bonus = 0.0
+        for task_number in profile.task_numbers:
+            if f"task {task_number}" in section_lower or f"task {task_number}" in heading_lower:
+                task_bonus += 0.18
+
+        token_count = row.get("token_count")
+        if not isinstance(token_count, int):
+            token_count = len(doc_terms)
+        information_bonus = 0.0
+        if token_count >= 35:
+            information_bonus += 0.05
+        elif token_count >= 18:
+            information_bonus += 0.02
+        elif profile.broad_section_query:
+            mismatch_penalty += 0.08
+            if is_section_start:
+                mismatch_penalty += 0.04
+
+        row["_display_section_name"] = section_display
+        row["_display_heading"] = heading_display
+        row["_section_key"] = section_key
+        row["_section_start"] = is_section_start
+        row["_intent_match"] = section_bonus > 0 or intent_bonus > 0
+        row["_combined_score"] = (
+            0.52 * vector_score
+            + 0.22 * bm25_score
+            + 0.14 * coverage
+            + reference_bonus
+            + section_bonus
+            + heading_bonus
+            + intent_bonus
+            + task_bonus
+            + information_bonus
+            - mismatch_penalty
+        )
+        ranked_rows.append(row)
+
+    ranked_rows.sort(
+        key=lambda row: (
+            row.get("_combined_score", 0.0) + (0.04 if profile.broad_section_query and row.get("_section_start") else 0.0)
+        ),
+        reverse=True,
+    )
+    anchors = ranked_rows[:CONTEXT_ANCHOR_COUNT]
+    anchor_positions = [
+        (anchor.get("chunk_order"), str(anchor.get("section_name") or "").lower())
+        for anchor in anchors
+        if isinstance(anchor.get("chunk_order"), int)
+    ]
+    if anchor_positions:
+        for row in ranked_rows:
+            row_order = row.get("chunk_order")
+            row_section = str(row.get("section_name") or "").lower()
+            if not isinstance(row_order, int):
+                continue
+            if any(
+                row_section == anchor_section and 0 < abs(row_order - anchor_order) <= CONTEXT_NEIGHBOR_WINDOW
+                for anchor_order, anchor_section in anchor_positions
+            ):
+                row["_combined_score"] += CONTEXT_NEIGHBOR_BONUS
+
+    ranked_rows.sort(
+        key=lambda row: (
+            row.get("_combined_score", 0.0)
+            + (0.04 if profile.broad_section_query and row.get("_section_start") else 0.0)
+            + (0.03 if row.get("_intent_match") else 0.0)
+        ),
+        reverse=True,
+    )
+    return ranked_rows
+
+
+def _select_context_rows(ranked_rows: list[dict[str, Any]], profile: QueryProfile) -> list[dict[str, Any]]:
+    if not ranked_rows:
+        return []
+    if ranked_rows[0].get("_combined_score", 0.0) < CONTEXT_MIN_SCORE:
         return []
 
-    if doc_tokens_list:
-        avg_dl = sum(len(toks) for toks in doc_tokens_list) / len(doc_tokens_list)
-        df_counts = {}
-        for toks in doc_tokens_list:
-            for term in set(toks):
-                df_counts[term] = df_counts.get(term, 0) + 1
-        for r, toks in zip(reranked, doc_tokens_list):
-            bm25 = _bm25_score(sorted(query_tokens), toks, avg_dl, df_counts, len(doc_tokens_list))
-            r["_combined_score"] += 0.05 * bm25
+    selected: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    section_counts: defaultdict[str, int] = defaultdict(int)
+    best_score = ranked_rows[0].get("_combined_score", 0.0)
+    section_starts = {
+        str(row.get("_section_key") or row.get("section_name") or ""): row
+        for row in ranked_rows
+        if row.get("_section_start")
+    }
+    section_limit = 2 if profile.broad_section_query else CONTEXT_SECTION_LIMIT
 
-    reranked.sort(key=lambda x: x.get("_combined_score", 0), reverse=True)
-    best_candidate_score = reranked[0].get("_combined_score", 0)
+    for row in ranked_rows:
+        identity = _row_identity(row)
+        if identity in seen_ids:
+            continue
 
-    filtered = []
-    section_counts = {}
-    for r in reranked:
-        if r.get("_combined_score", 0) < (best_candidate_score - CONTEXT_SCORE_TOLERANCE):
+        score = row.get("_combined_score", 0.0)
+        if score <= 0:
             continue
-        key = (r.get("lab_name"), r.get("section_name"), r.get("page_num"))
-        section_counts.setdefault(key, 0)
-        if section_counts[key] >= CONTEXT_SECTION_LIMIT:
-            continue
-        section_counts[key] += 1
-        filtered.append(r)
-        if len(filtered) >= CONTEXT_FINAL_K:
+        if (
+            selected
+            and len(selected) >= min(4, CONTEXT_FINAL_K)
+            and score < (best_score - CONTEXT_SCORE_TOLERANCE)
+        ):
             break
 
-    filtered.sort(key=lambda x: (x.get("section_name", ""), x.get("page_num", 0)))
-    formatted = []
-    for r in filtered:
-        tag = f"{r.get('lab_name', 'Lab ?')} • {r.get('section_name', 'Section ?')} (p.{r.get('page_num', '?')})"
-        content = (r.get("content") or "").strip()
-        if len(content) > CONTEXT_MAX_CHARS:
-            content = content[:CONTEXT_MAX_CHARS] + "..."
-        formatted.append(f"[{tag}]\n{content}")
+        section_key = str(row.get("_section_key") or row.get("section_name") or row.get("page_num") or "general")
+        if (
+            profile.broad_section_query
+            and section_counts[section_key] == 0
+            and not row.get("_section_start")
+        ):
+            starter = section_starts.get(section_key)
+            if starter and starter.get("_combined_score", 0.0) >= score - 0.08:
+                continue
 
-    return formatted
+        if section_counts[section_key] >= section_limit:
+            continue
+
+        selected.append(row)
+        seen_ids.add(identity)
+        section_counts[section_key] += 1
+        if len(selected) >= CONTEXT_FINAL_K:
+            break
+
+    return selected
 
 
-@app.post("/chat/{lab_number}")
-def chat(request: ChatRequest):
+def _format_context_row(row: dict[str, Any]) -> str:
+    section = str(row.get("_display_section_name") or row.get("section_name") or "Section ?")
+    heading = str(row.get("_display_heading") or row.get("heading") or "").strip()
+    page_num = row.get("page_num")
+    tag_parts = [str(row.get("lab_name") or "Lab ?"), section]
+    if heading and heading.lower() != section.lower():
+        tag_parts.append(heading)
+    if page_num not in (None, ""):
+        tag_parts.append(f"p.{page_num}")
+
+    content = str(row.get("content") or "").strip()
+    if len(content) > CONTEXT_MAX_CHARS:
+        content = content[:CONTEXT_MAX_CHARS].rstrip() + "..."
+
+    return f"[{' | '.join(tag_parts)}]\n{content}"
+
+
+def _strip_answer_metadata(answer: str) -> str:
+    cleaned = re.sub(r"\[(?:Lab|Appendix)[^\]]+\]", "", answer)
+    cleaned = re.sub(r"[ \t]+\n", "\n", cleaned)
+    cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
+    cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
+    return cleaned.strip()
+
+
+def _reference_context_rows(
+    lab_rows: list[dict[str, Any]],
+    reference_terms: tuple[str, ...],
+) -> list[dict[str, Any]]:
+    if not reference_terms:
+        return []
+
+    scored_rows: list[dict[str, Any]] = []
+    for row in lab_rows:
+        search_text = _build_row_search_text(row)
+        search_text_lower = search_text.lower()
+        heading_lower = str(row.get("heading") or "").lower()
+        section_lower = str(row.get("section_name") or "").lower()
+
+        positions = [search_text_lower.find(reference) for reference in reference_terms if reference in search_text_lower]
+        if not positions:
+            continue
+
+        best_pos = min(positions)
+        score = 0.0
+        if any(reference in heading_lower or reference in section_lower for reference in reference_terms):
+            score += 2.0
+        if best_pos < 80:
+            score += 1.6
+        elif best_pos < 220:
+            score += 1.0
+        else:
+            score += 0.4
+
+        token_count = row.get("token_count")
+        if isinstance(token_count, int) and token_count >= 12:
+            score += 0.4
+        if _is_reference_heavy_section(str(row.get("section_name") or ""), str(row.get("heading") or "")):
+            score += 0.3
+
+        row_copy = dict(row)
+        row_copy["_display_section_name"] = _normalize_section_label(str(row.get("section_name") or ""))
+        row_copy["_display_heading"] = str(row.get("heading") or row_copy["_display_section_name"]).strip()
+        row_copy["_reference_score"] = score
+        scored_rows.append(row_copy)
+
+    if not scored_rows:
+        return []
+
+    scored_rows.sort(key=lambda row: row.get("_reference_score", 0.0), reverse=True)
+    best_score = scored_rows[0].get("_reference_score", 0.0)
+
+    selected: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for row in scored_rows:
+        if row.get("_reference_score", 0.0) < best_score - 0.45:
+            break
+        identity = _row_identity(row)
+        if identity in seen_ids:
+            continue
+        seen_ids.add(identity)
+        selected.append(row)
+        if len(selected) >= min(4, CONTEXT_FINAL_K):
+            break
+    return selected
+
+
+def retrieve_context(query: str, lab_number: int) -> list[str]:
+    return _retrieve_context_for_lab(query, lab_number)[1]
+
+
+def _retrieve_context_for_lab(query: str, lab_number: int) -> tuple[float, list[str]]:
+    if not embedder or not supabase:
+        return 0.0, []
+
+    lab_name = _format_lab_name(lab_number)
+    profile = _build_query_profile(query)
+    lab_rows = _load_lab_rows(lab_name)
+    if not lab_rows:
+        return 0.0, []
+
+    reference_rows = _reference_context_rows(lab_rows, profile.reference_terms)
+    if reference_rows:
+        return (
+            float(reference_rows[0].get("_reference_score", 0.0) or 0.0),
+            [_format_context_row(row) for row in reference_rows],
+        )
+
+    vector_scores = _vector_search_scores(query, lab_name, profile)
+    ranked_rows = _score_lab_rows(query, lab_rows, vector_scores, profile)
+    selected_rows = _select_context_rows(ranked_rows, profile)
+    if not selected_rows:
+        return 0.0, []
+    return (
+        float(selected_rows[0].get("_combined_score", 0.0) or 0.0),
+        [_format_context_row(row) for row in selected_rows],
+    )
+
+
+def _resolve_chat_lab(question: str, requested_lab_number: int | None) -> tuple[str | None, list[str]]:
+    inferred_lab_number = _extract_lab_number(question)
+
+    if requested_lab_number is not None:
+        return _format_lab_name(requested_lab_number), retrieve_context(question, requested_lab_number)
+
+    if inferred_lab_number is not None:
+        return _format_lab_name(inferred_lab_number), retrieve_context(question, inferred_lab_number)
+
+    best_lab_number: int | None = None
+    best_context: list[str] = []
+    best_score = 0.0
+
+    for candidate_lab_number in range(1, MAX_CHAT_LAB_NUMBER + 1):
+        score, context = _retrieve_context_for_lab(question, candidate_lab_number)
+        if not context:
+            continue
+        if best_lab_number is None or score > best_score:
+            best_lab_number = candidate_lab_number
+            best_context = context
+            best_score = score
+
+    if best_lab_number is None:
+        return None, []
+    return _format_lab_name(best_lab_number), best_context
+
+
+def _chat_response(request: ChatRequest, path_lab_number: int | None = None) -> dict[str, str]:
     _require_supabase()
-    _require_llm()
 
     question = request.question.strip()
     if not question:
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
 
-    context = retrieve_context(question)
+    if path_lab_number is not None and request.lab_number is not None and path_lab_number != request.lab_number:
+        raise HTTPException(status_code=400, detail="Conflicting lab numbers in path and request body.")
+
+    explicit_lab_number = path_lab_number if path_lab_number is not None else request.lab_number
+    lab_name, context = _resolve_chat_lab(question, explicit_lab_number)
     if not context:
         return {"answer": "I cannot find that information in the lab manual."}
 
-    history_txt = "\n".join([f"Q: {t.get('user','')}\nA: {t.get('ai','')}" for t in conversation_history[-2:]])
+    _require_llm()
+    assert lab_name is not None
+    lab_history = conversation_history.setdefault(lab_name, [])
+    history_txt = "\n".join(
+        [f"Q: {turn.get('user', '')}\nA: {turn.get('ai', '')}" for turn in lab_history[-2:]]
+    )
     context_txt = "\n---\n".join(context)
 
     prompt = f"""
-    You are a helpful electrical engineering lab assistant.
+    You are a helpful electrical engineering lab assistant for {lab_name}.
     Answer only using the facts explicitly stated in the context snippets below.
-    When you use a fact, cite its tag in brackets (e.g., [Lab 1 • Procedure (p.3)]).
-    Every sentence of your answer should include a citation to a provided snippet.
+    Be specific about required actions, component values, figures, tables, and deliverables; do not answer with vague labels alone.
+    Do not mention snippet tags, page numbers, metadata, or bracketed citations in the final answer.
     If the answer is not in the context, reply exactly: "I cannot find that information in the lab manual." Do NOT guess.
 
     Context (do not use outside knowledge):
@@ -400,81 +1093,35 @@ def chat(request: ChatRequest):
     {context_txt}
     ---
 
-    Recent conversation (for continuity, avoid repeating):
+    Recent conversation for the same lab (for continuity, avoid repeating):
     {history_txt}
 
     Question: {question}
     Answer:
     """
 
-    answer = llm.invoke(prompt)
-    conversation_history.append({"user": question, "ai": str(answer)})
-    return {"answer": str(answer)}
+    try:
+        answer = _invoke_chat_llm(prompt)
+    except Exception as e:
+        _raise_http_chat_model_error(e, CHAT_LLM_MODEL, "chat")
+    final_answer = _strip_answer_metadata(str(answer))
+    if not final_answer:
+        final_answer = "I cannot find that information in the lab manual."
+    lab_history.append({"user": question, "ai": final_answer})
+    if len(lab_history) > 6:
+        del lab_history[:-6]
+    return {"answer": final_answer}
 
 
-@app.get("/health", response_model=HealthResponse)
-def health() -> HealthResponse:
-    rt = get_runtime()
-    selected_report = None
-    selected_metric = None
-    selected_metric_value = None
-    if isinstance(rt, CircuitDebugHybridRuntime):
-        cfg = _load_hybrid_config()
-        if cfg:
-            selected_report = cfg.get("auto_selected_report")
-            selected_metric = cfg.get("auto_selected_metric")
-            selected_metric_value = cfg.get("auto_selected_metric_value")
-    backend = "llm_knn_hybrid" if rt.__class__.__name__.endswith("HybridRuntime") else "tabular_xgboost"
-    return HealthResponse(
-        ok=True,
-        backend=backend,
-        circuits=len(rt.list_circuits()),
-        family_pair_models=len(rt.family_pair_models),
-        pair_threshold=float(rt.pair_threshold),
-        selected_model_report=selected_report,
-        selected_model_metric=selected_metric,
-        selected_model_metric_value=selected_metric_value,
-    )
+@app.post("/chat")
+def chat(request: ChatRequest):
+    return _chat_response(request)
 
 
-@app.get("/model", response_model=ModelInfoResponse)
-def model() -> ModelInfoResponse:
-    rt = get_runtime()
-    backend = "llm_knn_hybrid" if rt.__class__.__name__.endswith("HybridRuntime") else "tabular_xgboost"
-    if backend != "llm_knn_hybrid":
-        return ModelInfoResponse(
-            ok=True,
-            backend=backend,
-            adapter_dir=None,
-            knn_ref_file=None,
-            knn_index_file=None,
-            model_name="N/A",
-        )
+@app.post("/chat/{lab_number}")
+def chat_for_lab(lab_number: int, request: ChatRequest):
+    return _chat_response(request, path_lab_number=lab_number)
 
-    cfg = _load_hybrid_config() or {}
-    effective_model_name = str(os.environ.get("CIRCUIT_DEBUG_BASE_MODEL", cfg.get("model_name", "Qwen/Qwen2.5-1.5B-Instruct")))
-    return ModelInfoResponse(
-        ok=True,
-        backend=backend,
-        adapter_dir=cfg.get("adapter_dir"),
-        knn_ref_file=cfg.get("knn_ref_file"),
-        knn_index_file=cfg.get("knn_index_file"),
-        model_name=effective_model_name,
-        selected_model_report=cfg.get("auto_selected_report"),
-        selected_model_metric=cfg.get("auto_selected_metric"),
-        selected_model_metric_value=cfg.get("auto_selected_metric_value"),
-    )
-
-
-@app.post("/admin/refresh-model", include_in_schema=True)
-def refresh_model() -> dict[str, Any]:
-    _refresh_hybrid_assets()
-    get_runtime.cache_clear()
-    return {
-        "ok": True,
-        "message": "Hybrid assets rebuilt using best report and runtime reloaded.",
-        "model": model().dict(),
-    }
 
 
 @app.get("/circuits")
@@ -530,6 +1177,7 @@ def root():
     return {
         "message": "SPICE Lab Assistant API is running",
         "routes": [
+            "/chat",
             "/chat/{lab_number}",
             "/circuits",
             "/circuits/{circuit_name}/nodes",

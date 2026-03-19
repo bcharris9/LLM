@@ -1,6 +1,6 @@
 {
   "catalog_version": 1,
-  "golden_root": "C:\\ft\\circuit_debug_api\\packaged_golden_root",
+  "golden_root": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root",
   "circuit_count": 102,
   "circuits": {
     "Lab1_1_0": {
@@ -38,8 +38,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_0"
       }
     },
     "Lab1_1_100": {
@@ -71,8 +71,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_100"
       }
     },
     "Lab1_1_1000": {
@@ -104,8 +104,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_1000"
       }
     },
     "Lab1_1_10000": {
@@ -137,8 +137,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_10000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_10000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_10000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_10000"
       }
     },
     "Lab1_1_100000": {
@@ -170,8 +170,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_100000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_1_100000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_100000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_1_100000"
       }
     },
     "Lab1_2A_2_0": {
@@ -209,8 +209,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_0"
       }
     },
     "Lab1_2A_2_100": {
@@ -248,8 +248,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_100"
       }
     },
     "Lab1_2A_2_1000": {
@@ -287,8 +287,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_1000"
       }
     },
     "Lab1_2A_2_10000": {
@@ -326,8 +326,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_10000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_10000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_10000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_10000"
       }
     },
     "Lab1_2A_2_100000": {
@@ -365,8 +365,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_100000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_2_100000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_100000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_2_100000"
       }
     },
     "Lab1_2A_5_0": {
@@ -404,8 +404,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_0"
       }
     },
     "Lab1_2A_5_100": {
@@ -443,8 +443,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_100"
       }
     },
     "Lab1_2A_5_1000": {
@@ -482,8 +482,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_1000"
       }
     },
     "Lab1_2A_5_10000": {
@@ -521,8 +521,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_10000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_10000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_10000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_10000"
       }
     },
     "Lab1_2A_5_100000": {
@@ -560,8 +560,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_100000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2A_5_100000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_100000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2A_5_100000"
       }
     },
     "Lab1_2B_2_0": {
@@ -599,8 +599,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_0"
       }
     },
     "Lab1_2B_2_100": {
@@ -638,8 +638,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_100"
       }
     },
     "Lab1_2B_2_1000": {
@@ -677,8 +677,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_1000"
       }
     },
     "Lab1_2B_2_10000": {
@@ -716,8 +716,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_10000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_10000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_10000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_10000"
       }
     },
     "Lab1_2B_2_100000": {
@@ -755,8 +755,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_100000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_2_100000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_100000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_2_100000"
       }
     },
     "Lab1_2B_5_0": {
@@ -794,8 +794,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_0"
       }
     },
     "Lab1_2B_5_100": {
@@ -833,8 +833,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_100"
       }
     },
     "Lab1_2B_5_1000": {
@@ -872,8 +872,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_1000"
       }
     },
     "Lab1_2B_5_10000": {
@@ -911,8 +911,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_10000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_10000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_10000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_10000"
       }
     },
     "Lab1_2B_5_100000": {
@@ -950,8 +950,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_100000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab1_2B_5_100000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_100000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab1_2B_5_100000"
       }
     },
     "Lab2_1_0": {
@@ -966,8 +966,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_0"
       }
     },
     "Lab2_1_100": {
@@ -999,8 +999,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_100"
       }
     },
     "Lab2_1_1000": {
@@ -1032,8 +1032,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_1000"
       }
     },
     "Lab2_1_200": {
@@ -1065,8 +1065,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_200\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_200"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_200\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_200"
       }
     },
     "Lab2_1_2000": {
@@ -1098,8 +1098,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_2000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_2000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_2000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_2000"
       }
     },
     "Lab2_1_333": {
@@ -1131,8 +1131,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_333\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_333"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_333\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_333"
       }
     },
     "Lab2_1_50": {
@@ -1164,8 +1164,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_50\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_50"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_50\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_50"
       }
     },
     "Lab2_1_500": {
@@ -1197,8 +1197,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_500\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_1_500"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_500\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_1_500"
       }
     },
     "Lab2_2A_0": {
@@ -1213,8 +1213,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_0"
       }
     },
     "Lab2_2A_100": {
@@ -1246,8 +1246,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_100"
       }
     },
     "Lab2_2A_1000": {
@@ -1279,8 +1279,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_1000"
       }
     },
     "Lab2_2A_200": {
@@ -1312,8 +1312,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_200\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_200"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_200\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_200"
       }
     },
     "Lab2_2A_2000": {
@@ -1345,8 +1345,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_2000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_2000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_2000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_2000"
       }
     },
     "Lab2_2A_333": {
@@ -1378,8 +1378,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_333\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_333"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_333\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_333"
       }
     },
     "Lab2_2A_50": {
@@ -1411,8 +1411,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_50\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_50"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_50\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_50"
       }
     },
     "Lab2_2A_500": {
@@ -1444,8 +1444,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_500\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2A_500"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_500\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2A_500"
       }
     },
     "Lab2_2B_0": {
@@ -1460,8 +1460,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_0\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_0"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_0\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_0"
       }
     },
     "Lab2_2B_100": {
@@ -1493,8 +1493,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_100"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_100"
       }
     },
     "Lab2_2B_1000": {
@@ -1526,8 +1526,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_1000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_1000"
       }
     },
     "Lab2_2B_200": {
@@ -1559,8 +1559,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_200\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_200"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_200\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_200"
       }
     },
     "Lab2_2B_2000": {
@@ -1592,8 +1592,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_2000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_2000"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_2000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_2000"
       }
     },
     "Lab2_2B_333": {
@@ -1625,8 +1625,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_333\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_333"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_333\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_333"
       }
     },
     "Lab2_2B_50": {
@@ -1658,8 +1658,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_50\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_50"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_50\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_50"
       }
     },
     "Lab2_2B_500": {
@@ -1691,8 +1691,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_500\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab2_2B_500"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_500\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab2_2B_500"
       }
     },
     "Lab3_1": {
@@ -1748,8 +1748,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_1"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_1"
       }
     },
     "Lab3_1_V1_only": {
@@ -1793,8 +1793,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_1_V1_only\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_1_V1_only"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_1_V1_only\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_1_V1_only"
       }
     },
     "Lab3_1_V2_only": {
@@ -1838,8 +1838,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_1_V2_only\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_1_V2_only"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_1_V2_only\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_1_V2_only"
       }
     },
     "Lab3_2": {
@@ -1901,8 +1901,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_2\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_2"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_2\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_2"
       }
     },
     "Lab3_2_V1_only": {
@@ -1952,8 +1952,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_2_V1_only\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_2_V1_only"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_2_V1_only\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_2_V1_only"
       }
     },
     "Lab3_2_V2_only": {
@@ -2003,2291 +2003,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_2_V2_only\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab3_2_V2_only"
-      }
-    },
-    "lab4_task1_part1_100": {
-      "circuit_name": "lab4_task1_part1_100",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VE",
-          "measurement_key": "v_ve_max",
-          "golden_value": 4.22223234177
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.0422223210335
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_ve_max": 4.22223234177,
-        "i_v1_max": -0.0422223210335
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_100\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_100"
-      }
-    },
-    "lab4_task1_part1_1000": {
-      "circuit_name": "lab4_task1_part1_1000",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VE",
-          "measurement_key": "v_ve_max",
-          "golden_value": 4.3467707634
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.00434677070007
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_ve_max": 4.3467707634,
-        "i_v1_max": -0.00434677070007
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_1000"
-      }
-    },
-    "lab4_task1_part1_200": {
-      "circuit_name": "lab4_task1_part1_200",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VE",
-          "measurement_key": "v_ve_max",
-          "golden_value": 4.26505470276
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.0213252734393
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_ve_max": 4.26505470276,
-        "i_v1_max": -0.0213252734393
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_200\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_200"
-      }
-    },
-    "lab4_task1_part1_300": {
-      "circuit_name": "lab4_task1_part1_300",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VE",
-          "measurement_key": "v_ve_max",
-          "golden_value": 4.28718948364
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.0142906326801
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_ve_max": 4.28718948364,
-        "i_v1_max": -0.0142906326801
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_300\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_300"
-      }
-    },
-    "lab4_task1_part1_500": {
-      "circuit_name": "lab4_task1_part1_500",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VE",
-          "measurement_key": "v_ve_max",
-          "golden_value": 4.31328010559
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.00862655695528
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_ve_max": 4.31328010559,
-        "i_v1_max": -0.00862655695528
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_500\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part1_500"
-      }
-    },
-    "lab4_task1_part2_1000": {
-      "circuit_name": "lab4_task1_part2_1000",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VD",
-          "measurement_key": "v_vd_max",
-          "golden_value": 2.52499989983e-06
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499998687e-09
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_vd_max": 2.52499989983e-06,
-        "i_v1_max": -2.52499998687e-09
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_1000"
-      }
-    },
-    "lab4_task1_part2_10000": {
-      "circuit_name": "lab4_task1_part2_10000",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VD",
-          "measurement_key": "v_vd_max",
-          "golden_value": 2.52499994531e-05
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499998687e-09
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_vd_max": 2.52499994531e-05,
-        "i_v1_max": -2.52499998687e-09
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_10000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_10000"
-      }
-    },
-    "lab4_task1_part2_100000": {
-      "circuit_name": "lab4_task1_part2_100000",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VD",
-          "measurement_key": "v_vd_max",
-          "golden_value": 0.000252499972703
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499976483e-09
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_vd_max": 0.000252499972703,
-        "i_v1_max": -2.52499976483e-09
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_100000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_100000"
-      }
-    },
-    "lab4_task1_part2_1500": {
-      "circuit_name": "lab4_task1_part2_1500",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VD",
-          "measurement_key": "v_vd_max",
-          "golden_value": 3.78749996344e-06
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499998687e-09
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_vd_max": 3.78749996344e-06,
-        "i_v1_max": -2.52499998687e-09
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_1500\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_1500"
-      }
-    },
-    "lab4_task1_part2_2000": {
-      "circuit_name": "lab4_task1_part2_2000",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VD",
-          "measurement_key": "v_vd_max",
-          "golden_value": 5.04999979967e-06
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499998687e-09
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_vd_max": 5.04999979967e-06,
-        "i_v1_max": -2.52499998687e-09
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_2000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_2000"
-      }
-    },
-    "lab4_task1_part2_3300": {
-      "circuit_name": "lab4_task1_part2_3300",
-      "nodes": [
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VD",
-          "measurement_key": "v_vd_max",
-          "golden_value": 8.33250032883e-06
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499998687e-09
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v_n001_max": 5.0,
-        "v_vd_max": 8.33250032883e-06,
-        "i_v1_max": -2.52499998687e-09
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_3300\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part2_3300"
-      }
-    },
-    "lab4_task1_part3_1000": {
-      "circuit_name": "lab4_task1_part3_1000",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.00100001029205
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 0.00109935319051
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499887665e-09
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00145110778976
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00145116820931
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.00100001029205,
-        "v_n002_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 0.00109935319051,
-        "i_v1_max": -2.52499887665e-09,
-        "i_v2_max": -0.00145110778976,
-        "i_v3_max": 0.00145116820931
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_1000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_1000"
-      }
-    },
-    "lab4_task1_part3_10000": {
-      "circuit_name": "lab4_task1_part3_10000",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.00100000575185
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 0.00199343496934
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499554598e-09
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00145110778976
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00145116820931
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.00100000575185,
-        "v_n002_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 0.00199343496934,
-        "i_v1_max": -2.52499554598e-09,
-        "i_v2_max": -0.00145110778976,
-        "i_v3_max": 0.00145116820931
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_10000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_10000"
-      }
-    },
-    "lab4_task1_part3_100000": {
-      "circuit_name": "lab4_task1_part3_100000",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.00099996116478
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 0.0109342373908
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52499865461e-09
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00145110778976
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00145116820931
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.00099996116478,
-        "v_n002_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 0.0109342373908,
-        "i_v1_max": -2.52499865461e-09,
-        "i_v2_max": -0.00145110778976,
-        "i_v3_max": 0.00145116820931
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_100000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_100000"
-      }
-    },
-    "lab4_task1_part3_1500": {
-      "circuit_name": "lab4_task1_part3_1500",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.00100001005922
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 0.00114902446512
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.524871201e-09
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00145110778976
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00145116820931
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.00100001005922,
-        "v_n002_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 0.00114902446512,
-        "i_v1_max": -2.524871201e-09,
-        "i_v2_max": -0.00145110778976,
-        "i_v3_max": 0.00145116820931
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_1500\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_1500"
-      }
-    },
-    "lab4_task1_part3_2000": {
-      "circuit_name": "lab4_task1_part3_2000",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.00100000970997
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 0.00119869562332
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52498688624e-09
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00145110778976
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00145116820931
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.00100000970997,
-        "v_n002_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 0.00119869562332,
-        "i_v1_max": -2.52498688624e-09,
-        "i_v2_max": -0.00145110778976,
-        "i_v3_max": 0.00145116820931
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_2000\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_2000"
-      }
-    },
-    "lab4_task1_part3_3300": {
-      "circuit_name": "lab4_task1_part3_3300",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.00100000924431
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 0.00132784096058
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -2.52498733033e-09
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00145110778976
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00145116820931
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.00100000924431,
-        "v_n002_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 0.00132784096058,
-        "i_v1_max": -2.52498733033e-09,
-        "i_v2_max": -0.00145110778976,
-        "i_v3_max": 0.00145116820931
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_3300\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task1_part3_3300"
-      }
-    },
-    "lab4_task2_part1_-1": {
-      "circuit_name": "lab4_task2_part1_-1",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.000989553751424
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": -1.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 2.00317239761
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 0.00100098957773
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00237846770324
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00137753610034
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.000989553751424,
-        "v_n002_max": -1.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 2.00317239761,
-        "i_v1_max": 0.00100098957773,
-        "i_v2_max": -0.00237846770324,
-        "i_v3_max": 0.00137753610034
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-1"
-      }
-    },
-    "lab4_task2_part1_-2": {
-      "circuit_name": "lab4_task2_part1_-2",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": -0.0384509861469
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": -2.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.88459038734
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 0.00196154904552
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00333687569946
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.0013755147811
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": -0.0384509861469,
-        "v_n002_max": -2.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.88459038734,
-        "i_v1_max": 0.00196154904552,
-        "i_v2_max": -0.00333687569946,
-        "i_v3_max": 0.0013755147811
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-2\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-2"
-      }
-    },
-    "lab4_task2_part1_-3": {
-      "circuit_name": "lab4_task2_part1_-3",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": -0.704515337944
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": -3.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.88367581367
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 0.00229548453353
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00366925518028
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00137531931978
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": -0.704515337944,
-        "v_n002_max": -3.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.88367581367,
-        "i_v1_max": 0.00229548453353,
-        "i_v2_max": -0.00366925518028,
-        "i_v3_max": 0.00137531931978
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-3\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-3"
-      }
-    },
-    "lab4_task2_part1_-4": {
-      "circuit_name": "lab4_task2_part1_-4",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": -1.37418472767
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": -4.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.87198901176
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 0.00262581533752
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00399813055992
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.0013752032537
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": -1.37418472767,
-        "v_n002_max": -4.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.87198901176,
-        "i_v1_max": 0.00262581533752,
-        "i_v2_max": -0.00399813055992,
-        "i_v3_max": 0.0013752032537
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-4\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-4"
-      }
-    },
-    "lab4_task2_part1_-5": {
-      "circuit_name": "lab4_task2_part1_-5",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": -2.04371976852
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.86070585251
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 0.00295628025196
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00432718452066
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00137513142545
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": -2.04371976852,
-        "v_n002_max": -5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.86070585251,
-        "i_v1_max": 0.00295628025196,
-        "i_v2_max": -0.00432718452066,
-        "i_v3_max": 0.00137513142545
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-5\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_-5"
-      }
-    },
-    "lab4_task2_part1_1": {
-      "circuit_name": "lab4_task2_part1_1",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.00101044541225
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 1.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -1.9967648983
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.000998989562504
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00137738732155
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00237643462606
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.00101044541225,
-        "v_n002_max": 1.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -1.9967648983,
-        "i_v1_max": -0.000998989562504,
-        "i_v2_max": -0.00137738732155,
-        "i_v3_max": 0.00237643462606
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_1"
-      }
-    },
-    "lab4_task2_part1_2": {
-      "circuit_name": "lab4_task2_part1_2",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.0386066064239
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 2.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -3.88372683525
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.00196139328182
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00130806060042
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00326938694343
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.0386066064239,
-        "v_n002_max": 2.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -3.88372683525,
-        "i_v1_max": -0.00196139328182,
-        "i_v2_max": -0.00130806060042,
-        "i_v3_max": 0.00326938694343
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_2\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_2"
-      }
-    },
-    "lab4_task2_part1_3": {
-      "circuit_name": "lab4_task2_part1_3",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 0.704381585121
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 3.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -3.88367819786
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.00229561841115
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00126680522226
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00356099475175
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 0.704381585121,
-        "v_n002_max": 3.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -3.88367819786,
-        "i_v1_max": -0.00229561841115,
-        "i_v2_max": -0.00126680522226,
-        "i_v3_max": 0.00356099475175
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_3\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_3"
-      }
-    },
-    "lab4_task2_part1_4": {
-      "circuit_name": "lab4_task2_part1_4",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 1.37405097485
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 4.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -3.87199115753
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.00262594898231
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00126668915618
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00388986989856
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 1.37405097485,
-        "v_n002_max": 4.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -3.87199115753,
-        "i_v1_max": -0.00262594898231,
-        "i_v2_max": -0.00126668915618,
-        "i_v3_max": 0.00388986989856
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_4\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_4"
-      }
-    },
-    "lab4_task2_part1_5": {
-      "circuit_name": "lab4_task2_part1_5",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 2.0435860157
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -3.86070799828
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -0.00295641389675
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00126661732793
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.0042189238593
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 2.0435860157,
-        "v_n002_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -3.86070799828,
-        "i_v1_max": -0.00295641389675,
-        "i_v2_max": -0.00126661732793,
-        "i_v3_max": 0.0042189238593
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_5\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part1_5"
-      }
-    },
-    "lab4_task2_part2_1": {
-      "circuit_name": "lab4_task2_part2_1",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 1.00090050697
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 0.999884307384
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 1.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.00290513039
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -5.78604435475e-08
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00237837922759
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.001377536566
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 1.00090050697,
-        "v_n002_max": 0.999884307384,
-        "v_n003_max": 1.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.00290513039,
-        "i_v1_max": -5.78604435475e-08,
-        "i_v2_max": -0.00237837922759,
-        "i_v3_max": 0.001377536566
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_1"
-      }
-    },
-    "lab4_task2_part2_2": {
-      "circuit_name": "lab4_task2_part2_2",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 1.30851972103
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 1.99696671963
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 2.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.92284536362
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -1.51663618908e-06
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00268345302902
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00137644994538
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 1.30851972103,
-        "v_n002_max": 1.99696671963,
-        "v_n003_max": 2.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.92284536362,
-        "i_v1_max": -1.51663618908e-06,
-        "i_v2_max": -0.00268345302902,
-        "i_v3_max": 0.00137644994538
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_2\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_2"
-      }
-    },
-    "lab4_task2_part2_3": {
-      "circuit_name": "lab4_task2_part2_3",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 1.30985569954
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 2.99298787117
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 3.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.9228746891
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -3.50600771526e-06
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00268280133605
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.0013764515752
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 1.30985569954,
-        "v_n002_max": 2.99298787117,
-        "v_n003_max": 3.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.9228746891,
-        "i_v1_max": -3.50600771526e-06,
-        "i_v2_max": -0.00268280133605,
-        "i_v3_max": 0.0013764515752
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_3\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_3"
-      }
-    },
-    "lab4_task2_part2_4": {
-      "circuit_name": "lab4_task2_part2_4",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 1.31119167805
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 3.98900914192
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 4.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.92290377617
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -5.49537935512e-06
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00268214964308
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00137645332143
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 1.31119167805,
-        "v_n002_max": 3.98900914192,
-        "v_n003_max": 4.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.92290377617,
-        "i_v1_max": -5.49537935512e-06,
-        "i_v2_max": -0.00268214964308,
-        "i_v3_max": 0.00137645332143
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_4\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_4"
-      }
-    },
-    "lab4_task2_part2_5": {
-      "circuit_name": "lab4_task2_part2_5",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 1.31252765656
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 4.98503065109
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": 3.92293286324
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -7.48475076762e-06
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00268149771728
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00137645495124
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 1.31252765656,
-        "v_n002_max": 4.98503065109,
-        "v_n003_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": 3.92293286324,
-        "i_v1_max": -7.48475076762e-06,
-        "i_v2_max": -0.00268149771728,
-        "i_v3_max": 0.00137645495124
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_5\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task2_part2_5"
-      }
-    },
-    "lab4_task3_1": {
-      "circuit_name": "lab4_task3_1",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 3.0
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 1.00004994869
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 1.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -4.98207187653
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 4.99696000134e-08
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.0012160326587
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.000215982741793
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 3.0,
-        "v_n002_max": 1.00004994869,
-        "v_n003_max": 1.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -4.98207187653,
-        "i_v1_max": 4.99696000134e-08,
-        "i_v2_max": -0.0012160326587,
-        "i_v3_max": 0.000215982741793
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_1"
-      }
-    },
-    "lab4_task3_2": {
-      "circuit_name": "lab4_task3_2",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 3.0
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 2.0000500679
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 2.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -4.98207187653
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 4.99686017008e-08
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.0012160326587
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.000215982741793
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 3.0,
-        "v_n002_max": 2.0000500679,
-        "v_n003_max": 2.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -4.98207187653,
-        "i_v1_max": 4.99686017008e-08,
-        "i_v2_max": -0.0012160326587,
-        "i_v3_max": 0.000215982741793
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_2\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_2"
-      }
-    },
-    "lab4_task3_3": {
-      "circuit_name": "lab4_task3_3",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 3.00003004074
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 3.00002503395
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 3.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -4.98207187653
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": 2.49823113307e-08
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00131585844792
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.00031582347583
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 3.00003004074,
-        "v_n002_max": 3.00002503395,
-        "v_n003_max": 3.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -4.98207187653,
-        "i_v1_max": 2.49823113307e-08,
-        "i_v2_max": -0.00131585844792,
-        "i_v3_max": 0.00031582347583
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_3\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_3"
-      }
-    },
-    "lab4_task3_4": {
-      "circuit_name": "lab4_task3_4",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 3.00005984306
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 4.0
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 4.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -4.98282432556
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -1.00719346058e-11
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00131595274433
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.000315932760714
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 3.00005984306,
-        "v_n002_max": 4.0,
-        "v_n003_max": 4.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -4.98282432556,
-        "i_v1_max": -1.00719346058e-11,
-        "i_v2_max": -0.00131595274433,
-        "i_v3_max": 0.000315932760714
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_4\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_4"
-      }
-    },
-    "lab4_task3_5": {
-      "circuit_name": "lab4_task3_5",
-      "nodes": [
-        {
-          "node_name": "-VCC",
-          "measurement_key": "v__vcc_max",
-          "golden_value": -5.0
-        },
-        {
-          "node_name": "N001",
-          "measurement_key": "v_n001_max",
-          "golden_value": 3.00005984306
-        },
-        {
-          "node_name": "N002",
-          "measurement_key": "v_n002_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "N003",
-          "measurement_key": "v_n003_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VCC",
-          "measurement_key": "v_vcc_max",
-          "golden_value": 5.0
-        },
-        {
-          "node_name": "VOUT",
-          "measurement_key": "v_vout_max",
-          "golden_value": -4.98282432556
-        }
-      ],
-      "source_currents": [
-        {
-          "source_name": "V1",
-          "measurement_key": "i_v1_max",
-          "golden_value": -1.20719345978e-11
-        },
-        {
-          "source_name": "V2",
-          "measurement_key": "i_v2_max",
-          "golden_value": -0.00131595274433
-        },
-        {
-          "source_name": "V3",
-          "measurement_key": "i_v3_max",
-          "golden_value": 0.000315932789817
-        }
-      ],
-      "golden_measurements_max": {
-        "tnom": 27.0,
-        "temp": 27.0,
-        "v__vcc_max": -5.0,
-        "v_n001_max": 3.00005984306,
-        "v_n002_max": 5.0,
-        "v_n003_max": 5.0,
-        "v_vcc_max": 5.0,
-        "v_vout_max": -4.98282432556,
-        "i_v1_max": -1.20719345978e-11,
-        "i_v2_max": -0.00131595274433,
-        "i_v3_max": 0.000315932789817
-      },
-      "golden_defaults": {
-        "solver": "Normal",
-        "method": "trap",
-        "temp": 27.0,
-        "tnom": 27.0
-      },
-      "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_5\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\lab4_task3_5"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_2_V2_only\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab3_2_V2_only"
       }
     },
     "Lab5_1": {
@@ -4385,8 +2102,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab5_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab5_1"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab5_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab5_1"
       }
     },
     "Lab6_1": {
@@ -4454,8 +2171,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab6_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab6_1"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab6_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab6_1"
       }
     },
     "Lab7_1": {
@@ -4529,8 +2246,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab7_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab7_1"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab7_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab7_1"
       }
     },
     "Lab8_CD": {
@@ -4604,8 +2321,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_CD\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_CD"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_CD\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_CD"
       }
     },
     "Lab8_OD": {
@@ -4679,8 +2396,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_OD\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_OD"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_OD\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_OD"
       }
     },
     "Lab8_SOD": {
@@ -4754,8 +2471,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_SOD\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_SOD"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_SOD\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_SOD"
       }
     },
     "Lab8_SUD": {
@@ -4829,8 +2546,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_SUD\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_SUD"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_SUD\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_SUD"
       }
     },
     "Lab8_UD": {
@@ -4904,8 +2621,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_UD\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab8_UD"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_UD\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab8_UD"
       }
     },
     "Lab9_1": {
@@ -4979,8 +2696,8 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab9_1\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab9_1"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab9_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab9_1"
       }
     },
     "Lab9_2": {
@@ -5054,8 +2771,2291 @@
         "tnom": 27.0
       },
       "paths": {
-        "golden_measurements": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab9_2\\golden\\golden_measurements.json",
-        "lab_dir": "C:\\ft\\circuit_debug_api\\packaged_golden_root\\Lab9_2"
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab9_2\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\Lab9_2"
+      }
+    },
+    "lab4_task1_part1_100": {
+      "circuit_name": "lab4_task1_part1_100",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.22223234177
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0422223210335
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.22223234177,
+        "i_v1_max": -0.0422223210335
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_100\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_100"
+      }
+    },
+    "lab4_task1_part1_1000": {
+      "circuit_name": "lab4_task1_part1_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.3467707634
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00434677070007
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.3467707634,
+        "i_v1_max": -0.00434677070007
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_1000"
+      }
+    },
+    "lab4_task1_part1_200": {
+      "circuit_name": "lab4_task1_part1_200",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.26505470276
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0213252734393
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.26505470276,
+        "i_v1_max": -0.0213252734393
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_200\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_200"
+      }
+    },
+    "lab4_task1_part1_300": {
+      "circuit_name": "lab4_task1_part1_300",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.28718948364
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.0142906326801
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.28718948364,
+        "i_v1_max": -0.0142906326801
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_300\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_300"
+      }
+    },
+    "lab4_task1_part1_500": {
+      "circuit_name": "lab4_task1_part1_500",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VE",
+          "measurement_key": "v_ve_max",
+          "golden_value": 4.31328010559
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00862655695528
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_ve_max": 4.31328010559,
+        "i_v1_max": -0.00862655695528
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_500\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part1_500"
+      }
+    },
+    "lab4_task1_part2_1000": {
+      "circuit_name": "lab4_task1_part2_1000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 2.52499989983e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 2.52499989983e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_1000"
+      }
+    },
+    "lab4_task1_part2_10000": {
+      "circuit_name": "lab4_task1_part2_10000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 2.52499994531e-05
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 2.52499994531e-05,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_10000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_10000"
+      }
+    },
+    "lab4_task1_part2_100000": {
+      "circuit_name": "lab4_task1_part2_100000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 0.000252499972703
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499976483e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 0.000252499972703,
+        "i_v1_max": -2.52499976483e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_100000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_100000"
+      }
+    },
+    "lab4_task1_part2_1500": {
+      "circuit_name": "lab4_task1_part2_1500",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 3.78749996344e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 3.78749996344e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_1500\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_1500"
+      }
+    },
+    "lab4_task1_part2_2000": {
+      "circuit_name": "lab4_task1_part2_2000",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 5.04999979967e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 5.04999979967e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_2000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_2000"
+      }
+    },
+    "lab4_task1_part2_3300": {
+      "circuit_name": "lab4_task1_part2_3300",
+      "nodes": [
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VD",
+          "measurement_key": "v_vd_max",
+          "golden_value": 8.33250032883e-06
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499998687e-09
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v_n001_max": 5.0,
+        "v_vd_max": 8.33250032883e-06,
+        "i_v1_max": -2.52499998687e-09
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_3300\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part2_3300"
+      }
+    },
+    "lab4_task1_part3_1000": {
+      "circuit_name": "lab4_task1_part3_1000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100001029205
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00109935319051
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499887665e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100001029205,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00109935319051,
+        "i_v1_max": -2.52499887665e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_1000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_1000"
+      }
+    },
+    "lab4_task1_part3_10000": {
+      "circuit_name": "lab4_task1_part3_10000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100000575185
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00199343496934
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499554598e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100000575185,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00199343496934,
+        "i_v1_max": -2.52499554598e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_10000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_10000"
+      }
+    },
+    "lab4_task1_part3_100000": {
+      "circuit_name": "lab4_task1_part3_100000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00099996116478
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.0109342373908
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52499865461e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00099996116478,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.0109342373908,
+        "i_v1_max": -2.52499865461e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_100000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_100000"
+      }
+    },
+    "lab4_task1_part3_1500": {
+      "circuit_name": "lab4_task1_part3_1500",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100001005922
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00114902446512
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.524871201e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100001005922,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00114902446512,
+        "i_v1_max": -2.524871201e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_1500\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_1500"
+      }
+    },
+    "lab4_task1_part3_2000": {
+      "circuit_name": "lab4_task1_part3_2000",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100000970997
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00119869562332
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52498688624e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100000970997,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00119869562332,
+        "i_v1_max": -2.52498688624e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_2000\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_2000"
+      }
+    },
+    "lab4_task1_part3_3300": {
+      "circuit_name": "lab4_task1_part3_3300",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00100000924431
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 0.00132784096058
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -2.52498733033e-09
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00145110778976
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00145116820931
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00100000924431,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 0.00132784096058,
+        "i_v1_max": -2.52498733033e-09,
+        "i_v2_max": -0.00145110778976,
+        "i_v3_max": 0.00145116820931
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_3300\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task1_part3_3300"
+      }
+    },
+    "lab4_task2_part1_-1": {
+      "circuit_name": "lab4_task2_part1_-1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.000989553751424
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 2.00317239761
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00100098957773
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00237846770324
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137753610034
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.000989553751424,
+        "v_n002_max": -1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 2.00317239761,
+        "i_v1_max": 0.00100098957773,
+        "i_v2_max": -0.00237846770324,
+        "i_v3_max": 0.00137753610034
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-1"
+      }
+    },
+    "lab4_task2_part1_-2": {
+      "circuit_name": "lab4_task2_part1_-2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -0.0384509861469
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.88459038734
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00196154904552
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00333687569946
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0013755147811
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -0.0384509861469,
+        "v_n002_max": -2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.88459038734,
+        "i_v1_max": 0.00196154904552,
+        "i_v2_max": -0.00333687569946,
+        "i_v3_max": 0.0013755147811
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-2\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-2"
+      }
+    },
+    "lab4_task2_part1_-3": {
+      "circuit_name": "lab4_task2_part1_-3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -0.704515337944
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.88367581367
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00229548453353
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00366925518028
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137531931978
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -0.704515337944,
+        "v_n002_max": -3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.88367581367,
+        "i_v1_max": 0.00229548453353,
+        "i_v2_max": -0.00366925518028,
+        "i_v3_max": 0.00137531931978
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-3\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-3"
+      }
+    },
+    "lab4_task2_part1_-4": {
+      "circuit_name": "lab4_task2_part1_-4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -1.37418472767
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.87198901176
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00262581533752
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00399813055992
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0013752032537
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -1.37418472767,
+        "v_n002_max": -4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.87198901176,
+        "i_v1_max": 0.00262581533752,
+        "i_v2_max": -0.00399813055992,
+        "i_v3_max": 0.0013752032537
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-4\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-4"
+      }
+    },
+    "lab4_task2_part1_-5": {
+      "circuit_name": "lab4_task2_part1_-5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": -2.04371976852
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.86070585251
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 0.00295628025196
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00432718452066
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137513142545
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": -2.04371976852,
+        "v_n002_max": -5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.86070585251,
+        "i_v1_max": 0.00295628025196,
+        "i_v2_max": -0.00432718452066,
+        "i_v3_max": 0.00137513142545
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-5\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_-5"
+      }
+    },
+    "lab4_task2_part1_1": {
+      "circuit_name": "lab4_task2_part1_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.00101044541225
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -1.9967648983
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.000998989562504
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00137738732155
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00237643462606
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.00101044541225,
+        "v_n002_max": 1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -1.9967648983,
+        "i_v1_max": -0.000998989562504,
+        "i_v2_max": -0.00137738732155,
+        "i_v3_max": 0.00237643462606
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_1"
+      }
+    },
+    "lab4_task2_part1_2": {
+      "circuit_name": "lab4_task2_part1_2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.0386066064239
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.88372683525
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00196139328182
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00130806060042
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00326938694343
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.0386066064239,
+        "v_n002_max": 2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.88372683525,
+        "i_v1_max": -0.00196139328182,
+        "i_v2_max": -0.00130806060042,
+        "i_v3_max": 0.00326938694343
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_2\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_2"
+      }
+    },
+    "lab4_task2_part1_3": {
+      "circuit_name": "lab4_task2_part1_3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 0.704381585121
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.88367819786
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00229561841115
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00126680522226
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00356099475175
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 0.704381585121,
+        "v_n002_max": 3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.88367819786,
+        "i_v1_max": -0.00229561841115,
+        "i_v2_max": -0.00126680522226,
+        "i_v3_max": 0.00356099475175
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_3\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_3"
+      }
+    },
+    "lab4_task2_part1_4": {
+      "circuit_name": "lab4_task2_part1_4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.37405097485
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.87199115753
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00262594898231
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00126668915618
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00388986989856
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.37405097485,
+        "v_n002_max": 4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.87199115753,
+        "i_v1_max": -0.00262594898231,
+        "i_v2_max": -0.00126668915618,
+        "i_v3_max": 0.00388986989856
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_4\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_4"
+      }
+    },
+    "lab4_task2_part1_5": {
+      "circuit_name": "lab4_task2_part1_5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 2.0435860157
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -3.86070799828
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -0.00295641389675
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00126661732793
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0042189238593
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 2.0435860157,
+        "v_n002_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -3.86070799828,
+        "i_v1_max": -0.00295641389675,
+        "i_v2_max": -0.00126661732793,
+        "i_v3_max": 0.0042189238593
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_5\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part1_5"
+      }
+    },
+    "lab4_task2_part2_1": {
+      "circuit_name": "lab4_task2_part2_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.00090050697
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 0.999884307384
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.00290513039
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -5.78604435475e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00237837922759
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.001377536566
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.00090050697,
+        "v_n002_max": 0.999884307384,
+        "v_n003_max": 1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.00290513039,
+        "i_v1_max": -5.78604435475e-08,
+        "i_v2_max": -0.00237837922759,
+        "i_v3_max": 0.001377536566
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_1"
+      }
+    },
+    "lab4_task2_part2_2": {
+      "circuit_name": "lab4_task2_part2_2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.30851972103
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.99696671963
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.92284536362
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -1.51663618908e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268345302902
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137644994538
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.30851972103,
+        "v_n002_max": 1.99696671963,
+        "v_n003_max": 2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.92284536362,
+        "i_v1_max": -1.51663618908e-06,
+        "i_v2_max": -0.00268345302902,
+        "i_v3_max": 0.00137644994538
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_2\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_2"
+      }
+    },
+    "lab4_task2_part2_3": {
+      "circuit_name": "lab4_task2_part2_3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.30985569954
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 2.99298787117
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.9228746891
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -3.50600771526e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268280133605
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.0013764515752
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.30985569954,
+        "v_n002_max": 2.99298787117,
+        "v_n003_max": 3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.9228746891,
+        "i_v1_max": -3.50600771526e-06,
+        "i_v2_max": -0.00268280133605,
+        "i_v3_max": 0.0013764515752
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_3\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_3"
+      }
+    },
+    "lab4_task2_part2_4": {
+      "circuit_name": "lab4_task2_part2_4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.31119167805
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 3.98900914192
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.92290377617
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -5.49537935512e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268214964308
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137645332143
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.31119167805,
+        "v_n002_max": 3.98900914192,
+        "v_n003_max": 4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.92290377617,
+        "i_v1_max": -5.49537935512e-06,
+        "i_v2_max": -0.00268214964308,
+        "i_v3_max": 0.00137645332143
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_4\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_4"
+      }
+    },
+    "lab4_task2_part2_5": {
+      "circuit_name": "lab4_task2_part2_5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 1.31252765656
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.98503065109
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": 3.92293286324
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -7.48475076762e-06
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00268149771728
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00137645495124
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 1.31252765656,
+        "v_n002_max": 4.98503065109,
+        "v_n003_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": 3.92293286324,
+        "i_v1_max": -7.48475076762e-06,
+        "i_v2_max": -0.00268149771728,
+        "i_v3_max": 0.00137645495124
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_5\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task2_part2_5"
+      }
+    },
+    "lab4_task3_1": {
+      "circuit_name": "lab4_task3_1",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 1.00004994869
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 1.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98207187653
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 4.99696000134e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.0012160326587
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000215982741793
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.0,
+        "v_n002_max": 1.00004994869,
+        "v_n003_max": 1.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98207187653,
+        "i_v1_max": 4.99696000134e-08,
+        "i_v2_max": -0.0012160326587,
+        "i_v3_max": 0.000215982741793
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_1\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_1"
+      }
+    },
+    "lab4_task3_2": {
+      "circuit_name": "lab4_task3_2",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 2.0000500679
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 2.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98207187653
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 4.99686017008e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.0012160326587
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000215982741793
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.0,
+        "v_n002_max": 2.0000500679,
+        "v_n003_max": 2.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98207187653,
+        "i_v1_max": 4.99686017008e-08,
+        "i_v2_max": -0.0012160326587,
+        "i_v3_max": 0.000215982741793
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_2\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_2"
+      }
+    },
+    "lab4_task3_3": {
+      "circuit_name": "lab4_task3_3",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.00003004074
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 3.00002503395
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 3.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98207187653
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": 2.49823113307e-08
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00131585844792
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.00031582347583
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.00003004074,
+        "v_n002_max": 3.00002503395,
+        "v_n003_max": 3.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98207187653,
+        "i_v1_max": 2.49823113307e-08,
+        "i_v2_max": -0.00131585844792,
+        "i_v3_max": 0.00031582347583
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_3\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_3"
+      }
+    },
+    "lab4_task3_4": {
+      "circuit_name": "lab4_task3_4",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.00005984306
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 4.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98282432556
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -1.00719346058e-11
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00131595274433
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000315932760714
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.00005984306,
+        "v_n002_max": 4.0,
+        "v_n003_max": 4.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98282432556,
+        "i_v1_max": -1.00719346058e-11,
+        "i_v2_max": -0.00131595274433,
+        "i_v3_max": 0.000315932760714
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_4\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_4"
+      }
+    },
+    "lab4_task3_5": {
+      "circuit_name": "lab4_task3_5",
+      "nodes": [
+        {
+          "node_name": "-VCC",
+          "measurement_key": "v__vcc_max",
+          "golden_value": -5.0
+        },
+        {
+          "node_name": "N001",
+          "measurement_key": "v_n001_max",
+          "golden_value": 3.00005984306
+        },
+        {
+          "node_name": "N002",
+          "measurement_key": "v_n002_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "N003",
+          "measurement_key": "v_n003_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VCC",
+          "measurement_key": "v_vcc_max",
+          "golden_value": 5.0
+        },
+        {
+          "node_name": "VOUT",
+          "measurement_key": "v_vout_max",
+          "golden_value": -4.98282432556
+        }
+      ],
+      "source_currents": [
+        {
+          "source_name": "V1",
+          "measurement_key": "i_v1_max",
+          "golden_value": -1.20719345978e-11
+        },
+        {
+          "source_name": "V2",
+          "measurement_key": "i_v2_max",
+          "golden_value": -0.00131595274433
+        },
+        {
+          "source_name": "V3",
+          "measurement_key": "i_v3_max",
+          "golden_value": 0.000315932789817
+        }
+      ],
+      "golden_measurements_max": {
+        "tnom": 27.0,
+        "temp": 27.0,
+        "v__vcc_max": -5.0,
+        "v_n001_max": 3.00005984306,
+        "v_n002_max": 5.0,
+        "v_n003_max": 5.0,
+        "v_vcc_max": 5.0,
+        "v_vout_max": -4.98282432556,
+        "i_v1_max": -1.20719345978e-11,
+        "i_v2_max": -0.00131595274433,
+        "i_v3_max": 0.000315932789817
+      },
+      "golden_defaults": {
+        "solver": "Normal",
+        "method": "trap",
+        "temp": 27.0,
+        "tnom": 27.0
+      },
+      "paths": {
+        "golden_measurements": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_5\\golden\\golden_measurements.json",
+        "lab_dir": "\\Users\\blake\\Desktop\\Lab demo today\\LLM\\packaged_golden_root\\lab4_task3_5"
       }
     }
   }

@@ -22,7 +22,8 @@ Fallback backend (if hybrid assets are not present):
 
 Endpoints:
 
-- `POST /chat` : ask lab-manual questions and get an LLM answer grounded in retrieved context
+- `POST /chat` : ask lab-manual questions and let the server infer or auto-select the lab context
+- `POST /chat/{lab_number}` : ask lab-manual questions for a specific lab
 - `GET /circuits` : list all supported (golden) circuit names
 - `GET /circuits/{circuit_name}/nodes` : list required node names (plus optional source current names)
 - `POST /debug` : submit measured values and receive a predicted fault class + diagnosis/fix text
@@ -34,7 +35,7 @@ Endpoints:
 - `build_runtime_assets.py` : packages tabular model + catalog assets
 - `build_hybrid_assets.py` : packages LoRA adapter + KNN reference/index assets for hybrid API mode
 - `client_example.py` : example client hitting all endpoints
-- `chat_terminal_client.py` : interactive terminal chat client for `POST /chat`
+- `chat_terminal_client.py` : interactive terminal chat client for `POST /chat` or `POST /chat/{lab_number}`
 - `student_interactive_client.py` : interactive terminal client that prompts for node values one at a time
 - `test_chat_endpoint.py` : Python smoke test for `POST /chat`
 - `smoke_test_api.ps1` : PowerShell smoke test for API startup + `/debug` client flow
@@ -200,7 +201,7 @@ Optional flags:
 
 ## Interactive Chat Client (terminal Q&A)
 
-This client lets a student type a question in the terminal and prints the `POST /chat` answer.
+This client lets a student type a question in the terminal and prints the chat answer. In interactive mode it prompts for an optional lab number once; if you skip it, the server will infer or auto-select the lab.
 
 ```powershell
 .\\.venv312\\Scripts\\python.exe .\\chat_terminal_client.py --base-url http://127.0.0.1:8000
@@ -211,6 +212,7 @@ Optional one-shot question:
 ```powershell
 .\\.venv312\\Scripts\\python.exe .\\chat_terminal_client.py `
   --base-url http://127.0.0.1:8000 `
+  --lab-number 1 `
   --question "What does Lab 1 procedure require?"
 ```
 
