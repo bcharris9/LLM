@@ -268,6 +268,27 @@ class CircuitDebugHybridRuntime:
             return
         mod = self._load_eval_module()
         self._device, self._dtype = mod.choose_device()
+        merged_model_dir_raw = os.environ.get("CIRCUIT_DEBUG_MERGED_MODEL_DIR", "").strip()
+        if merged_model_dir_raw:
+            model_path = _resolve_config_path(
+                merged_model_dir_raw,
+                hybrid_assets_dir=self.hybrid_assets_dir,
+                api_dir=self.api_dir,
+            )
+            if not model_path.exists():
+                raise FileNotFoundError(f"Merged debug model dir not found: {model_path}")
+            tokenizer = helpers.AutoTokenizer.from_pretrained(
+                str(model_path),
+                use_fast=True,
+                trust_remote_code=True,
+            )
+            if tokenizer.pad_token is None:
+                tokenizer.pad_token = tokenizer.eos_token
+            model = mod.load_model(str(model_path), None, self._device, self._dtype)
+            self._tokenizer = tokenizer
+            self._model = model
+            return
+
         model_name = str(os.environ.get("CIRCUIT_DEBUG_BASE_MODEL", self.config["model_name"]))
         adapter_dir = _resolve_config_path(
             self.config.get("adapter_dir"),

@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 
 from dotenv import load_dotenv
 from langchain_ollama import OllamaEmbeddings
+import requests
 from supabase import Client, create_client
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -32,20 +33,7 @@ HYBRID_ASSETS_DIR = API_DIR / "assets_hybrid"
 
 
 def _default_chat_model_name() -> str:
-    configured_base_model = os.getenv("CIRCUIT_DEBUG_BASE_MODEL")
-    if configured_base_model:
-        return configured_base_model
-
-    hybrid_cfg = HYBRID_ASSETS_DIR / "hybrid_config.json"
-    if hybrid_cfg.exists():
-        try:
-            cfg = json.loads(hybrid_cfg.read_text(encoding="utf-8"))
-        except Exception:
-            cfg = {}
-        model_name = cfg.get("model_name")
-        if model_name:
-            return str(model_name)
-    return "Qwen/Qwen2.5-1.5B-Instruct"
+    return "espressor/meta-llama.Llama-3.2-3B-Instruct_W4A16"
 
 supabase: Optional[Client] = None
 embedder: Optional[OllamaEmbeddings] = None
@@ -69,7 +57,12 @@ CONTEXT_NEIGHBOR_BONUS = float(os.getenv("LAB_NEIGHBOR_BONUS", "0.06"))
 MANUAL_VERSION = os.getenv("LAB_MANUAL_VERSION", "v2")
 EMBED_MODEL = os.getenv("LAB_EMBED_MODEL", "mxbai-embed-large")
 CHAT_LLM_MODEL = os.getenv("LAB_CHAT_MODEL", _default_chat_model_name())
+CHAT_BACKEND = os.getenv("LAB_CHAT_BACKEND", "openai_compat").strip().lower()
+CHAT_BASE_URL = os.getenv("LAB_CHAT_BASE_URL", "http://127.0.0.1:8001/v1").rstrip("/")
+CHAT_API_KEY = os.getenv("LAB_CHAT_API_KEY", "").strip()
 CHAT_MAX_NEW_TOKENS = int(os.getenv("LAB_CHAT_MAX_NEW_TOKENS", "256"))
+CHAT_TEMPERATURE = float(os.getenv("LAB_CHAT_TEMPERATURE", "0.0"))
+CHAT_TIMEOUT_SECONDS = int(os.getenv("LAB_CHAT_TIMEOUT_SECONDS", "180"))
 BM25_K1 = float(os.getenv("LAB_BM25_K1", "1.2"))
 BM25_B = float(os.getenv("LAB_BM25_B", "0.75"))
 MAX_CHAT_LAB_NUMBER = int(os.getenv("LAB_MAX_NUMBER", "9"))
@@ -109,6 +102,9 @@ class HealthResponse(BaseModel):
     circuits: int
     family_pair_models: int
     pair_threshold: float
+    chat_backend: str
+    chat_model: str
+    manual_version: str
 
 
 @lru_cache(maxsize=1)
@@ -198,6 +194,13 @@ def _ensure_chat_llm() -> tuple[Any, Any, str]:
 
 
 def _require_llm() -> None:
+    if CHAT_BACKEND == "openai_compat":
+        if not CHAT_BASE_URL:
+            raise HTTPException(
+                status_code=503,
+                detail="LAB_CHAT_BASE_URL is not configured for the openai_compat chat backend.",
+            )
+        return
     try:
         _ensure_chat_llm()
     except HTTPException:
@@ -219,11 +222,11 @@ def _raise_http_embedding_model_error(error: Exception, model_name: str, role: s
 def _raise_http_chat_model_error(error: Exception, model_name: str, role: str) -> None:
     raise HTTPException(
         status_code=503,
-        detail=f'Hugging Face {role} model "{model_name}" could not be loaded or invoked: {error}',
+        detail=f'Chat backend "{CHAT_BACKEND}" could not load or invoke model "{model_name}": {error}',
     ) from error
 
 
-def _invoke_chat_llm(prompt: str) -> str:
+def _invoke_transformers_chat_llm(prompt: str) -> str:
     model, tokenizer, device = _ensure_chat_llm()
     prompt = prompt.strip()
     if hasattr(tokenizer, "apply_chat_template"):
@@ -252,6 +255,87 @@ def _invoke_chat_llm(prompt: str) -> str:
     if generated_ids.numel() == 0:
         return ""
     return tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
+
+
+def _invoke_openai_compatible_chat(prompt: str) -> str:
+    if not CHAT_BASE_URL:
+        raise HTTPException(
+            status_code=503,
+            detail="LAB_CHAT_BASE_URL is not configured for the openai_compat chat backend.",
+        )
+
+    headers = {"Content-Type": "application/json"}
+    if CHAT_API_KEY:
+        headers["Authorization"] = f"Bearer {CHAT_API_KEY}"
+
+    payload = {
+        "model": CHAT_LLM_MODEL,
+        "messages": [{"role": "user", "content": prompt.strip()}],
+        "temperature": CHAT_TEMPERATURE,
+        "max_tokens": CHAT_MAX_NEW_TOKENS,
+        "stream": False,
+    }
+    try:
+        response = requests.post(
+            f"{CHAT_BASE_URL}/chat/completions",
+            headers=headers,
+            json=payload,
+            timeout=CHAT_TIMEOUT_SECONDS,
+        )
+    except requests.RequestException as e:
+        raise HTTPException(
+            status_code=503,
+            detail=f'Could not reach local chat model server at "{CHAT_BASE_URL}": {e}',
+        ) from e
+
+    if response.status_code >= 400:
+        detail: Any
+        try:
+            detail = response.json()
+        except Exception:
+            detail = response.text
+        raise HTTPException(
+            status_code=503,
+            detail=f'Local chat model server error ({response.status_code}): {detail}',
+        )
+
+    try:
+        body = response.json()
+    except ValueError as e:
+        raise HTTPException(
+            status_code=503,
+            detail="Local chat model server returned invalid JSON.",
+        ) from e
+
+    choices = body.get("choices")
+    if not isinstance(choices, list) or not choices:
+        raise HTTPException(
+            status_code=503,
+            detail=f"Local chat model server returned an unexpected response: {body}",
+        )
+
+    message = choices[0].get("message") if isinstance(choices[0], dict) else None
+    if not isinstance(message, dict):
+        raise HTTPException(
+            status_code=503,
+            detail=f"Local chat model server returned an unexpected response: {body}",
+        )
+
+    content = message.get("content", "")
+    if isinstance(content, list):
+        text_parts = [
+            str(part.get("text", ""))
+            for part in content
+            if isinstance(part, dict) and part.get("type") == "text"
+        ]
+        return "".join(text_parts).strip()
+    return str(content).strip()
+
+
+def _invoke_chat_llm(prompt: str) -> str:
+    if CHAT_BACKEND == "openai_compat":
+        return _invoke_openai_compatible_chat(prompt)
+    return _invoke_transformers_chat_llm(prompt)
 
 
 STOPWORDS = {
@@ -1171,11 +1255,30 @@ def debug_circuit(req: DebugRequest) -> dict[str, Any]:
         raise HTTPException(status_code=500, detail=f"Inference failed: {e}") from e
     return result.to_dict()
 
+
+@app.get("/health", response_model=HealthResponse)
+def health() -> HealthResponse:
+    rt = get_runtime()
+    backend = "llm_knn_hybrid" if rt.__class__.__name__.endswith("HybridRuntime") else "tabular_xgboost"
+    return HealthResponse(
+        ok=True,
+        backend=backend,
+        circuits=len(rt.list_circuits()),
+        family_pair_models=len(getattr(rt, "family_pair_models", {})),
+        pair_threshold=float(getattr(rt, "pair_threshold", 0.0)),
+        chat_backend=CHAT_BACKEND,
+        chat_model=CHAT_LLM_MODEL,
+        manual_version=MANUAL_VERSION,
+    )
+
 # Root helper for quick manual check
 @app.get("/")
 def root():
     return {
         "message": "SPICE Lab Assistant API is running",
+        "chat_backend": CHAT_BACKEND,
+        "chat_model": CHAT_LLM_MODEL,
+        "chat_base_url": CHAT_BASE_URL or None,
         "routes": [
             "/chat",
             "/chat/{lab_number}",

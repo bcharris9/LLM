@@ -36,6 +36,9 @@ Endpoints:
 - `build_hybrid_assets.py` : packages LoRA adapter + KNN reference/index assets for hybrid API mode
 - `client_example.py` : example client hitting all endpoints
 - `chat_terminal_client.py` : interactive terminal chat client for `POST /chat` or `POST /chat/{lab_number}`
+- `export_merged_debug_model.py` : merges the debug LoRA adapter into a standalone model directory for quantization/deployment
+- `run_backend_jetson.sh` : starts the local Jetson chat server and FastAPI app together with readiness checks
+- `run_chat_vllm_jetson.sh` : launches a local Jetson vLLM server for the fast `/chat` path
 - `student_interactive_client.py` : interactive terminal client that prompts for node values one at a time
 - `test_chat_endpoint.py` : Python smoke test for `POST /chat`
 - `smoke_test_api.ps1` : PowerShell smoke test for API startup + `/debug` client flow
@@ -96,6 +99,57 @@ powershell -ExecutionPolicy Bypass -File .\\circuit_debug_api\\run_api.ps1 -Refr
 ```
 
 `run_api.ps1` will auto-build both tabular and hybrid assets if they are missing and uses auto-pick for the best hybrid model.
+
+## Jetson Performance Mode
+
+For a fully local Jetson Orin Nano Super deployment, keep this FastAPI app on the device and run a local model server for `POST /chat`.
+
+First time on the Jetson:
+
+1. Make sure Docker is installed and the Docker daemon is running on the Jetson.
+2. Create the virtual environment and install Python dependencies if you have not already:
+
+```bash
+./make_venv.sh
+source .venv312/bin/activate
+python -m pip install -r ./requirements.txt
+```
+
+3. Make the runner scripts executable:
+
+```bash
+chmod +x ./run_backend_jetson.sh ./run_chat_vllm_jetson.sh
+```
+
+4. Start the full backend:
+
+```bash
+./run_backend_jetson.sh
+```
+
+What happens on the first run:
+
+- The script checks that Docker is available.
+- If the Jetson vLLM image is not present, it pulls it.
+- If runtime assets are missing, it builds them.
+- It starts the local chat model server and waits for it to become ready.
+- It starts FastAPI and waits for `GET /health`.
+
+This keeps all inference on the machine. The Jetson-local chat defaults are baked into `server.py`, and the lab-manual retrieval path defaults to manual version `v2`.
+
+Notes:
+
+- The first run can take significantly longer than later runs because Docker images and model weights may need to be downloaded and cached.
+- If startup fails, check `_backend_logs/chat_server.log` and `_backend_logs/api_server.log`.
+- The backend runner will print the final API URL when everything is ready.
+
+For `POST /debug`, the current hybrid runtime still works in-process. If you want to prepare the fine-tuned debug model for later quantization, first export a merged model:
+
+```bash
+python ./export_merged_debug_model.py --output-dir ./artifacts/debug_merged
+```
+
+The code also supports loading a standalone merged debug model instead of composing the base model with the LoRA adapter at startup.
 
 ## Bash / Linux/macOS Quickstart
 

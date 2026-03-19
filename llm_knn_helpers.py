@@ -667,7 +667,12 @@ def predict_by_knn_only(
     return body
 
 
-def load_model(model_name: str, adapter_dir: Path, device: str, dtype: torch.dtype):
+def load_model(
+    model_name: str,
+    adapter_dir: Path | None,
+    device: str,
+    dtype: torch.dtype,
+):
     model_kwargs: dict[str, Any] = {"trust_remote_code": True}
     sig = inspect.signature(AutoModelForCausalLM.from_pretrained)
     if "dtype" in sig.parameters:
@@ -676,9 +681,8 @@ def load_model(model_name: str, adapter_dir: Path, device: str, dtype: torch.dty
         model_kwargs["torch_dtype"] = dtype
 
     base = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
-    model = PeftModel.from_pretrained(base, str(adapter_dir))
+    model = PeftModel.from_pretrained(base, str(adapter_dir)) if adapter_dir else base
     model.eval()
     model.to(device)
     return model
-
 
