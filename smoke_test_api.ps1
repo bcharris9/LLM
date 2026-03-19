@@ -1,14 +1,14 @@
 $ErrorActionPreference = "Stop"
 
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
-Set-Location (Resolve-Path (Join-Path $Root ".."))
+Set-Location (Resolve-Path $Root)
 
 $py = ".\\.venv312\\Scripts\\python.exe"
 if (-not (Test-Path $py)) {
   throw "Missing venv python: $py"
 }
 
-$logDir = ".\\circuit_debug_api\\_smoke_logs"
+$logDir = ".\\_smoke_logs"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $stdout = Join-Path $logDir "uvicorn.out.log"
 $stderr = Join-Path $logDir "uvicorn.err.log"
@@ -16,7 +16,7 @@ if (Test-Path $stdout) { Remove-Item $stdout -Force }
 if (Test-Path $stderr) { Remove-Item $stderr -Force }
 
 $p = Start-Process -FilePath $py `
-  -ArgumentList @("-m","uvicorn","circuit_debug_api.server:app","--host","127.0.0.1","--port","8000") `
+  -ArgumentList @("-m","uvicorn","server:app","--host","127.0.0.1","--port","8000") `
   -WorkingDirectory (Get-Location).Path `
   -PassThru `
   -RedirectStandardOutput $stdout `
@@ -43,7 +43,7 @@ try {
     throw "API did not become ready in time."
   }
 
-  & $py .\circuit_debug_api\client_example.py `
+  & $py .\client_example.py `
     --base-url http://127.0.0.1:8000 `
     --circuit Lab1_1_0 `
     --demo-use-golden-values `
@@ -67,4 +67,3 @@ finally {
     Start-Sleep -Milliseconds 500
   }
 }
-

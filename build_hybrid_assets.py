@@ -9,11 +9,17 @@ from pathlib import Path
 
 import joblib
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+SCRIPT_DIR = Path(__file__).resolve().parent
+PACKAGE_PARENT = SCRIPT_DIR.parent
+if str(PACKAGE_PARENT) not in sys.path:
+    sys.path.insert(0, str(PACKAGE_PARENT))
 
-from circuit_debug_api import llm_knn_helpers as helpers
+try:
+    from LLM import llm_knn_helpers as helpers
+except ModuleNotFoundError as e:
+    if e.name != "LLM":
+        raise
+    import llm_knn_helpers as helpers  # type: ignore[no-redef]
 
 
 DEFAULT_MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
@@ -204,8 +210,8 @@ def _portable_path_str(path: Path | None) -> str | None:
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Build LLM+KNN hybrid runtime assets for circuit_debug_api")
-    p.add_argument("--api-dir", type=Path, default=Path("circuit_debug_api"))
+    p = argparse.ArgumentParser(description="Build LLM+KNN hybrid runtime assets for LLM")
+    p.add_argument("--api-dir", type=Path, default=SCRIPT_DIR)
     p.add_argument("--model-name", type=str, default=DEFAULT_MODEL_NAME)
     p.add_argument("--adapter-dir", type=Path, default=DEFAULT_ADAPTER_DIR)
     p.add_argument("--knn-ref-file", type=Path, default=DEFAULT_KNN_REF)
@@ -250,6 +256,16 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max-deltas", type=int, default=24)
     p.add_argument("--instruction", type=str, default="")
     return p.parse_args()
+
+
+def _portable_path(path: Path, *, base: Path | None = None) -> str:
+    p = Path(path)
+    if base is not None:
+        try:
+            p = p.relative_to(base)
+        except ValueError:
+            pass
+    return p.as_posix()
 
 
 def main() -> int:
@@ -303,10 +319,10 @@ def main() -> int:
     config = {
         "backend": "llm_knn_hybrid",
         "model_name": args.model_name,
-        "adapter_dir": str(adapter_dest).replace("/", "\\"),
-        "knn_ref_file": str(knn_ref_dest).replace("/", "\\"),
-        "knn_index_file": str(knn_index_dest).replace("/", "\\"),
-        "catalog_file": str(args.catalog_file).replace("/", "\\"),
+        "adapter_dir": _portable_path(adapter_dest, base=api_dir),
+        "knn_ref_file": _portable_path(knn_ref_dest, base=api_dir),
+        "knn_index_file": _portable_path(knn_index_dest, base=api_dir),
+        "catalog_file": _portable_path(args.catalog_file, base=api_dir),
         "response_style": args.response_style,
         "decode_mode": "score_classes_knn",
         "knn_k": int(args.knn_k),
